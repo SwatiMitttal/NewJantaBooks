@@ -1,0 +1,74 @@
+
+#div10{
+    
+    animation:mymove1 4s infinite;
+  }
+  
+    
+    @keyframes mymove {
+        from {left:0px;}
+        to  {left:50px;}
+       }
+ 
+@keyframes mymove1 {
+ from {left:650px;}
+ to  {left:700px;}
+}
+@keyframes mymove2 {
+    from {left:900px;}
+    to  {left:1050px;}
+   }
+   @keyframes mymove3 {
+    from {left:200px;}
+    to  {left:350px;}
+   }
+
+   #p1,#p2,#p3{
+    position:absolute;
+    z-index:5;
+    animation:mmove 20s infinite ;
+   }
+
+   @keyframes mmove{
+   from  {left:20px;}
+   to   {left:600px;}
+   }
+  
+   
+   #im1,#im2,#im3{
+    
+    animation:myup 4s infinite;
+  }
+
+  @keyframes mup{
+   from  {top:400px;}
+   to   {top:0px;}
+   }
+
+ 
+   #dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  #dc {
+    display: none;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  #dc a {
+    color: black;
+    display: block;
+  }
+  
+  
+  
+  #dropdown:hover #dc {display: block;}
+  
+  
+
+
+   
+ 
+ 
