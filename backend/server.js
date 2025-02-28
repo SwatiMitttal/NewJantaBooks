@@ -1,28 +1,21 @@
 import express from 'express'
 import cors from 'cors'
 import dbcon from './database/db.js'
-import { User ,Item} from './database/db.js'
+import { User ,Item,Order} from './database/db.js'
 import  pkg from 'razorpay'
 import {} from 'serverless-http'
 import multer from 'multer'
-import     pkg1 from 'bcryptjs'
+
 const app=express()
-import {Server} from 'socket.io'
+
 const port=4001
 app.use(cors())
 
 dbcon()
 const {Razorpay}=pkg
-//const {bcryptjs}=pkg1
-var instance = new pkg({ key_id: 'YOUR_KEY_ID', key_secret: 'YOUR_SECRET' })
-/*const io=new Server({
-    cors:{
-        origin:'http://localhost:3008'
-    }
-})
 
-io.listen(4010)
-let ousers=[]
+/*var instance = new pkg({ key_id: 'YOUR_KEY_ID', key_secret: 'YOUR_SECRET' })
+
 const adduser=(fname,sid)=>{
     !ousers.some(user=>user.fname===fname) && ousers.push({fname,sid})
 }
@@ -50,9 +43,6 @@ io.on('connection',(socket)=>{
         console.log('someone has disconnected')
      })
 })*/
-/*instance.orders.create({
-amount: 5000,
-currency: "INR"})*/
 
 app.use(express.json())
 
@@ -72,7 +62,7 @@ const storage = multer.diskStorage({
         )
     }
 })
-const upload = multer({  storage })
+const upload = multer({storage })
 
 app.post('/simg',upload.single('imgg'),(req,res)=>{
     
@@ -131,6 +121,8 @@ app.post('/login',cors(), async (req,res)=>{
  } }
 }
  ) 
+
+
   
  app.post('/signup',cors(), async (req,res)=>{
     const {name,email,passw,mobile,add1,add2,city,stat,country,pin}=req.body
@@ -155,23 +147,42 @@ console.log('CART MAIL IS: ',email)
  }   
 })
 app.get('/items',async (req,res)=>{
-   const {cat}=req.body
+   
     try{
     const item1= await Item.find()
+    console.log(item1[1])
+    
     res.status(200).json(item1)
 }
     catch(e){
         console.log(e)
     }
 })
+app.post('/orders',cors(),async(req,res)=>{
+    const{tamt,citems,email}=req.body
+    //console.log(citems[0])
+    const order1=new Order({
+        tamt:tamt,
+        citems:citems,
+        email:email,
+        date:Date.now()
+    })
+    try{
+        await order1.save()
+        }
+     catch(e){
+        console.log(e.message)
+     }   
 
+})
 app.post('/items',cors(), async (req,res)=>{
     const {cat}=req.body
+    console.log("in server",cat)
      try{
     const check=await Item.find({cat:cat})
     if (check.length>0){
         res.status(200).json(check)
-        console.log(check)
+       
     }
     else{
        res.json('notexist') }

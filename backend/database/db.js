@@ -1,3 +1,4 @@
+
 import mongoose, { connect,Schema } from 'mongoose'
 
 
@@ -18,6 +19,7 @@ const uSchema=mongoose.Schema({
     add1:String,
     add2:String,
     city:String,
+    
     state:String,
     country:String,
     pin:String
@@ -35,8 +37,17 @@ const iSchema=mongoose.Schema({
      
 })
 
+const oSchema=mongoose.Schema({
+    email:String,
+    citems:Array,
+    tamt:String,
+    date:Date
+
+})
+
 
 
  export const User=mongoose.model('user',uSchema)
  export const Item=mongoose.model('item',iSchema)
+ export const Order=mongoose.model('order',oSchema)
 export default dbcon

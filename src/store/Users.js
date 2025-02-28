@@ -10,7 +10,8 @@ export const uslice=createSlice({
           city:'',stat:'',country:'',pin:'',exist:false
         },
         
-        
+      aitems:[],
+      cat:"bags"   
 
 },
   reducers:{
@@ -18,17 +19,29 @@ export const uslice=createSlice({
    setU(state,action){
     const {name,email,passw,mobile,add1,add2,city,stat,country,pin,exist}=action.payload
     state.user=action.payload
-     alert(name)
-        
-        
-      
-   }
+     },
 
+   setI(state,action){
+    
+    
+    const {aitems}=action.payload
+   
+    state.aitems=action.payload
+    
+   
+   },
+
+   setC(state,action){
+    
+    state.cat=action.payload
+  },
+
+ 
 
 
   }
 }
 )
 
-export const {addUser,setU}=uslice.actions
+export const {setI,setU,setC}=uslice.actions
 export default uslice.reducer

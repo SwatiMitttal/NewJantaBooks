@@ -9,7 +9,7 @@ function Layout1(){
     return(
     
           <div className="bg-white">
-         <div  className="w-[1050px]">
+         <div  className="w-[800px]">
          <Header/>
          <Outlet/>
          </div>

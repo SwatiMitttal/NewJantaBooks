@@ -1,17 +1,17 @@
 
 import { useState } from "react";
-import {Link, Navigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import Cartab from "./Cartab";
 import Spanel from "./Spanel";
 import axios from "axios"
-import { setU ,addUser} from "../store/Users";
+import { setU } from "../store/Users";
 import { useNavigate } from "react-router-dom"
 function Login(props){
     
     const nav=useNavigate()
     const [email,setEmail]=useState('');
-    const[sup,setSup]=useState(false)
+    
      const dispatch=useDispatch()
      const cuser=useSelector(store=>store.users.cuser)
      

@@ -81,7 +81,7 @@ function Aitem(){
          <td>  <label >Image Upload</label>  </td>
              <td> <input id='img8' type='file'  className=" w-100 border-2
               border-amber-950 rounded-sm hover:bg-amber-200 text-sm font-semibold"
-               onChange={(e)=>{setImgg(e.target.files[0]) ;setImgUrl('../../uploads'+e.target.value.split('\\')[e.target.value.split('\\').length-1])}}
+               onChange={(e)=>{setImgg(e.target.files[0]) ;setImgUrl('../../'+e.target.value.split('\\')[e.target.value.split('\\').length-1])}}
                 ></input>   </td>
          </tr>
        

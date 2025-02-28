@@ -8,38 +8,33 @@ import Aitem from './components/Aitem'
 import Home1 from './components/Home1'
 import Total from './components/Total'
 import Orders  from './components/Orders'
-import {io} from 'socket.io-client'
-import { useEffect, useState } from 'react'
-import { initializeApp } from "firebase/app"
+import { useDispatch } from 'react-redux'
+import { useState,useEffect } from 'react'
+import axios from 'axios'
+import { setI } from './store/Users'
 function App() {
-const [socket,setSocket]=useState(null)
-const [user,setUser]=useState(localStorage.getItem('user'))
- 
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDpVySRh3_e30NBM-3GZtL_s-kL7uiWRiM",
-  authDomain: "newjanta-b67af.firebaseapp.com",
-  projectId: "newjanta-b67af",
-  storageBucket: "newjanta-b67af.firebasestorage.app",
-  messagingSenderId: "230938568199",
-  appId: "1:230938568199:web:a913c4f84222b28b842ca2",
-  measurementId: "G-7H7F6EV41M"
-};
 
 
-//const app = initializeApp(firebaseConfig);
+const dispatch=useDispatch()
+const [aitems,setAitems]=useState([])
+  
+  useEffect(()=>{
+   try{
+           axios.get('http://localhost:4001/items').then(
+            res=> {if(res.status===200)
+              { setAitems(res.data)
+                dispatch(setI({aitems:aitems}));
+               localStorage.setItem('aitems',JSON.stringify(res.data))
+             }}).then(
+              data=>{
+            }
+            
+            )}catch(err){
+        console.log(err.message)
+      }
+      
+    },[])
 
-
-/*useEffect(()=>{
-   const socket=io('http://localhost:4010')
-   console.log(socket)
- },[])
-
- useEffect(()=>{
-  user && socket.emit('nuser',user)
- },[socket,user])
- */
- 
   return (
     <div className="App">
          <h3 className='text-red-900 text-xl inline-flex  text-lg-center'>NEW JANTA BOOKS & STATIONERS</h3>

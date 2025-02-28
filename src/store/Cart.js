@@ -1,6 +1,5 @@
-import {createSlice}  from  '@reduxjs/toolkit'
-import { prods1} from '../assets/prods1'
 
+import {createSlice}  from  '@reduxjs/toolkit'
 export const cslice=createSlice(
     
     {
@@ -15,24 +14,20 @@ export const cslice=createSlice(
       },
       reducers: {
       addItem(state,action){
-        const {id,quantity,price,imgUrl}=action.payload
-        const item=state.items.find(item=>item.id===id)
-        
-       
-        !item  ?  state.items.push({id:id,quantity:quantity,price:price,imgUrl:imgUrl})  :item.quantity++
-        
-        const item1=prods1.filter(item=>item.id===id)[0]
-        
-        
-        state.tamt[id]=item1.price*quantity
+        const {id,quantity,price,cbot,imgurl,slug,rating}=action.payload
+         const item=state.items.find(item=>item.id===id)
+         
+         const item1={id:id,quantity:quantity,price:price,imgurl:imgurl,rating:rating,slug:slug,cbot:cbot}
+        !item  ?  state.items.push({id:id,quantity:quantity,price:price,imgurl:imgurl,cbot:cbot,rating:rating,slug:slug})  :item.cbot>0?item=item1:item.quantity++
+        state.tamt[id]=price*quantity
         state.totamt+=state.tamt[id]
       },
 
       remItem(state,action){
-        const item=state.items.filter(item=>item.id==action.payload.id)
+        const item=state.items.filter(item=>item.id===action.payload.id)
           item.quantity--;
-          if (item.quantity==0){
-            const arr=state.items.filter(item=>item.id!=action.payload.id)
+          if (item.quantity===0){
+            const arr=state.items.filter(item=>item.id!==action.payload.id)
             state.items=arr
           }
       },
@@ -40,27 +35,26 @@ export const cslice=createSlice(
       changeQ(state,action){
         const{id,quantity}=action.payload
         const ind=state.items.findIndex(item=>item.id===id)
-
+        const aitems=localStorage.getItem('aitems')
         if (quantity>0){
           state.items[ind].quantity=quantity
         }else{
             state.items=state.items.filter(item=>item.id!==id)
         }
-        const item1=prods1.filter(item=>item.id===id)[0]
+        
+        const item1=aitems.filter(item=>item.id===id)[0]
         state.temp=state.tamt[id]
         state.tamt[id]=item1.price*quantity
         state.totamt+=(state.tamt[id]-state.temp)
         
       },
-        
-      toggleS(state,action){
-        state.statuss?  state.statuss=false : state.statuss=true
-        
-      },
+
+      
+    
      
         }
     })
 
 
-export const {addItem,remItem,changeQ,toggleS}=cslice.actions
+export const {addItem,remItem,changeQ}=cslice.actions
 export default cslice.reducer

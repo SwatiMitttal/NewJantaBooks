@@ -2,9 +2,10 @@
 import { useSelector } from "react-redux"
 import Citem from "./Citem"
 
-
+import {addNotification} from 'react-push-notification'
 import { FaRupeeSign } from "react-icons/fa"
 import { Link } from "react-router-dom"
+import axios from "axios"
 
 
 function Total(){
@@ -34,6 +35,18 @@ const pdata = {
 //payment['id']  # Payment ID
 //payment['amount'] # Amount in paise
 //payment['currency']  # Currency code
+
+const handleC=async()=>{
+  try{
+   await axios.post('http://localhost:4001/orders',{email:dets.email,items:citems,tamt:tamt}).then(
+    res=>res.data
+   )
+
+}catch(err){
+  console.log(err)
+}
+
+}
 
     return (
 <div>
@@ -99,7 +112,10 @@ const pdata = {
 
        <br></br>   
                  
-  <Link to ='https://razorpay.me/@rangkesar'>  <button  className='rounded-md bg-amber-600 hover:bg-amber-900 text-white font-semibold text-md   p-3 ml-8 w-40'
+  <Link to ='https://razorpay.me/@rangkesar'>  <button  className='rounded-md bg-amber-600
+   hover:bg-amber-900 text-white 
+  font-semibold text-md   p-3 ml-8 w-40'
+  onClick={handleC}
       >PAY NOW  </button></Link></div>
     </div> 
 

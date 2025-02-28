@@ -1,10 +1,8 @@
 
 
-import { UseSelector, useSelector } from "react-redux"
-import {FaRupeeSign} from 'react-icons/fa'
-import { useEffect } from "react"
+import {  useSelector } from "react-redux"
+
 import Citem from "./Citem"
-import { useDispatch } from "react-redux"
 
 import { Link } from "react-router-dom"
 
