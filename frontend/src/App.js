@@ -33,8 +33,8 @@ const citems=prods1
             )}catch(err){
         console.log(err.message)
       }
-    !aitems.length>0  ?setAitems(prods1):alert(citems.length)
-    !aitems.length>0  ?localStorage.setItem('aitems',prods1):alert(citems.length)
+    !aitems.length>0  ?setAitems(prods1):console.log(citems.length)
+    !aitems.length>0  ?localStorage.setItem('aitems',prods1):console.log(citems.length)
     },[])
 
   return (

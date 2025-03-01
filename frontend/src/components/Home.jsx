@@ -1,5 +1,5 @@
 import {useEffect,useState} from 'react'
-
+import { prods1 } from '../assets/prods1'
   import Layout1 from './Layout1'
   import Pcart from './Pcart'
    import  axios from 'axios'
@@ -7,6 +7,7 @@ import {useEffect,useState} from 'react'
 
 function  Home(props){
   const [aitems,setAitems]=useState([])
+  const citems=prods1
  useEffect(()=>{
      
        try{
@@ -19,6 +20,8 @@ function  Home(props){
         console.log(err.message)
       }
       console.log(localStorage.getItem('aitems'))
+      !aitems.length>0  ?setAitems(prods1):console.log(citems.length)
+      !aitems.length>0  ?localStorage.setItem('aitems',prods1):console.log(citems.length)
      },[])
 
  
