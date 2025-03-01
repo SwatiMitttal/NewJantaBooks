@@ -12,12 +12,13 @@ import { useDispatch } from 'react-redux'
 import { useState,useEffect } from 'react'
 import axios from 'axios'
 import { setI } from './store/Users'
+import { prods1 } from './assets/prods1'
 function App() {
 
 
 const dispatch=useDispatch()
 const [aitems,setAitems]=useState([])
-  
+const citems=prods1
   useEffect(()=>{
    try{
            axios.get('http://localhost:4001/items').then(
@@ -32,7 +33,8 @@ const [aitems,setAitems]=useState([])
             )}catch(err){
         console.log(err.message)
       }
-      
+    !aitems.length>0  ?setAitems(prods1):alert(citems.length)
+    !aitems.length>0  ?localStorage.setItem('aitems',prods1):alert(citems.length)
     },[])
 
   return (
