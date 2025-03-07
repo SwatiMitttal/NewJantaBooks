@@ -34,7 +34,13 @@ const iSchema=mongoose.Schema({
      imgurl:String,
      note:String,
      rating:String,
+      img:String
      
+     
+})
+const imSchema=mongoose.Schema({
+  img:String
+
 })
 
 const oSchema=mongoose.Schema({
@@ -50,4 +56,5 @@ const oSchema=mongoose.Schema({
  export const User=mongoose.model('user',uSchema)
  export const Item=mongoose.model('item',iSchema)
  export const Order=mongoose.model('order',oSchema)
+ export const Imag=mongoose.model('imag',imSchema)
 export default dbcon

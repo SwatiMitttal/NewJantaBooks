@@ -4,7 +4,7 @@ import Detail from './components/Detail'
 import Car1 from './components/Car1'
 import Login from './components/Login'
 import Signup from './components/Signup '
-import Aitem from './components/Aitem'
+
 import Home1 from './components/Home1'
 import Total from './components/Total'
 import Orders  from './components/Orders'
@@ -50,7 +50,7 @@ const citems=prods1
       <Route  path='/home1/:slug' element={<Detail/>}  ></Route>
       <Route path='/login'  element={<Login/>}  ></Route>
       <Route path='/home1/login'  element={<Login/>}  ></Route>
-      <Route  path='/aitem' element={<Aitem/>}  ></Route>
+      
       <Route   path='/signup'  element={<Signup/>} ></Route>
       <Route   path='/totamt'  element={<Total/>}  ></Route>
       <Route path='/orders'  element= {<Orders/>}></Route>

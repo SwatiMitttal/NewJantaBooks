@@ -55,45 +55,45 @@ app.listen(port,()=>{
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      return cb(null, '../../njbooks/public/uploads')
+      return cb(null, './public/uploads')
     },
     filename: function (req, file, cb) {
-      return cb(null,file.originalname
-        )
-    }
+      return cb(null,Date.now()+file.originalname)}
 })
-const upload = multer({storage })
+const upload = multer({storage:storage })
 
-app.post('/simg',upload.single('imgg'),(req,res)=>{
-    
-    console.log(req.body)
-    console.log(req.file)
-})
+
 
 app.get('/login',async (req,res)=>{
     const {email}=req.body;
     console.log(email);
     try{
     const user1= await User.findOne({email:email})
-    res.json(user1)
-}
+    res.json(user1)}
     catch(e){
         console.log(e)
     }
 })
-app.post('/aitem',cors(),async(req,res)=>{
-    console.log(req.body.note)
-    const {note,slug,price,imgUrl,cat}=req.body
+
+
+
+app.post('/aitem',upload.single('img'),async(req,res)=>{
     
+    const {note,slug,price,cat,name}=req.body
+    const img1=req.file.filename
+    console.log(req.file)
+   
     const nitem={ cat:cat,slug:slug,
        price:price,
-       imgurl:imgUrl,
+       slug:name,
        note:note,
-       rating:4
+       rating:4,
+       cat:cat,
+       img:img1
       }
       try{
         await Item.insertMany([nitem])
-        console.log(nitem)
+        res.status(200).json('success')
         }
      catch(e){
         console.log(e.message)
@@ -159,11 +159,11 @@ app.get('/items',async (req,res)=>{
     }
 })
 app.post('/orders',cors(),async(req,res)=>{
-    const{tamt,citems,email}=req.body
-    //console.log(citems[0])
+    const{tamt,aitems,email}=req.body
+    
     const order1=new Order({
         tamt:tamt,
-        citems:citems,
+        citems:aitems,
         email:email,
         date:Date.now()
     })
@@ -175,9 +175,23 @@ app.post('/orders',cors(),async(req,res)=>{
      }   
 
 })
+
+app.post ('/corders',cors(),async(req,res)=>{
+    const {email}=req.body
+    console.log(email)
+    try{
+    const orders= await Order.find({email:email})
+    console.log(orders)
+    if(orders.length>0){
+        res.status(200).json(orders)
+    }else{
+        res.json('no orders')
+    }}catch(e){
+        console.log(e.message)
+    }
+})
 app.post('/items',cors(), async (req,res)=>{
     const {cat}=req.body
-    console.log("in server",cat)
      try{
     const check=await Item.find({cat:cat})
     if (check.length>0){

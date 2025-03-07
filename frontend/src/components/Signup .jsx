@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 import { useDispatch,useSelector } from "react-redux"
 import { setU } from "../store/Users"
-
+import { users } from "../assets/users"
 import axios from 'axios'
 import { FaEye } from "react-icons/fa"
 //import Vphone from "./Vphone"
@@ -54,6 +54,17 @@ function Signup(){
      }})}catch(err){
           console.log(err.message)
         }
+
+        users.append({name:name,
+          email,email,
+          passw:passw,
+          mobile:mobile,
+          add1:add1,
+          add2:add2,
+          city:city,
+          stat:stat,
+          country:country,
+          pin:pin})
  }
 
  const handleC=()=>{
