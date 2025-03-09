@@ -2,23 +2,14 @@
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { FaUser,FaShoppingCart } from "react-icons/fa"
-
-import 'reactjs-popup/dist/index'
 import Mdrop from "./Mdrop"
 
 
-function Header(props){
-  
+function Header(){
     const cart=useSelector(store=>store.cart.items)
     const cuser=useSelector(store=>store.users.user.email)
-    
-  
-   const handleCart=()=>{
-     
-    }
-
-    
-    return (
+    const handleCart=()=>{}
+return (
         <>
      <div className=" bg-white">
   <span id='p1' className="text-amber-800  text-md font-semibold bg-white rounded-l" >bags  <span className=" text-amber-600"> toys 
@@ -30,9 +21,7 @@ function Header(props){
         <img   src='../../NewJanta.jpeg' alt='logo' className="h-25 w-20 hover:bg-slate-200 rounded-2xl border-red-500 border-2"></img>
    
     <Link  to='/'>  <h4 className='font-semibold text-amber-800 text-ml hover:scale-105'>HOME</h4></Link>
-   
-  
-  <Mdrop   icon ='FaBars'  cat=''/>  
+   <Mdrop   icon ='FaBars'  cat=''/>  
       <Mdrop   icon ='FaSearch'  cat=''/>      
      
 
@@ -46,7 +35,13 @@ function Header(props){
     text-sm text-white items-center '>{cart.length}</span>
     </div>
     <div  className='flex justify-center relative  gap-1' onClick={cuser?<></> :<Link to='/login'></Link>} >
+ 
      <Link  to={!cuser?'/login':''} >    <FaUser  className="h-10 w-10 bg-white rounded-full p-2 hover:scale-125" /></Link>   </div>
+
+ <a href='http://localhost:3000'>
+ <button className="bg-black text-sm text-white p-2 
+ rounded-md justify-right hover:scale-105">Admin Panel</button></a>
+ 
   </div>    
   </div>
   </div>

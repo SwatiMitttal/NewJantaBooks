@@ -36,17 +36,12 @@ const pdata = {
 //payment['currency']  # Currency code
 
 const handleC=async()=>{
-  alert(aitems[0].slug)
   try{
    await axios.post('http://localhost:4001/orders',{email:dets.email,aitems:aitems,tamt:tamt}).then(
     res=>res.data
-   )
-
-}catch(err){
+   )}catch(err){
   console.log(err)
-}
-
-}
+}}
 
     return (
 <div><div className=" bg-white">

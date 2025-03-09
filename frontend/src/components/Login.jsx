@@ -7,20 +7,17 @@ import Spanel from "./Spanel";
 import axios from "axios"
 import { setU } from "../store/Users";
 import { useNavigate } from "react-router-dom"
-import { users } from "../assets/users";
-function Login(props){
+
+function Login({url}){
     
     const nav=useNavigate()
     const [email,setEmail]=useState('');
-    
      const dispatch=useDispatch()
      const cuser=useSelector(store=>store.users.cuser)
-     const users1=users
-    async function handleS(e){
     
-     
+    async function handleS(e){
     try{
-        await axios.post('http://localhost:4001/login',{email:email}).then(res=>{
+        await axios.post(`${url}/login`,{email:email}).then(res=>{
        if(res.status===200) { 
         dispatch(setU({email:res.data.email,
           name:res.data.name,
@@ -32,17 +29,10 @@ function Login(props){
           stat:res.data.stat,
           country:res.data.country,
           pin:res.data.pin
-        
-        
-        
-        }))
-     
-      //const user1=users1.find(user=>users.email===email)[0]
-      
-      nav('/totamt')
+      }))
+     nav('/totamt')
       }else{
-        //const user1=users.find(user=>users.email===email)
-          nav('/signup') 
+       nav('/signup') 
         }}).then(data=>{})}
       catch(err){
             console.log(err.message)
@@ -50,7 +40,7 @@ function Login(props){
        
 return(
         <>
-         <Link  to='/' > <h2 className="font-semibold text-md text-amber-800 ml-20 hover:font-bold">HOME</h2></Link>  <br></br> 
+<Link  to='/' > <h2 className="font-semibold text-md text-amber-800 ml-20 hover:font-bold">HOME</h2></Link>  <br></br> 
     <div className="inline-flex">
          <div  className="w-[400px]">
      <br></br>  
@@ -65,8 +55,7 @@ return(
         className=' p-4 border-slate-500 border-2 rounded-md bg-slate-200 text-slate-900 w-60 font-semibold
          hover:bg-slate-300 overflow-auto'
         onChange={(e)=>{setEmail(e.target.value);}}
-        
-         required='true'
+      required='true'
         ></input> </div> 
     </fieldset></form>
  <button className="bg-amber-600 text-white font-semibold  p-3 ml-10

@@ -17,7 +17,7 @@ function Sidebar(){
             </div><hr></hr></Link>
           <Link to='/orders' ><div id ='sb4' className='inline-flex hover:scale-105 hover:bg-red-100 w-full border-2 mb-3 p-1 border-gray-400 '>
                <FaList/>
-               <p className='text-sm ml-2 '>List items</p>
+               <p className='text-sm ml-2 '>List Orders-Enter email</p>
             </div></Link> 
             </div>
         </div>
