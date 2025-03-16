@@ -7,6 +7,7 @@ function Autoc(props) {
     const handleC = (e) => {
       const value = e.target.value;
       setIval(value);
+  
       const newfsug = sug.filter((s) =>
         s.toLowerCase().includes(value.toLowerCase())
       );

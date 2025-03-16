@@ -9,19 +9,21 @@ function Detail(){
     const {slug}=useParams()
     const [quantity,setQuantity]=useState(0)
     
-    const aitems=localStorage.getItem('aitems')
+    const aitems=[localStorage.getItem('aitems')]
     const [detail,setDetail]=useState({})
     const [citems,setCitems]=useState([])
     const dispatch=useDispatch()
 useEffect(()=>{
-   alert(aitems)
-   const a=JSON.parse(aitems)
+   
+   const a=JSON.parse(aitems[0])
    setCitems(a)
       const fdetail=a.filter(item=>item.slug===slug)
       setDetail(fdetail[0])
            
-    },[quantity])
-   const handleAdd=()=>{
+    },[])
+   
+
+    const handleAdd=()=>{
        dispatch(addItem({id:detail._id,quantity:1,count:detail.count,price:detail.price,imgurl:detail.imgurl}))
        setQuantity(quantity+1) }
 
@@ -33,15 +35,18 @@ useEffect(()=>{
         <>
      <Header  />
         <h2 className="text-md font-semibold text-amber-700">{detail.slug}</h2>
+
         <div  className="grid grid-cols-3 gap-5  mt-5" >
            <div className="inline-block">
             <img  src={detail.imgurl}  alt=''className="h-25 w-25" ></img>
-         </div>
+           
+        </div>
         <div className="flex flex-col  gap-6 mt-20 ">
            <h2 className="flex font-semibold uppercase text-md text-amber-600 justify-center items-center">{detail.slug}</h2> 
            <h4 className=" text-xl font-semibold  flex justify-center items-center "><FaRupeeSign/>{detail.price}</h4>
            <h4 className=" text-xl font-semibold  flex justify-center items-center ">{detail.note}</h4>
-          <button  className="text-md font-semibold text-amber-700 hover:scale-110"
+         
+           <button  className="text-md font-semibold text-amber-700 hover:scale-110"
            onClick={handleAdd}
            >ADD TO CART</button>
            <div className="  flex justify-center items-center">

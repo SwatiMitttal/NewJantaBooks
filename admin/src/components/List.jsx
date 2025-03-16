@@ -2,24 +2,22 @@ import axios from 'axios'
 import { useEffect, useState } from "react"
 import Navbar from "./Navbar"
 import Sidebar from "./Sidebar"
-import Popup from 'reactjs-popup';
+import { toast } from 'react-toastify'
 import { FaRupeeSign } from 'react-icons/fa';
 function List({url}){
    
     const [orders,setOrders]=useState([])
     const [email,setEmail]=useState(localStorage.getItem('mail'))
     const flist=async ()=>{
-        
-        const res= await axios.post(`${url}/corders`,{email:email})
+const res= await axios.post('https://newjvite1.onrender.com/corders',{email:email})
             if(res.status===200){
               setOrders(res.data)
              console.log(orders[0])
            }}
     useEffect(()=>{
-        alert(email) 
+        toast(email) 
         flist()
-     
-},[])
+    },[])
 
     return(<>
       <Navbar/>
@@ -65,7 +63,6 @@ function List({url}){
                     <ul>  <li> {ii===0?order._id :''}</li>
                      <li> {ii===0?order.date :''}</li></ul> 
                   </th>
-                 
                   <td className="px-6 py-4">
                       {item.slug}
                   </td>

@@ -1,23 +1,22 @@
 
 import { Link } from 'react-router-dom'
 import {useDispatch}  from 'react-redux'
+
 import { FaRupeeSign,FaCartPlus } from 'react-icons/fa'
 import Rating from './Rating'
 import { addItem } from '../store/Cart'
-import { useState,useParams } from 'react'
-import {toast} from 'react-toastify'
-
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 function Pcart(props){
     const {_id,note,cat,count,imgurl,rating,price,slug}=props.data
+   
     const dispatch=useDispatch()
     const [cbot,setCbot]=useState(0)
     const light='w-5 h text-red-700  text-center align-center text-bold hover:bg-green-100 rounded-md border-2 hover:bg-green-200 border-red-700'
-    
-  
     const cc=Array.from({length:count}, (_, index) => index + 1);
     const dark='w-5 h text-red-700 text-center align-center text-bold bg-green-300  hover:bg-green-200  rounded-md border-2 hover:bg-green-200 border-red-700'
-
+  
       async function handleAdd(){
        dispatch(addItem({
             id:_id,
@@ -29,22 +28,17 @@ function Pcart(props){
             rating:rating,
             slug:slug
         })) }
-
-      const handleC=()=>{
-      
-      }
+        
 return(
-      <div className='bg-white p-5 rounded-lg  shadow-sm'>
-            <p className='text-sm text-amber-700 font-semibold'>{slug}</p>
+        <div className='bg-white p-5 rounded-lg  shadow-sm'>
+        <p className='text-sm text-amber-700 font-semibold'>{slug}</p>
           <Link  to={slug}>
             <br></br>
-      <img   src={imgurl} alt='' className='h-60 w-60 object-contain rounded-xl object-top hover:scale-105'
-        onClick={handleC}
-      ></img> 
+        <img   src={imgurl} alt='' className='h-60 w-60 object-contain 
+  rounded-xl object-top hover:scale-105' ></img>   
       </Link>
       {cat==='bottlesm'?  <>
-    
-    <h4 className="text-green-900 ">PICK BOTTLE</h4>
+  <h4 className="text-green-900 ">PICK BOTTLE</h4>
       <div className="inline-flex">
       {cc.map((i, id) => ( 
       <>
@@ -64,7 +58,7 @@ return(
           <button className='text-sm text-white bg-slate-950 rounded-xl
             p-2  flex  justify-center items-center gap-2 hover:bg-slate-700
             ' type='button' 
-            onClick={cbot===0?handleAdd:cbot>0?toast('item added'):''} ><FaCartPlus/>ADD TO CART</button>
+            onClick={cbot===0?handleAdd:cbot>0?toast('item added'):''} >     <FaCartPlus/>ADD TO CART</button>
          </div>
          </div>
     )

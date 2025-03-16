@@ -7,14 +7,15 @@ import Spanel from "./Spanel";
 import axios from "axios"
 import { setU } from "../store/Users";
 import { useNavigate } from "react-router-dom"
-
-function Login({url}){
+import { users } from "../assets/users";
+function Login(props){
     
     const nav=useNavigate()
     const [email,setEmail]=useState('');
+    
      const dispatch=useDispatch()
      const cuser=useSelector(store=>store.users.cuser)
-    
+     const users1=users
     async function handleS(e){
     try{
         await axios.post(`${url}/login`,{email:email}).then(res=>{
@@ -28,19 +29,23 @@ function Login({url}){
           city:res.data.city,
           stat:res.data.stat,
           country:res.data.country,
-          pin:res.data.pin
-      }))
-     nav('/totamt')
+          pin:res.data.pin}))
+     const user1=users1.find(user=>users.email===email)[0]
+      alert(users1[0])
+      nav('/totamt')
       }else{
-       nav('/signup') 
-        }}).then(data=>{})}
-      catch(err){
+        const user1=users.find(user=>users.email===email)
+          nav('/signup') }}).then(data=>{})}
+        
+        catch(err){
             console.log(err.message)
-          }}
+          }
+      
+        }
        
 return(
         <>
-<Link  to='/' > <h2 className="font-semibold text-md text-amber-800 ml-20 hover:font-bold">HOME</h2></Link>  <br></br> 
+         <Link  to='/' > <h2 className="font-semibold text-md text-amber-800 ml-20 hover:font-bold">HOME</h2></Link>  <br></br> 
     <div className="inline-flex">
          <div  className="w-[400px]">
      <br></br>  
@@ -55,7 +60,8 @@ return(
         className=' p-4 border-slate-500 border-2 rounded-md bg-slate-200 text-slate-900 w-60 font-semibold
          hover:bg-slate-300 overflow-auto'
         onChange={(e)=>{setEmail(e.target.value);}}
-      required='true'
+        
+         required='true'
         ></input> </div> 
     </fieldset></form>
  <button className="bg-amber-600 text-white font-semibold  p-3 ml-10

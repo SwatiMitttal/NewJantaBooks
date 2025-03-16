@@ -4,16 +4,15 @@
      import axios from "axios"
      
     
-function Home1({url}){
+function Home1(){
     const  [citems,setCitems]=useState([])
         const [cat,setCat]=useState(localStorage.getItem('scat'))
        const [aitems,setAitems]=useState([])
-       useEffect(()=>{
+ 
+ useEffect(()=>{
   setAitems(citems.filter(item=>item.cat===cat))
-
- },[citems,cat])
+},[citems,cat])
      useEffect(()=>{
-      
       try{
         axios.get(`${url}/items`).then(
           res=>{if(res.status===200){
@@ -21,9 +20,7 @@ function Home1({url}){
                     }})
       }catch(err){
         console.log(err.message)
-      }
-      
-     },[])
+      }},[])
      return(
      <div>
      <br></br>

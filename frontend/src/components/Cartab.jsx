@@ -26,7 +26,7 @@ function Cartab(){
             </div>
 
             <div className="grid grid-cols-2">
-             <Link  to='/login' >  <button className="text-white m-5 text-xl bg-amber-700  hover:bg-amber-900 rounded-md w-28 p-1"
+             <Link  to={cuser?'/totamt':'/login'} >  <button className="text-white m-5 text-xl bg-amber-700  hover:bg-amber-900 rounded-md w-28 p-1"
                  type='button'
                 >CHECKOUT</button>  </Link> 
                

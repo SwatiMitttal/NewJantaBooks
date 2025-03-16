@@ -6,7 +6,7 @@ import { setU } from "../store/Users"
 import { users } from "../assets/users"
 import axios from 'axios'
 import { FaEye } from "react-icons/fa"
-//import Vphone from "./Vphone"
+
 function Signup(){
    
   const [isSignup,SetisSignup]=useState(false)
@@ -33,7 +33,7 @@ function Signup(){
   
    
  try{
-      await axios.post('http://localhost:4001/signup',{
+      await axios.post(`${url}/signup`,{
       name,email,passw,mobile,add1,add2,city,stat,country,pin
       }).then(res=>{
           if (res.status==200){

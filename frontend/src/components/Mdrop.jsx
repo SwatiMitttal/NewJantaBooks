@@ -7,7 +7,7 @@ import {prods1} from '../assets/prods1'
 function Mdrop(props){
   
   const [cat,setCat]=useState("toys")
-  const brands=['tommyH','probot']
+  const brands=['tommyH','probot','rakhis']
   const  [citems,setCitems]=useState([])
   async function handleC(){
   
@@ -40,13 +40,17 @@ function Mdrop(props){
        <>
         <div className="h-8 w-45 block bg-amber-200 text-sm 
              font-semibold border-2  border-amber-600   rounded-md p-2  flex-wrap
-           justify-center items-center   hover:scale-125"  
+           justify-center items-center   hover:scale-105"  
            onClick={()=>{localStorage.setItem("scat","tommy");handleC()}} >{brands[0]}</div>
 
 <div className="h-8 w-45 block bg-amber-200 text-sm 
              font-semibold border-2  border-amber-600   rounded-md p-2  flex-wrap
-           justify-center items-center   hover:scale-125"  
+           justify-center items-center   hover:scale-105"  
            onClick={()=>{localStorage.setItem("scat","probot");handleC()} }>{brands[1]}</div>
+  <div className="h-8 w-45 block bg-amber-200 text-sm 
+             font-semibold border-2  border-amber-600   rounded-md p-2  flex-wrap
+           justify-center items-center   hover:scale-105"  
+           onClick={()=>{localStorage.setItem("scat","rakhis");handleC()} }>{brands[2]}</div>
        
        </>
 

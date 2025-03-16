@@ -1,10 +1,11 @@
 
 import { useSelector } from "react-redux"
 import Citem from "./Citem"
+
+import {addNotification} from 'react-push-notification'
 import { FaRupeeSign } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import axios from "axios"
-import { useState } from "react"
 
 
 function Total(){
@@ -12,12 +13,6 @@ function Total(){
 const citems=useSelector(store=>store.cart.items)
 const tamt=useSelector(store=>store.cart.totamt)
 const dets=useSelector(store=>store.users.user)
-const aitems=useSelector(store=>store.cart.items)
-
-//Initialize Razorpay client
-//const client = razorpay.Client(auth=("YOUR_API_KEY", "YOUR_API_SECRET"))
-//const Client=pkg.Client(auth='')
-// Create a payment order
 
 const pdata = {
 
@@ -28,23 +23,22 @@ const pdata = {
 
 }
 
-//const payment = client.order.create(data=payment_data)
-// Access payment details
-
-//payment['id']  # Payment ID
-//payment['amount'] # Amount in paise
-//payment['currency']  # Currency code
-
 const handleC=async()=>{
   try{
-   await axios.post('http://localhost:4001/orders',{email:dets.email,aitems:aitems,tamt:tamt}).then(
+   await axios.post('https://newjvite1.onrender.com/orders',{email:dets.email,items:citems,tamt:tamt}).then(
     res=>res.data
-   )}catch(err){
+   )
+
+}catch(err){
   console.log(err)
-}}
+}
+
+}
 
     return (
-<div><div className=" bg-white">
+<div>
+
+<div className=" bg-white">
   <span id='p1' className="text-amber-800  text-sm font-semibold bg-white rounded-l" >
    Additional 5% less on prepaid orders  </span>
   </div><br></br>  
@@ -98,9 +92,7 @@ const handleC=async()=>{
        <div  className="block  p-2 items-center ">
                {citems.map((item,ind)=>(
                           <div className="w-80 h-15 bg-white">
-                            
-                           < Citem data={item} 
-                           className='bg-white  text-green-600'/> </div>
+                           < Citem data={item} className='bg-white  text-green-600'/> </div>
                      ))}
                  <label className="font-semibold text-slate-900 text-md ml-20">TOTAL AMOUNT </label>
                       <h3 className="font-bold  text-xl inline-flex"><FaRupeeSign/> {tamt}</h3>

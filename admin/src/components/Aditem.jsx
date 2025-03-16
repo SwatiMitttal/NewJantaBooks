@@ -1,17 +1,15 @@
-import {  useEffect, useState } from "react"
+import {  useState } from "react"
 
-import { prods1 } from "../assets/prods1"
 import { FaRupeeSign } from "react-icons/fa"
 import Sidebar from "./Sidebar"
 import Navbar from "./Navbar"
 import axios from 'axios'
 import {toast} from 'react-toastify'
 function Aditem({url}){
-    
+   
     const ff=['note','name','price','rating']
     const [img,setImg]=useState()
-   const cats=['toys','stationary','books','bags','bottles']
-     const aitems=prods1
+   const cats=['toys','stationary','books','bags','bottles','rakhis']
     const [data,setData]=useState({
       slug:'',
       price:'',
@@ -21,33 +19,33 @@ function Aditem({url}){
       price1:'',})
 
      
-   async function handleS(e){
+ async function handleS(e){
+ e.preventDefault()
+ const res=await axios.post(`${url}/aitem`,data) 
+  if(res.status===200){
+      toast('item added')
+      simg()
+    } }
+   async function simg(){
   
-  e.preventDefault()
   const fdata=new FormData()
   fdata.append('img',img)
+  fdata.append('slug',data.name)
+  fdata.append('price',data.price)
+  fdata.append('rating',data.rating)
   fdata.append('note',data.note)
-  fdata.append('price',Number(data.price))
-  fdata.append('rating',Number(data.rating))
   fdata.append('cat',data.cat)
-  fdata.append('name',data.name)
+    const res1=await axios.post(`${url}/aitems`,fdata)
+    if(res1.status===200){
+      toast('Img uploaded')
+        }
+   }
 
-const res=await axios.post(`${url}/aitem`,fdata,{
-    headers:{
-        "Content-Type":'multipart/form-data'
-    }
-})
-
-  if(res.status===200){
-   setData('','','','')
-   toast('Item added')
-  }else{ }}
-   const handleC=(e)=>{
+  const handleC=(e)=>{
+    
      const name=e.target.name
      const val=e.target.value
-     setData(data=>({...data,[name]:val}))
-
-   }
+    setData(data=>({...data,[name]:val}))}
   return(
   <>
   <Navbar/>
@@ -76,11 +74,10 @@ const res=await axios.post(`${url}/aitem`,fdata,{
          <div className="inline-flex">
          <input name='img' type='file'  className=" w-full border-1
               border-amber-950 rounded-sm hover:bg-red-100 text-sm font-semibold"
-               onChange={(e)=>{setImg(e.target.files[0])}}
+               onChange={(e)=>{setImg(e.target.files[0]);handleC(e)}}
           ></input>  
            <img className="h-20 w-20 border-2" alt='upload..' src={img? URL.createObjectURL(img):'../../up.png'}></img>
            </div>
-         
          <button  type='submit' className="bg-black text-white text-md w-14
          hover:scale-105 p-2 ml-60 rounded-md"
           onClick={(e)=>handleS(e)} > ADD </button>

@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import Order from './components/Order'
 import List from './components/List'
 function App() {
-  const url= "http://localhost:4001"
+  const url= "http://localhost:4005"
   return (
    <>
    <ToastContainer />
@@ -22,7 +22,7 @@ function App() {
    
    </>
   
-  );
+  )
 }
 
-export default App;
+export default App
