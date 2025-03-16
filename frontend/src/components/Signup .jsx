@@ -1,13 +1,13 @@
-import { useState,useRef, useEffect } from "react"
+import { useState } from "react"
 import {Link} from 'react-router-dom'
 
 import { useDispatch,useSelector } from "react-redux"
 import { setU } from "../store/Users"
-import { users } from "../assets/users"
+
 import axios from 'axios'
 import { FaEye } from "react-icons/fa"
 
-function Signup(){
+function Signup({url}){
    
   const [isSignup,SetisSignup]=useState(false)
   const [email,setEmail]=useState('')
@@ -25,14 +25,9 @@ function Signup(){
   const ffields=['name','email','password','mobile','address1','address2','city','state','country','pincode'];
   
   const dispatch=useDispatch()
-
   const emaill=useSelector(state=>state.users.cuser)
-
-
- async function handleSubmit(){
-  
-   
- try{
+  async function handleSubmit(){
+  try{
       await axios.post(`${url}/signup`,{
       name,email,passw,mobile,add1,add2,city,stat,country,pin
       }).then(res=>{
@@ -55,7 +50,7 @@ function Signup(){
           console.log(err.message)
         }
 
-        users.append({name:name,
+      /*  users.append({name:name,
           email,email,
           passw:passw,
           mobile:mobile,
@@ -64,7 +59,7 @@ function Signup(){
           city:city,
           stat:stat,
           country:country,
-          pin:pin})
+          pin:pin})*/
  }
 
  const handleC=()=>{
@@ -72,9 +67,7 @@ function Signup(){
  }
 return (
     <>
-
-   
-<Link  to='/' > <h2 className="font-semibold text-md text-amber-800 ml-20 hover:font-bold">HOME</h2></Link>
+    <Link  to='/' > <h2 className="font-semibold text-md text-amber-800 ml-20 hover:font-bold">HOME</h2></Link>
    <div className="bg-white">
        <div  className="w-[300px]">    
     <h2 className="font-semibold text-md text-amber-800">SIGNUP</h2>

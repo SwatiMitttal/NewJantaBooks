@@ -1,8 +1,7 @@
 import {  useState } from "react"
 import { FaSearch } from "react-icons/fa"
 import { Link } from "react-router-dom"
-import {prods1} from '../assets/prods1'
-
+import axios from "axios"
 
 function Mdrop(props){
   
@@ -10,9 +9,8 @@ function Mdrop(props){
   const brands=['tommyH','probot','rakhis']
   const  [citems,setCitems]=useState([])
   async function handleC(){
-  
-      setCitems(prods1.filter(item=>item.cat===cat))
-      localStorage.setItem('sitems',citems)}
+       const res= await axios.post(`http://localhost:5173/items`,{cat})
+  }
  return(
      <>
   <div id="dropdown" className="">

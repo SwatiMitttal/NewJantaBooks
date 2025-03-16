@@ -7,31 +7,30 @@ import Spanel from "./Spanel";
 import axios from "axios"
 import { setU } from "../store/Users";
 import { useNavigate } from "react-router-dom"
-import { users } from "../assets/users";
+
 function Login(props){
     
     const nav=useNavigate()
     const [email,setEmail]=useState('');
-    
+    const [users,setUsers]=useState([])
      const dispatch=useDispatch()
-     const cuser=useSelector(store=>store.users.cuser)
-     const users1=users
+     
+  
     async function handleS(e){
     try{
-        await axios.post(`${url}/login`,{email:email}).then(res=>{
+       const res= await axios.post('http://newjvite1/login',{email:email}).then(res=>{
        if(res.status===200) { 
         dispatch(setU({email:res.data.email,
           name:res.data.name,
           passw:res.data.passw,
-          mobile:res.data.passw,
+          mobile:res.data.mobile,
           add1:res.data.add1,
           add2:res.data.add2,
           city:res.data.city,
           stat:res.data.stat,
           country:res.data.country,
           pin:res.data.pin}))
-     const user1=users1.find(user=>users.email===email)[0]
-      alert(users1[0])
+   
       nav('/totamt')
       }else{
         const user1=users.find(user=>users.email===email)

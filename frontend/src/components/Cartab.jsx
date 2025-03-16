@@ -1,9 +1,7 @@
 
 
 import {  useSelector } from "react-redux"
-
 import Citem from "./Citem"
-
 import { Link } from "react-router-dom"
 
 function Cartab(){

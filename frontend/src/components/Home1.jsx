@@ -1,26 +1,23 @@
      import Layout1 from "./Layout1"
      import Pcart from "./Pcart"
-     import { useEffect,useState } from "react"
+     import { useState } from "react"
      import axios from "axios"
      
     
-function Home1(){
+function Home1({url}){
     const  [citems,setCitems]=useState([])
         const [cat,setCat]=useState(localStorage.getItem('scat'))
        const [aitems,setAitems]=useState([])
  
- useEffect(()=>{
-  setAitems(citems.filter(item=>item.cat===cat))
-},[citems,cat])
-     useEffect(()=>{
+   async function fitems(){
       try{
-        axios.get(`${url}/items`).then(
-          res=>{if(res.status===200){
-            setCitems(res.data)
-                    }})
+       const res=await  axios.get(`${url}/items`)
+          if(res.status===200){
+            setAitems(res.data.data)
+          }
       }catch(err){
         console.log(err.message)
-      }},[])
+      }}
      return(
      <div>
      <br></br>

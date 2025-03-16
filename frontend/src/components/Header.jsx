@@ -2,18 +2,12 @@
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { FaUser,FaShoppingCart } from "react-icons/fa"
-
-import 'reactjs-popup/dist/index'
 import Mdrop from "./Mdrop"
-
-
 function Header(props){
   
-    const cart=useSelector(store=>store.cart.items)
+   const cart=useSelector(store=>store.cart.items)
     const cuser=useSelector(store=>store.users.user.email)
-    
-  
-   const handleCart=()=>{}
+  const handleCart=()=>{}
 return (
         <>
      <div className=" bg-white">
@@ -21,14 +15,12 @@ return (
     </span>  <span className="text-yellow-700">   stationary exclusive   </span></span>
   </div><br></br>  
            
-    <div className='container bg-white w-800 px-2 py-2 mr-10'>
+  <div className='container bg-white w-800 px-2 py-2 mr-10'>
   <div className='flex justify-between items-center '>
         <img   src='../../NewJanta.jpeg' alt='logo' className="h-25 w-20 hover:bg-slate-200 rounded-2xl border-red-500 border-2"></img>
    
     <Link  to='/'>  <h4 className='font-semibold text-amber-800 text-ml hover:scale-105'>HOME</h4></Link>
-   
-  
-  <Mdrop   icon ='FaBars'  cat=''/>  
+   <Mdrop   icon ='FaBars'  cat=''/>  
       <Mdrop   icon ='FaSearch'  cat=''/>      
      
 

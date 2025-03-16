@@ -1,7 +1,6 @@
 
 import { Link } from 'react-router-dom'
 import {useDispatch}  from 'react-redux'
-
 import { FaRupeeSign,FaCartPlus } from 'react-icons/fa'
 import Rating from './Rating'
 import { addItem } from '../store/Cart'
@@ -17,7 +16,7 @@ function Pcart(props){
     const cc=Array.from({length:count}, (_, index) => index + 1);
     const dark='w-5 h text-red-700 text-center align-center text-bold bg-green-300  hover:bg-green-200  rounded-md border-2 hover:bg-green-200 border-red-700'
   
-      async function handleAdd(){
+    async function handleAdd(){
        dispatch(addItem({
             id:_id,
             quantity:1,

@@ -16,7 +16,6 @@ export const cslice=createSlice(
       addItem(state,action){
         const {id,quantity,price,cbot,imgurl,img,slug,rating}=action.payload
          const item=state.items.find(item=>item.id===id)
-         
          const item1={id:id,quantity:quantity,price:price,imgurl:imgurl,img:img,rating:rating,slug:slug,cbot:cbot}
         !item  ?  state.items.push({id:id,quantity:quantity,price:price,imgurl:imgurl,cbot:cbot,rating:rating,slug:slug,img:img})  :item.cbot>0?item=item1:item.quantity++
         state.tamt[id]=price*quantity
