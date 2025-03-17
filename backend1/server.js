@@ -41,7 +41,6 @@ app.get('/login',async (req,res)=>{
     }})
 
 app.get('/gimg',async(req,res)=>{
-    
     try{
     //const img1= await Image.find()
         res.status(200).json(img1)
