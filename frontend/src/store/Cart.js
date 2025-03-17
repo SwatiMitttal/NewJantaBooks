@@ -32,27 +32,18 @@ export const cslice=createSlice(
       },
 
       changeQ(state,action){
-        const{id,quantity}=action.payload
+        const{id,quantity,price}=action.payload
         const ind=state.items.findIndex(item=>item.id===id)
-        const aitems=localStorage.getItem('aitems')
+       
         if (quantity>0){
-          state.items[ind].quantity=quantity
+          state.items[ind+1].quantity=quantity
         }else{
-            state.items=state.items.filter(item=>item.id!==id)
+            state.items=state.items.find(item=>item.id!==id)
         }
-        
-        const item1=aitems.filter(item=>item.id===id)[0]
         state.temp=state.tamt[id]
-        state.tamt[id]=item1.price*quantity
+        state.tamt[id]=price*quantity
         state.totamt+=(state.tamt[id]-state.temp)
-        
-      },
-
-      
-    
-     
-        }
-    })
+      },}})
 
 
 export const {addItem,remItem,changeQ}=cslice.actions

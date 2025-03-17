@@ -19,23 +19,14 @@ const pdata = {
     "amount": tamt*100,
     "currency": "INR",
      "receipt": "order123", 
-     "description": "Product purchase"
-
-}
-
+     "description": "Product purchase"}
 const handleC=async()=>{
   try{
    await axios.post('https://newjvite1.onrender.com/orders',{email:dets.email,items:citems,tamt:tamt}).then(
-    res=>res.data
-   )
+    res=>res.data)}catch(err){
+  console.log(err)}}
 
-}catch(err){
-  console.log(err)
-}
-
-}
-
-    return (
+return (
 <div>
 
 <div className=" bg-white">
@@ -75,7 +66,7 @@ const handleC=async()=>{
 
         <tr >
         <td className="border-2 border-amber-800 p-2">State</td>
-        <td className="border-2 border-amber-800 p-2">{dets.state}</td>
+        <td className="border-2 border-amber-800 p-2">{dets.stat}</td>
         </tr>
 
         <tr >
@@ -104,10 +95,6 @@ const handleC=async()=>{
   font-semibold text-md   p-3 ml-8 w-40'
   onClick={handleC}
       >PAY NOW  </button></Link></div>
-    </div> 
-
- </div>
-    )
-}
-
-export default Total
+    </div> </div>
+    )}
+  export default Total

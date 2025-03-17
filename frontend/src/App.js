@@ -1,19 +1,16 @@
 import {Route,Routes,BrowserRouter}  from 'react-router-dom'
 import Home from './components/Home'
 import Detail from './components/Detail'
-
 import Login from './components/Login'
 import Signup from './components/Signup '
-
 import Home1 from './components/Home1'
 import Total from './components/Total'
-import Orders  from './components/Orders'
 import { useState,useEffect } from 'react'
 import axios from 'axios'
-import {ToastContainer} from 'react-toastify'
+import {ToastContainer,toast} from 'react-toastify'
 function App() {
 
-const url='https://newjvite1.onrender.com'
+const url='https://newjvite2.onrender.com'
 
 const [aitems,setAitems]=useState([])
 
@@ -22,7 +19,9 @@ const [aitems,setAitems]=useState([])
          const res=  axios.get(`${url}/items`)
             if(res.status===200)
               { setAitems(res.data.data)
-               alert(res.data)
+                localStorage.setItem('aitems',res.data.data)
+               toast(res.data)
+
              }
             }catch(err){
         console.log(err.message)
@@ -45,7 +44,7 @@ const [aitems,setAitems]=useState([])
     
       <Route   path='/signup'  element={<Signup url={url}/>} ></Route>
       <Route   path='/totamt'  element={<Total/>}  ></Route>
-      <Route path='/orders'  element= {<Orders/>}></Route>
+      
      
       </Routes>
       

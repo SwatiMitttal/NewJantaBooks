@@ -43,8 +43,7 @@ app.get('/login',async (req,res)=>{
 app.get('/gimg',async(req,res)=>{
     
     try{
-    //const img1= await Image.find()
-        res.status(200).json(img1)
+  res.status(200).json(img1)
     }catch(e){
         console.log(e.message)
     }})
@@ -66,9 +65,7 @@ app.post('/aitems',upload.single('img'),async(req,res)=>{
         }
      catch(e){
         console.log(e.message)
-     }   
-
-})
+     }   })
 
 app.post('/login',cors(), async (req,res)=>{
    const {email}=req.body
@@ -140,8 +137,7 @@ app.post('/orders',cors(),async(req,res)=>{
 })
 app.post('/items',cors(), async (req,res)=>{
     const {cat}=req.body
-    
-     try{
+    try{
     const check=await Item.find({cat:cat})
     if (check.length>0){
         res.status(200).json(check)}

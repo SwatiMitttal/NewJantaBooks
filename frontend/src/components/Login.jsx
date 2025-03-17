@@ -18,7 +18,7 @@ function Login(props){
   
     async function handleS(e){
     try{
-       const res= await axios.post('http://newjvite1/login',{email:email}).then(res=>{
+       const res= await axios.post('https://newjvite2.onrender.com/login',{email:email}).then(res=>{
        if(res.status===200) { 
         dispatch(setU({email:res.data.email,
           name:res.data.name,
@@ -30,19 +30,15 @@ function Login(props){
           stat:res.data.stat,
           country:res.data.country,
           pin:res.data.pin}))
-   
+      setUsers(res.data)
       nav('/totamt')
       }else{
         const user1=users.find(user=>users.email===email)
-          nav('/signup') }}).then(data=>{})}
-        
+          nav('/signup') }})}
         catch(err){
             console.log(err.message)
-          }
-      
-        }
-       
-return(
+          }}
+  return(
         <>
          <Link  to='/' > <h2 className="font-semibold text-md text-amber-800 ml-20 hover:font-bold">HOME</h2></Link>  <br></br> 
     <div className="inline-flex">
@@ -58,9 +54,8 @@ return(
         placeholder='email'
         className=' p-4 border-slate-500 border-2 rounded-md bg-slate-200 text-slate-900 w-60 font-semibold
          hover:bg-slate-300 overflow-auto'
-        onChange={(e)=>{setEmail(e.target.value);}}
-        
-         required='true'
+        onChange={(e)=>{setEmail(e.target.value)}}
+        required='true'
         ></input> </div> 
     </fieldset></form>
  <button className="bg-amber-600 text-white font-semibold  p-3 ml-10

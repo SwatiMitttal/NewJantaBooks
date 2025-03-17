@@ -17,7 +17,7 @@ function Cartab(){
             <div>
             {cart.map((item,i)=>(
                 <>
-               <Citem    data={item}  />
+               <Citem data={item}  />
                </> 
             ))}
 

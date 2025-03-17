@@ -26,8 +26,6 @@ return (
 
 <div  className="flex justify-center items-center mr-20"  >
   <div  className='flex justify-center relative' onClick={handleCart} >
-  
-  
    <Link to ={cuser?'/totamt':'/login' }>
    <FaShoppingCart  className="h-9 w-9 fill-amber-700 hover:scale-110" /></Link>
     <span   className='flex h-6 w-6 rounded-full absolute top-2/3 right-1/2 bg-red-500 justify-center 
@@ -35,7 +33,7 @@ return (
     </div>
     <div  className='flex justify-center relative  gap-1' onClick={cuser?<></> :<Link to='/login'></Link>} >
      <Link  to={!cuser?'/login':''} >    <FaUser  className="h-10 w-10 bg-white rounded-full p-2 hover:scale-125" /></Link>   </div>
-    <a href=''><button className="text-sm bg-black hover:scale-105 text-white rounded-md p-2">Admin</button></a>
+  
   </div>    
   </div>
   </div>
