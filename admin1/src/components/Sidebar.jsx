@@ -2,7 +2,7 @@ import axios from "axios"
 import { FaGifts,FaList } from "react-icons/fa"
 import { useState } from "react"
 import List from "./List"
-import { FaRupeeSign ,FaCaretDown} from "react-icons/fa"
+import { FaRupeeSign } from "react-icons/fa"
 import { toast } from "react-toastify"
 function Sidebar(){
     const [sorder,setSorder]=useState(false)
@@ -36,10 +36,10 @@ function Sidebar(){
         fdata.append('price',data.price)
         fdata.append('rating',data.rating)
         fdata.append('cat',cat)
-        alert(fdata.get())
-          const res=await axios.post('https://newjvite2.onrender.com/aitems',fdata)
+        toast(data.price)
+          const res=await axios.post('http://localhost:4001/aitems',fdata)
             if(res.status===200){
-                alert('item added')}
+                toast('item added')}
     }
     return(
  <>
