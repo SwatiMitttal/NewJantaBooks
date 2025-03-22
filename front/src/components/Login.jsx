@@ -12,14 +12,16 @@ function Login(props){
     
     const nav=useNavigate()
     const [email,setEmail]=useState('');
-    const [user,setUser]=useState([])
+    const [user,setUser]=useState()
      const dispatch=useDispatch()
-    async function handleS(e){
-      e.preventDefault()
+     
+  
+    async function handleS(){
       alert(email)
-    try{
+      
+try{
        const res= await axios.post('https://newjvite2.onrender.com/login',{email:email})
-       if(res.status===200) { 
+      if( res.status===200){ 
         dispatch(setU({email:res.data.email,
           name:res.data.name,
           passw:res.data.passw,
@@ -31,11 +33,10 @@ function Login(props){
           country:res.data.country,
           pin:res.data.pin}))
       setUser(res.data)
+      alert(user)
       nav('/totamt')
-      }else{
-        alert('hello')
-        nav('/signup') }}
-        catch(err){
+    } else {nav('/signup')}}
+      catch(err){
             console.log(err.message)
           }}
   return(
@@ -44,13 +45,12 @@ function Login(props){
     <div className="inline-flex">
          <div  className="w-[400px]">
      <br></br>  
-<h2 className="font-bold text-ml mt-8 ml-10 text-amber-600 hover:scale:110">LOGIN</h2>
-        <form  className='outline-4 mt-10 grid  w-50 ml-12 '>
+<h2 className="font-bold text-ml mt-8 ml-10 text-amber-600 hover:scale:105">LOGIN</h2>
+        <form  onSubmit={handleS} className=' mt-10 grid  w-50 ml-12 '>
         <fieldset>
-          <legend className="text-md font-semibold"> Enter email  </legend>
+          <legend className="text-sm font-semibold"> Enter email  </legend>
       <div className="inline-flex" >
-      
-   <input  type='text' id='email'
+      <input  type='text' id='email'
         placeholder='email'
         className=' p-4 border-slate-500 border-2 rounded-md bg-slate-200 text-slate-900 w-60 font-semibold
          hover:bg-slate-300 overflow-auto'
@@ -59,7 +59,7 @@ function Login(props){
         ></input> </div> 
     </fieldset></form>
  <button className="bg-amber-600 text-white font-semibold  p-3 ml-10
-    rounded-md hover:bg-amber-900"  onClick={handleS}
+    rounded-md hover:bg-amber-900 hover:scale-105" type="submit"
      >Submit</button>
   </div>
         <Spanel  />

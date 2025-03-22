@@ -3,8 +3,9 @@ import mongoose, { connect,Schema } from 'mongoose'
 const dbcon= async ()=> {
 
 try{
-     await  connect('mongodb+srv://swatimittal1981:u0j8DJC9TotKizIq@cluster0.120fk.mongodb.net/',{
-        dbName:'Nstore',})
+    await connect('mongodb+srv://swatinewjvite2:<swatinewjvite2>@cluster0.3rvfi.mongodb.net/',{
+    // await  connect('mongodb+srv://swatimittal1981:u0j8DJC9TotKizIq@cluster0.120fk.mongodb.net/',{
+        dbName:'Nstore1',})
      console.log('Database connected')
 }catch(error){
     console.log(error.message)
@@ -22,8 +23,7 @@ const uSchema=mongoose.Schema({
     pin:String})
 
 const iSchema=mongoose.Schema({
-     
-    cat:String,
+     cat:String,
       slug:String,
      price:String,
      imgurl:String,

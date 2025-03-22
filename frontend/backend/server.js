@@ -7,7 +7,7 @@ import multer from 'multer'
 
 const app=express()
 
-const port=process.env.PORT || 4005
+const port=process.env.PORT|| 4004
 app.use(cors())
 
 dbcon()

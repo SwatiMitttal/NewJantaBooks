@@ -37,10 +37,10 @@ function Sidebar(){
         fdata.append('rating',data.rating)
         fdata.append('cat',cat)
         toast(data.price)
-          const res=await axios.post('http://localhost:4001/aitems',fdata)
+          const res=await axios.post('http://localhost:4005/aitems',fdata)
             if(res.status===200){
                 toast('item added')}
-    }
+    
     return(
  <>
 <div className="inline-flex">
@@ -92,6 +92,6 @@ function Sidebar(){
   {sorder?<div> <List email={email}/> </div>:<></>}
 </>
     )
-}
+}}
 
 export default Sidebar
