@@ -30,7 +30,8 @@ function Login(props){
           city:res.data.city,
           stat:res.data.stat,
           country:res.data.country,
-          pin:res.data.pin}))
+          pin:res.data.pin,
+        newu:false}))
       setUser(true)
        nav('/totamt')
       }else{
@@ -41,6 +42,7 @@ function Login(props){
 
     useEffect(()=>{
       setUser(false)
+
     },[])
   return(
         <>

@@ -33,18 +33,10 @@ function Signup({url}){
       passw:passw,mobile:mobile,
       add1:add1,add2:add2,
       city:city,stat:stat,
-      country:country, pin:pin}
+      country:country, pin:pin,newu:true}
       dispatch(setU(user1))
-      
-  try{
-      const res=await axios.post(`${url}/signup`,{name,email,passw,mobile,add1,add2,city,stat,country,pin})
-          if (res.status==200){
-             toast('user added')
-             nav('/totamt')
-             
-          }}catch(err){
-          console.log(err.message)
-        }}
+        nav('/totamt')}
+          
     const handleC=()=>{
    tt==='text'?setTt('password'):setTt('text')
  }

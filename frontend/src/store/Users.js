@@ -9,8 +9,9 @@ export const uslice=createSlice(
       },
       reducers: {
       setU(state,action){
-        const { name,passw,mobile,email, add1,add2,city,stat,country,pin}=action.payload
-        const user1={name:name,passw:passw,mobile:mobile,email:email, add1:add1,add2:add2,city:city,stat:stat,country:country,pin:pin}
+        
+        const { name,passw,mobile,email, add1,add2,city,stat,country,pin,newu}=action.payload
+        const user1={name:name,passw:passw,mobile:mobile,email:email, add1:add1,add2:add2,city:city,stat:stat,country:country,pin:pin,newu:newu}
         state.user=user1
       },}
     })

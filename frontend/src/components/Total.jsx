@@ -6,8 +6,9 @@ import {addNotification} from 'react-push-notification'
 import { FaRupeeSign } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import axios from "axios"
-import { useEffect } from "react"
 
+import { toast } from "react-toastify"
+import { useEffect } from "react"
 
 function Total({props}){
 
@@ -23,9 +24,23 @@ const pdata = {
      "description": "Product purchase"}
 const handleC=async()=>{
   try{
-   const res=await axios.post('https://newjvite2.onrender.com/orders',{email:dets.email,items:citems,tamt:tamt})}
+   const res=await axios.post('https://newjvite2.onrender.com/orders',{email:dets.email,items:citems,tamt:tamt})
+     if(res.status===200){
+      toast('order confirmed')
+     }
+  }
    catch(err){
   console.log(err)}}
+
+  const addu=async()=>{
+    const res=await axios.post('https://newjvite2.onrender.com/signup',dets)
+     if (res.status===200){
+      toast('email added')
+     }}
+useEffect(()=>{
+    if(dets.newu===true){
+    addu()}
+  },[])
 
 return (
 <div>

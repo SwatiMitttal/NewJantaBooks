@@ -7,10 +7,7 @@ import { Link } from "react-router-dom"
 function Cartab(){
   const cart=useSelector(store=>store.cart.items)
   const cuser=useSelector(store=>store.users.user.email)
-  
-  
- 
-    return (
+return (
         <>
         <div  className= 'fixed right-0 top-0 bg-slate-900 text-white pt-6 font-semibold grid grid-rows-[60px_1fr_60px]  w-80 h-full gap-3 tranform  translate-x-0 transition-transform duration-300 '>
             <h2   className="text-white  font-semibold p-4 text-2xl">SHOPPING CART</h2>
