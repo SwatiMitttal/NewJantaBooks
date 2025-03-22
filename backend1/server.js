@@ -40,13 +40,7 @@ app.get('/login',async (req,res)=>{
         console.log(e)
     }})
 
-app.get('/gimg',async(req,res)=>{
-    try{
-    //const img1= await Image.find()
-        res.status(200).json(img1)
-    }catch(e){
-        console.log(e.message)
-    }})
+
 app.post('/aitems',upload.single('img'),async(req,res)=>{
     const {slug,price,note,rating,cat}=req.body
     const img1=req.file.filename
@@ -104,6 +98,7 @@ console.log('CART MAIL IS: ',email)
     }
  try{
     await User.insertMany([user1])
+    res.status(200).json('item added')
     }
  catch(e){
     console.log(e.message)
