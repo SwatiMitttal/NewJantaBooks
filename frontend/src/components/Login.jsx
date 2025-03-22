@@ -32,8 +32,7 @@ function Login(props){
           country:res.data.country,
           pin:res.data.pin}))
       setUser(true)
-     
-      nav('/totamt')
+       nav('/totamt')
       }else{
         nav('/signup') }}
         catch(err){

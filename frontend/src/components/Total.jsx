@@ -14,9 +14,7 @@ function Total({props}){
 const citems=useSelector(store=>store.cart.items)
 const tamt=useSelector(store=>store.cart.totamt)
 const dets=useSelector(store=>store.users.user)
-useEffect(()=>{
-  alert(localStorage.getItem('cuser'))
-})
+
 const pdata = {
 
     "amount": tamt*100,
@@ -25,8 +23,8 @@ const pdata = {
      "description": "Product purchase"}
 const handleC=async()=>{
   try{
-   await axios.post('https://newjvite2.onrender.com/orders',{email:dets.email,items:citems,tamt:tamt}).then(
-    res=>res.data)}catch(err){
+   const res=await axios.post('https://newjvite2.onrender.com/orders',{email:dets.email,items:citems,tamt:tamt})}
+   catch(err){
   console.log(err)}}
 
 return (

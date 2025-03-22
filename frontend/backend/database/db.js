@@ -42,9 +42,7 @@ const oSchema=mongoose.Schema({
     email:String,
     citems:Array,
     tamt:String,
-    date:Date
-
-})
+    date:Date})
 
 
 

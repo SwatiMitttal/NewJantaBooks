@@ -72,7 +72,7 @@ app.post('/login',cors(), async (req,res)=>{
    try{
     const check=await User.findOne({email:email})
     if (check){
-        console.log('found',email)
+        console.log('foundbackendin',email)
         res.status(200).json(check) }
     else{
        res.status(404).json('notexist')
@@ -118,11 +118,11 @@ app.get('/items',async (req,res)=>{
     }
 })
 app.post('/orders',cors(),async(req,res)=>{
-    const{tamt,citems,email}=req.body
-    console.log(citems[0])
+    const{tamt,items,email}=req.body
+    console.log(items[0])
     const order1=new Order({
         tamt:tamt,
-        citems:citems,
+        citems:items,
         email:email,
         date:Date.now()
     })
