@@ -95,7 +95,8 @@ console.log('CART MAIL IS: ',email)
         pin:pin
     }
  try{
-    await User.insertMany([user1])
+    await User.insertMany(user1)
+    console.log(user1)
     res.status(200).json('item added')
     }
  catch(e){

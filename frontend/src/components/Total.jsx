@@ -25,7 +25,7 @@ const pdata = {
      "description": "Product purchase"}
 const handleC=async()=>{
   try{
-   await axios.post('https://newjvite1.onrender.com/orders',{email:dets.email,items:citems,tamt:tamt}).then(
+   await axios.post('https://newjvite2.onrender.com/orders',{email:dets.email,items:citems,tamt:tamt}).then(
     res=>res.data)}catch(err){
   console.log(err)}}
 
