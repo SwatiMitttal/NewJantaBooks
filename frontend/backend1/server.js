@@ -40,13 +40,7 @@ app.get('/login',async (req,res)=>{
         console.log(e)
     }})
 
-app.get('/gimg',async(req,res)=>{
-    
-    try{
-  res.status(200).json(img1)
-    }catch(e){
-        console.log(e.message)
-    }})
+
 app.post('/aitems',upload.single('img'),async(req,res)=>{
     const {slug,price,note,rating,cat}=req.body
     const img1=req.file.filename
@@ -102,19 +96,19 @@ console.log('CART MAIL IS: ',email)
     }
  try{
     await User.insertMany([user1])
+    res.status(200).json('item added')
     }
  catch(e){
     console.log(e.message)
  }   
 })
 app.get('/items',async (req,res)=>{
-   
-    try{
+   try{
     const item1= await Item.find()
     console.log(item1[3])
     res.status(200).json(item1)
 }
-    catch(e){
+catch(e){
         console.log(e)
     }
 })
@@ -128,8 +122,7 @@ app.post('/orders',cors(),async(req,res)=>{
         date:Date.now()
     })
     try{
-        await order1.save()
-        }
+        await order1.save()}
      catch(e){
         console.log(e.message)
      }   

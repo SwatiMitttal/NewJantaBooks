@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {Link} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import Cartab from "./Cartab";
@@ -7,16 +7,17 @@ import Spanel from "./Spanel";
 import axios from "axios"
 import { setU } from "../store/Users";
 import { useNavigate } from "react-router-dom"
-
+import Signup from './Signup '
 function Login(props){
     
     const nav=useNavigate()
     const [email,setEmail]=useState('');
-    const [user,setUser]=useState([])
+    const [user,setUser]=useState(false)
+    const [c,setC]=useState(false)
      const dispatch=useDispatch()
     async function handleS(e){
       e.preventDefault()
-      alert(email)
+      setC(true)
     try{
        const res= await axios.post('https://newjvite2.onrender.com/login',{email:email})
        if(res.status===200) { 
@@ -30,14 +31,18 @@ function Login(props){
           stat:res.data.stat,
           country:res.data.country,
           pin:res.data.pin}))
-      setUser(res.data)
+      setUser(true)
+     
       nav('/totamt')
       }else{
-        alert('hello')
         nav('/signup') }}
         catch(err){
             console.log(err.message)
           }}
+
+    useEffect(()=>{
+      setUser(false)
+    },[])
   return(
         <>
          <Link  to='/' > <h2 className="font-semibold text-md text-amber-800 ml-20 hover:font-bold">HOME</h2></Link>  <br></br> 
@@ -61,6 +66,8 @@ function Login(props){
  <button className="bg-amber-600 text-white font-semibold  p-3 ml-10
     rounded-md hover:bg-amber-900"  onClick={handleS}
      >Submit</button>
+   { user===false && c===true?<Signup />:<></>}
+    
   </div>
         <Spanel  />
         <Cartab/>

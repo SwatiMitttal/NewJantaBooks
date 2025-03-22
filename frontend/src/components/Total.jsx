@@ -6,14 +6,17 @@ import {addNotification} from 'react-push-notification'
 import { FaRupeeSign } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import axios from "axios"
+import { useEffect } from "react"
 
 
-function Total(){
+function Total({props}){
 
 const citems=useSelector(store=>store.cart.items)
 const tamt=useSelector(store=>store.cart.totamt)
 const dets=useSelector(store=>store.users.user)
-
+useEffect(()=>{
+  alert(localStorage.getItem('cuser'))
+})
 const pdata = {
 
     "amount": tamt*100,

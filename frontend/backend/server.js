@@ -63,10 +63,7 @@ app.post('/aitems',upload.single('img'),async(req,res)=>{
      }   
 
 })
-app.get('/aitems',async(req,res)=>{
-    const {img2}=req.file.filename
-    res.send('kkk')
-})
+
 app.post('/login',cors(), async (req,res)=>{
    const {email}=req.body
     if (!email ){
@@ -102,6 +99,7 @@ console.log('CART MAIL IS: ',email)
     }
  try{
     await User.insertMany([user1])
+    res.status(200).json('item added')
     }
  catch(e){
     console.log(e.message)

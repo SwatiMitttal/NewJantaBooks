@@ -25,20 +25,7 @@ export const cslice=createSlice(
         state.totamt+=tt
       },
 
-    /*  remItem(state,action){
-        const {id}=action.payload
-        const item=state.items.filter(item=>item.id===id)[0]
-        alert(id)
-        item.tamt=-item.price
-          item.quantity--;
-          alert(item.quantity)
-          if (item.quantity===0){
-            const arr=state.items.filter(item=>item.id!==action.payload.id)
-            state.items=arr
-          }
-      },*/
-
-      changeQ(state,action){
+    changeQ(state,action){
         const{id,quantity,price}=action.payload
         const ind=state.items.findIndex(item=>item.id===id)
       

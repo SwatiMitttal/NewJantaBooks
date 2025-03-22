@@ -34,7 +34,7 @@ function Home1(props){
      <h3  className='text-md text-green-950 justify-center text-2xl items-center font-weight-600'>ITEMS</h3>
            <div  className='flex justify-center items-center '  >
            <div  className='grid  lg:grid-cols-2  md:grid-cols-2  sm:grid-cols-1 gap-6'  >
-           {citems && citems.map((item,ind)=>(
+           {citems &&  citems.map((item,ind)=>(
               <div>
              <Pcart  data={item} key={ind}/>
                </div>
