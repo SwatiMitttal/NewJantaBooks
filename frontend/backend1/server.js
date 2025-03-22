@@ -92,14 +92,12 @@ console.log('CART MAIL IS: ',email)
         city:city,
         stat:stat,
         country:country,
-        pin:pin
-    }
+        pin:pin}
  try{
     await User.insertMany(user1)
     console.log(user1)
     res.status(200).json('item added')
-    }
- catch(e){
+    }catch(e){
     console.log(e.message)
  }   
 })
@@ -115,7 +113,7 @@ catch(e){
 })
 app.post('/orders',cors(),async(req,res)=>{
     const{tamt,citems,email}=req.body
-   
+    console.log(citems[0])
     const order1=new Order({
         tamt:tamt,
         citems:citems,

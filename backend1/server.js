@@ -118,7 +118,7 @@ app.get('/items',async (req,res)=>{
 })
 app.post('/orders',cors(),async(req,res)=>{
     const{tamt,citems,email}=req.body
-   
+    console.log(citems[0])
     const order1=new Order({
         tamt:tamt,
         citems:citems,
