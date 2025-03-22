@@ -2,11 +2,11 @@ import { useState } from "react"
 import {Link} from 'react-router-dom'
 
 import { useDispatch,useSelector } from "react-redux"
-import { setU } from "../store/Users"
-
+import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import axios from 'axios'
 import { FaEye } from "react-icons/fa"
-
+import { setU } from "../store/Users"
 function Signup({url}){
    
   const [isSignup,SetisSignup]=useState(false)
@@ -23,48 +23,35 @@ function Signup({url}){
   const  [pin,setPin]=useState("")
   const [ff,setFf]=useState('')
   const ffields=['name','email','password','mobile','address1','address2','city','state','country','pincode'];
-  
+  const nav=useNavigate()
   const dispatch=useDispatch()
-  const emaill=useSelector(state=>state.users.cuser)
-  async function handleSubmit(){
-  try{
-      await axios.post(`${url}/signup`,{
-      name,email,passw,mobile,add1,add2,city,stat,country,pin
-      }).then(res=>{
-          if (res.status==200){
-            dispatch(setU({
-              name:name,
-              email:email,
-              passw:passw,
-              mobile:mobile,
-              add1:add1,
-              add2:add2,
-              city:city,
-              stat:stat,
-              country:country,
-              pin:pin
-              }))
+  const emaill=useSelector(store=>store.users.user)
+  async function handleS(e){
+    e.preventDefault()
+    const user1= {
+      name:name,email:email,
+      passw:passw,mobile:mobile,
+      add1:add1,add2:add2,
+      city:city,stat:stat,
+      country:country, pin:pin,newu:true}
+      dispatch(setU(user1))
+        nav('/totamt')}
           
-     }})}catch(err){
-          console.log(err.message)
-     }}
-
- const handleC=()=>{
+    const handleC=()=>{
    tt==='text'?setTt('password'):setTt('text')
  }
 return (
     <>
-    <Link  to='/' > <h2 className="font-semibold text-md text-amber-800 ml-20 hover:font-bold">HOME</h2></Link>
    <div className="bg-white">
        <div  className="w-[300px]">    
     <h2 className="font-semibold text-md text-amber-800">SIGNUP</h2>
-    <br></br>
-    <form onSubmit={handleSubmit} >
+    
+    <form  >
     <div className=" inline-flex">
       
     <div className="inline-block">
    {ffields.map((item,ind)=>(<div>
-    <label className="  text-white ml-10 mt-2 p-1  rounded-lg bg-slate-800 text-sm ">{item}</label>
+    <label className="  text-white ml-10 mt-2 p-1 w-100 rounded-lg bg-slate-800 text-sm ">{item}</label>
     </div>))}
 
     </div>
@@ -133,10 +120,11 @@ return (
   <br></br><br></br>
   </div>
     </div>
-   <br></br>
-  <Link to ='/totamt' > <button  type='submit'
+ 
+  <button  type='submit'
  className="w-20 bg-amber-600 hover:bg-amber-700 focus:ring-4 text-white  focus:ring-amber-900 font-small rounded px-2 py-2 text-center  dark:bg-blue-600  dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
->  SUBMIT  </button>  </Link>
+ onClick={e=>handleS(e)}
+ >  SUBMIT  </button> 
    
   </form>
 <h3>Already have an account? <Link to='/login' className="hover:text-blue-900 font-semibold">{!isSignup ? 'Login' : 'Register'}  </Link>  </h3>
@@ -145,7 +133,4 @@ return (
     </>
 )
 }
-
-
-
 export default Signup

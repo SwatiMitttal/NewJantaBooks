@@ -21,7 +21,8 @@ const [aitems,setAitems]=useState([])
               { setAitems(res.data.data)
                 localStorage.setItem('aitems',res.data.data)
                toast(res.data)
-}
+
+             }
             }catch(err){
         console.log(err.message)
       }},[])
@@ -42,7 +43,7 @@ const [aitems,setAitems]=useState([])
       <Route path='/home1/login'  element={<Login url={url}/>}  ></Route>
     
       <Route   path='/signup'  element={<Signup url={url}/>} ></Route>
-      <Route   path='/totamt'  element={<Total url={url}/>}  ></Route>
+      <Route   path='/totamt'  element={<Total/>}  ></Route>
       
      
       </Routes>

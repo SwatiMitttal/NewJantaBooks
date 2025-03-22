@@ -1,7 +1,7 @@
 import {  useState } from "react"
 import { FaSearch } from "react-icons/fa"
 import { Link } from "react-router-dom"
-
+import axios from "axios"
 
 function Mdrop(props){
   
@@ -34,20 +34,21 @@ function Mdrop(props){
              <></> 
        :
        <>
-        <div className="h-8 w-20 block bg-amber-200 text-sm 
-             font-semibold border-2  border-amber-600   rounded-md p-1  flex-wrap
-           justify-center items-center hover:scale-105"  
+        <div className="h-8 w-14 block bg-amber-200 text-sm 
+             font-semibold border-2  border-amber-600   rounded-md p-2  flex-wrap
+           justify-center items-center   hover:scale-105"  
            onClick={()=>{localStorage.setItem("scat","tommy")}} >{brands[0]}</div>
 
-<div className="h-8 w-20 block bg-amber-200 text-sm 
+<div className="h-8 w-14 block bg-amber-200 text-sm 
              font-semibold border-2  border-amber-600   rounded-md p-2  flex-wrap
            justify-center items-center   hover:scale-105"  
            onClick={()=>{localStorage.setItem("scat","probot")} }>{brands[1]}</div>
-  <div className="h-8 w-20 block bg-amber-200 text-sm 
+  <div className="h-8 w-14 block bg-amber-200 text-sm 
              font-semibold border-2  border-amber-600   rounded-md p-2  flex-wrap
            justify-center items-center   hover:scale-105"  
            onClick={()=>{localStorage.setItem("scat","rakhis")} }>{brands[2]}</div>
-     </>
+       
+       </>
 
  }
   </div>
