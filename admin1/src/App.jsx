@@ -2,7 +2,7 @@ import { FaGifts,FaList ,FaRupeeSign} from 'react-icons/fa'
 import './App.css'
 import List from './components/List'
 import { useState } from 'react'
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer ,toast} from 'react-toastify'
 
 function App()  {
   const [sorder,setSorder]=useState(false)
@@ -66,8 +66,7 @@ async function handleS(e) {
            mt-3 hover:scale-105"  onClick={e=>setSorder(true)}>Get Orders</button>
     </div>
     </div>
-  
-    {nform? <form>
+  {nform? <form  onSubmit={e=>handleS(e)}>
      <h4 className="text-sm ml-10 font-semibold">Add new Item</h4>
         <div className="grid grid-cols-2 gap-2">
            {litems.map((item,i)=>(

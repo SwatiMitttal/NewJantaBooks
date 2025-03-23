@@ -17,9 +17,9 @@ export const cslice=createSlice(
         const {id,quantity,price,cbot,imgurl,img,slug,rating}=action.payload
          const item=state.items.find(item=>item.id===id)
          const ind=state.items.findIndex(item=>item.id===id)
-        // let item1={id:id,quantity:quantity,price:price,imgurl:imgurl,img:img,rating:rating,slug:slug,cbot:cbot}
+         let item1={id:id,quantity:quantity,price:price,imgurl:imgurl,img:img,rating:rating,slug:slug,cbot:cbot}
          let tt=price*quantity
-        !item  ?  state.items.push({id:id,quantity:quantity,price:price,imgurl:imgurl,cbot:cbot,rating:rating,slug:slug,img:img,tamt:tt})  :item.cbot>0?item=item1:item.quantity++
+        !item  ?  state.items.push({id:id,quantity:quantity,price:price,imgurl:imgurl,cbot:cbot,rating:rating,slug:slug,img:img,tamt:tt}) :item.cbot>0?console.log(''):item.quantity++
          state.totamt+=tt
       },
 
