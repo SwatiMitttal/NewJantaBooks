@@ -43,8 +43,6 @@ const [aitems,setAitems]=useState([])
     
       <Route   path='/signup'  element={<Signup url={url}/>} ></Route>
       <Route   path='/totamt'  element={<Total url={url}/>}  ></Route>
-      
-     
       </Routes>
       
       </BrowserRouter> 
