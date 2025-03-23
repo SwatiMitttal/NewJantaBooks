@@ -2,7 +2,7 @@
 import { useSelector } from "react-redux"
 import Citem from "./Citem"
 
-import {addNotification} from 'react-push-notification'
+
 import { FaRupeeSign } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import axios from "axios"

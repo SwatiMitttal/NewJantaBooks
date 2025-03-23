@@ -10,7 +10,6 @@ export const cslice=createSlice(
         statuss:false,
         totamt:0,
         temp:0,
-      
       },
       reducers: {
       addItem(state,action){
