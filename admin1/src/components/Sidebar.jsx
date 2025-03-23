@@ -28,7 +28,6 @@ function Sidebar(){
 
     async function handleS(e) {
         e.preventDefault()
-        
         const fdata=new FormData()
         fdata.append('img',img)
         fdata.append('slug',data.name)
@@ -37,7 +36,7 @@ function Sidebar(){
         fdata.append('rating',data.rating)
         fdata.append('cat',cat)
         toast(data.price)
-          const res=await axios.post('http://localhost:4005/aitems',fdata)
+          const res=await axios.post('https://newjvite2.onrender.com/aitems',fdata)
             if(res.status===200){
                 toast('item added')}
     
@@ -74,12 +73,13 @@ function Sidebar(){
                  className="border-2 border-gray-400 rounded-sm hover:bg-slate-100  text-sm"
                    onChange={e=>{i===5?setImg(e.target.files[0]):handleC(e)}}
                  ></input>:<></>  } 
-                {i===3? citems.map((i,n)=>(<span className={cat===i?dark:light} onClick={e=>setCat(i)}>{i}</span>))
+                {i===3? citems.map((i,n)=>(<span className={cat===i?dark:light} 
+                onClick={e=>setCat(i)}>{i}</span>))
                     :<></>}
                  </div>
                 </>
              ))}
-             <div className="inline-block">
+          <div className="inline-block">
            <img src={img?URL.createObjectURL(img):'../../up.png'}
                   className="h-20 w-20 rounded-sm ml-100">
             </img>
