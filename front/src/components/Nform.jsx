@@ -5,7 +5,7 @@ import { FaRupeeSign } from "react-icons/fa"
 function Nform(){
     const light="text-sm bg-amber-300 border-2 border-amber-600 p-1 font-medium hover:scale-105"
     const dark="text-sm bg-amber-500 border-2 border-amber-600 p-1 font-medium hover:scale-105"
-    const litems=['name','price','rating','category','note','image']
+    const litems=['name','price','rating','category','discount','note','image']
     const citems=['bags','toys','rakhis','stationary','bottles','brands','other']
 
      const [data,setData]=useState({
@@ -13,6 +13,7 @@ function Nform(){
              name:'',
              price:'',
              cat:'',
+             disc:'',
              rating:''})
      const [email,setEmail]=useState('')
      const [nform,setNform]=useState(false)

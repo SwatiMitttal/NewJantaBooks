@@ -17,7 +17,6 @@ function Aitem(){
     <img  src='../../newjanta.jpeg' className="h-20 w-20 rounded-md" ></img> 
        <h3 className="font-semibold text-amber-800 justify-center items-center">ADMIN PANEL</h3>
         <hr></hr>
-
      <div className="grid grid-cols-1 w-110 border-1 border-gray-300 ">
               <div  className="h-10 w-80 inline-flex justify-center items-center 
                        mt-5 font-semibold border-2 border-gray-200 hover:scale-105 hover:bg-slate-100 "  >

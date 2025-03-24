@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
 function Pcart(props){
-    const {_id,note,cat,count,imgurl,rating,price,slug}=props.data
+    const {_id,note,cat,count,imgurl,rating,price,slug,disc}=props.data
    
     const dispatch=useDispatch()
     const [cbot,setCbot]=useState(0)
@@ -25,7 +25,8 @@ function Pcart(props){
             note:note,
             cbot:cbot,
             rating:rating,
-            slug:slug
+            slug:slug,
+            disc:disc
         })) }
         
 return(
@@ -48,7 +49,10 @@ return(
          <h3 className='flex justify-center items-center'>
          <span className='inline-flex'>  <FaRupeeSign/> <s> {price} </s> <FaRupeeSign  /> {(price-(.2*price))}    </span>   
            </h3>
-            <span className='text-md font-bold text-amber-900'>20% Discount</span>
+           <h3 className='flex justify-center items-center'>
+         <span className='inline-flex'><s> {price} </s> <FaRupeeSign  /> {(price-((disc/100)*price))}    </span>   
+           </h3>
+            <span className='text-md font-bold text-amber-900'>{disc} % Discount</span>
             <Rating  rating={rating} />
          <h3 className='flex justify-center items-center text-md font-semibold text-amber-700 '> {note}
             </h3>

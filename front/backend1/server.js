@@ -42,7 +42,7 @@ app.get('/login',async (req,res)=>{
 
 
 app.post('/aitems',upload.single('img'),async(req,res)=>{
-    const {slug,price,note,rating,cat}=req.body
+    const {slug,price,note,rating,cat,disc}=req.body
     const img1=req.file.filename
      const nimg={ 
         slug:slug,
@@ -51,6 +51,7 @@ app.post('/aitems',upload.single('img'),async(req,res)=>{
         price:price,
         note:note,
         rating:rating,
+        disc:disc
     }
     console.log("Item added",nimg)
       try{
@@ -157,4 +158,12 @@ catch(e){
   })
 
 
-
+app.post('/ritems',cors(),async(req,res)=>{
+    const {ritems}=req.body
+    try{
+        const items1=Item.find(i=>i.id  in ritems)
+        console.log(items1)
+    }catch(e){
+        console.log(e.message)
+    }
+})

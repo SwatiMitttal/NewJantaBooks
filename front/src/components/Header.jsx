@@ -2,12 +2,15 @@
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { FaUser,FaShoppingCart } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
 
 import Mdrop from "./Mdrop"
+import { useState } from "react"
 function Header(props){
-  
+   const [pass,setPass]=useState(false)
    const cart=useSelector(store=>store.cart.items)
     const cuser=useSelector(store=>store.users.user.email)
+    const nav=useNavigate()
   const handleCart=()=>{}
 return (
         <>
@@ -25,7 +28,8 @@ return (
       <Mdrop   icon ='FaSearch'  cat=''/>      
      
   <Link to='/admin'> <button  className="p-1 bg-black rounded-md text-white hover:scale-105
-   text-sm justify-center" >Admin</button></Link>
+   text-sm justify-center" onClick={e=>setPass(true)} >Admin</button></Link>
+   {pass?<div><input type='text' onChange={e=>{e.target.value==='deepti123'?nav('/admin'):nav('')}}></input></div>:<></>}
 <div  className="flex justify-center items-center mr-5"  >
   <div  className='flex justify-center relative' onClick={handleCart} >
    <Link to ={cuser?'/totamt':'/login' }>

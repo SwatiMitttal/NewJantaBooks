@@ -50,9 +50,7 @@ async function handleS(e) {
      setRitem(true)
     // fitems()
     }
-
-  
- return (
+return (
     <>
     <div>
    <div className='inline-flex justify-items-start'>

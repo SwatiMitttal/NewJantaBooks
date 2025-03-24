@@ -34,7 +34,8 @@ const iSchema=mongoose.Schema({
      imgurl:String,
      note:String,
      rating:String,
-      img:String
+      img:String,
+      disc:String
      
      
 })
