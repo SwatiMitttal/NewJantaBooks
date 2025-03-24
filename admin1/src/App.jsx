@@ -37,7 +37,7 @@ async function handleS(e) {
   fdata.append('rating',data.rating)
   fdata.append('cat',cat)
   toast(data.price)
-    const res=await axios.post('https://newjvite2.onrender.com/aitems',fdata)
+    const res=await axios.post('https://newjvite3.onrender.com/aitems',fdata)
       if(res.status===200){
           toast('item added')}}
   return (
