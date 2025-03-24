@@ -1,16 +1,20 @@
 import { FaGifts,FaList ,FaRupeeSign ,FaEdit} from 'react-icons/fa'
 import './App.css'
 import List from './components/List'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { ToastContainer ,toast} from 'react-toastify'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
+import  {addNotification} from 'react-push-notification'
 import Ritem from './components/Ritem'
+import { GiDuration } from 'react-icons/gi'
+import { BiLogo500Px } from 'react-icons/bi'
 function App()  {
   const [sorder,setSorder]=useState(false)
   const [email,setEmail]=useState('')
   const [nform,setNform]=useState(false)
   const [cat,setCat]=useState('')
   const [ritem,setRitem]=useState(false)
+  const [aitems,setAitems]=useState([])
   const [data,setData]=useState({
     note:'',
     name:'',
@@ -29,6 +33,17 @@ function handleC(e){
    setData(data=>({...data,[name]:val}))
 }
 
+const handleN=()=>{
+  addNotification({
+      title:'New Product',
+      message:'flat discount 20%',
+      duration:4000,
+      logo:'../newjanta.png',
+      native:true,
+      onClick:()=>{console.log('push notification')}
+  })
+}
+
 async function handleS(e) {
   e.preventDefault()
   const fdata=new FormData()
@@ -39,18 +54,20 @@ async function handleS(e) {
   fdata.append('rating',data.rating)
   fdata.append('cat',cat)
   toast(data.price)
-    const res=await axios.post('https://newjvite3.onrender.com/aitems',fdata)
+    const res=await axios.post('https://newjvite2.onrender.com/aitems',fdata)
       if(res.status===200){
           toast('item added')}}
+    
 
   async function handleK(e){
      setNform(false)
      setSorder(false)
      setRitem(true)
-     
-  }
+    // fitems()
+    }
+
   
-  return (
+ return (
     <>
     <div>
    <div className='inline-flex justify-items-start'>
@@ -107,7 +124,7 @@ async function handleS(e) {
        </form>  :<></> }
      </div>
      {sorder?<div> <List email={email}/> </div>:<></>}
-     {ritem?<div> <Ritem /> </div>:<></>}
+     {ritem?<div><Ritem/></div>:<></>}
     <ToastContainer>
    </ToastContainer> 
    

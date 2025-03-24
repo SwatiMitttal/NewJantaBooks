@@ -1,8 +1,6 @@
 
 import { useSelector } from "react-redux"
 import Citem from "./Citem"
-
-
 import { FaRupeeSign } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import axios from "axios"

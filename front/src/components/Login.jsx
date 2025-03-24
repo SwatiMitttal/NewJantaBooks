@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import {Link} from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, } from "react-redux";
 import Cartab from "./Cartab";
 import Spanel from "./Spanel";
 import axios from "axios"

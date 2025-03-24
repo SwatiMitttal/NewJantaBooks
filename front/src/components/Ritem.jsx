@@ -1,16 +1,16 @@
 import { FaGifts,FaList ,FaRupeeSign ,FaEdit} from 'react-icons/fa'
-import './App.css'
-import List from './components/List'
-import { useState } from 'react'
-import { ToastContainer ,toast} from 'react-toastify'
-import { BrowserRouter,Route,Routes } from 'react-router-dom'
-import Ritem from './components/Ritem'
-function App()  {
+import List from './List'
+import { useState,useEffect } from 'react'
+import { toast} from 'react-toastify'
+//import  {addNotification} from 'react-push-notification'
+i
+function Ritem()  {
   const [sorder,setSorder]=useState(false)
   const [email,setEmail]=useState('')
   const [nform,setNform]=useState(false)
   const [cat,setCat]=useState('')
   const [ritem,setRitem]=useState(false)
+  const [aitems,setAitems]=useState([])
   const [data,setData]=useState({
     note:'',
     name:'',
@@ -39,18 +39,20 @@ async function handleS(e) {
   fdata.append('rating',data.rating)
   fdata.append('cat',cat)
   toast(data.price)
-    const res=await axios.post('https://newjvite3.onrender.com/aitems',fdata)
+    const res=await axios.post('https://newjvite2.onrender.com/aitems',fdata)
       if(res.status===200){
           toast('item added')}}
+    
 
   async function handleK(e){
      setNform(false)
      setSorder(false)
      setRitem(true)
-     
-  }
+    // fitems()
+    }
+
   
-  return (
+ return (
     <>
     <div>
    <div className='inline-flex justify-items-start'>
@@ -107,13 +109,11 @@ async function handleS(e) {
        </form>  :<></> }
      </div>
      {sorder?<div> <List email={email}/> </div>:<></>}
-     {ritem?<div> <Ritem /> </div>:<></>}
-    <ToastContainer>
-   </ToastContainer> 
+     {ritem?<div><Ritem/></div>:<></>}
    
    </div> 
     </>
   )
 }
 
-export default App
+export default Ritem

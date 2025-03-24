@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { FaUser,FaShoppingCart } from "react-icons/fa"
+
 import Mdrop from "./Mdrop"
 function Header(props){
   
@@ -23,7 +24,8 @@ return (
    <Mdrop   icon ='FaBars'  cat=''/>  
       <Mdrop   icon ='FaSearch'  cat=''/>      
      
-
+  <Link to='/admin'> <button  className="p-1 bg-black rounded-md text-white hover:scale-105
+   text-sm justify-center" >Admin</button></Link>
 <div  className="flex justify-center items-center mr-5"  >
   <div  className='flex justify-center relative' onClick={handleCart} >
    <Link to ={cuser?'/totamt':'/login' }>

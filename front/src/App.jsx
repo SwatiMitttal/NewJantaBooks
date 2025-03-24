@@ -8,9 +8,13 @@ import Total from './components/Total'
 import { useState,useEffect } from 'react'
 import axios from 'axios'
 import {ToastContainer,toast} from 'react-toastify'
+import List from './components/List'
+import Aitem from './components/Aitem'
+import Nform from './components/Nform'
+
 function App() {
 
-const url='https://newjvite2.onrender.com'
+const url='https://newjvite3.onrender.com'
 
 const [aitems,setAitems]=useState([])
 
@@ -40,7 +44,10 @@ const [aitems,setAitems]=useState([])
       <Route  path='/home1/:slug' element={<Detail/>}  ></Route>
       <Route path='/login'  element={<Login/>}  ></Route>
       <Route path='/home1/login'  element={<Login url={url}/>}  ></Route>
-    
+      <Route   path='/list'  element={<List />} ></Route>
+      <Route   path='/admin'  element={<Aitem url={url}/>} ></Route>
+      <Route   path='/nform'  element={<Nform url={url}/>} ></Route>
+      
       <Route   path='/signup'  element={<Signup url={url}/>} ></Route>
       <Route   path='/totamt'  element={<Total url={url}/>}  ></Route>
       </Routes>
