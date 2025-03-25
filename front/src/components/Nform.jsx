@@ -2,10 +2,11 @@ import { toast } from "react-toastify"
 import axios from "axios"
 import { useState } from "react"
 import { FaRupeeSign } from "react-icons/fa"
+import Pbar from "./Pbar"
 function Nform(){
     const light="text-sm bg-amber-300 border-2 border-amber-600 p-1 font-medium hover:scale-105"
     const dark="text-sm bg-amber-500 border-2 border-amber-600 p-1 font-medium hover:scale-105"
-    const litems=['name','price','rating','category','discount','note','image']
+    const litems=['name','price','rating','category','discount','note',]
     const citems=['bags','toys','rakhis','stationary','bottles','brands','other']
 
      const [data,setData]=useState({
@@ -16,7 +17,7 @@ function Nform(){
              disc:'',
              rating:''})
      const [email,setEmail]=useState('')
-     const [nform,setNform]=useState(false)
+     const [pbar,setPbar]=useState(true)
      const [cat,setCat]=useState('')
      const [img,setImg]=useState()
 
@@ -29,6 +30,7 @@ function Nform(){
 
      async function handleS(e) {
            e.preventDefault()
+           toast('processing....pls wait')
            const fdata=new FormData()
            fdata.append('img',img)
            fdata.append('slug',data.name)
@@ -62,13 +64,14 @@ function Nform(){
             </div>
            </>))}
            <div className="inline-block">
-           <img src={img?URL.createObjectURL(img):'../up.png'} alt='' className="h-20 w-20 rounded-sm ml-100">
+           <img src={img?URL.createObjectURL(img):'../../up.png'} alt='' className="h-20 w-20 rounded-sm ml-100">
             </img>
             <button  type='submit' className="bg-black font-semibold text-white p-2 rounded-md
              hover:scale-105 h-7" >Add</button>
               </div>
      </div>
 </form>
+{pbar?<div> <Pbar/></div>:<></>}
         </>
     )
 }

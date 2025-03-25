@@ -2,11 +2,15 @@ import {useEffect,useState} from 'react'
 import Layout1 from './Layout1'
   import Pcart from './Pcart'
    import  axios from 'axios'
+   
   //import Iconn from './Iconn'
+  
   import { toast } from 'react-toastify'
 function  Home({url}){
   const [aitems,setAitems]=useState([])
-  async function fitems(){ try{
+  async function fitems(){ 
+     toast('loading ....pls wait')
+    try{
     const res= await axios.get('https://newjvite2.onrender.com/items')
     if (res.status===200){
        setAitems(res.data)

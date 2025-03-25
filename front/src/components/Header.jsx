@@ -25,11 +25,13 @@ return (
    
     <Link  to='/'>  <h4 className='font-semibold text-amber-800 text-ml hover:scale-105'>HOME</h4></Link>
    <Mdrop   icon ='FaBars'  cat=''/>  
-      <Mdrop   icon ='FaSearch'  cat=''/>      
+     <Mdrop   icon ='FaSearch'  cat=''/>      
      
-  <Link to='/admin'> <button  className="p-1 bg-black rounded-md text-white hover:scale-105
-   text-sm justify-center" onClick={e=>setPass(true)} >Admin</button></Link>
-   {pass?<div><input type='text' onChange={e=>{e.target.value==='deepti123'?nav('/admin'):nav('')}}></input></div>:<></>}
+     <div className="inline-block"><button  className="p-1 bg-black rounded-md text-white hover:scale-105
+   text-sm justify-center" onClick={e=>setPass(true)} >Admin</button>
+   <input className="border-2 border-amber-500 w-11 rounded-md text-sm" 
+   type='text' placeholder="passw" onChange={e=>{e.target.value==='deepti123'?nav('/admin'):nav('')}}></input></div> 
+
 <div  className="flex justify-center items-center mr-5"  >
   <div  className='flex justify-center relative' onClick={handleCart} >
    <Link to ={cuser?'/totamt':'/login' }>

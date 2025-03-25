@@ -38,7 +38,6 @@ const [aitems,setAitems]=useState([])
   <Routes>
       <Route   path='/' element={<Home url={url} />}>  </Route>
       <Route   path='/home1' element={<Home1 url={url}/>} ></Route>
-      
       <Route index  element={<Home/>}></Route>
       <Route  path='/:slug' element={<Detail/>}></Route>
       <Route  path='/home1/:slug' element={<Detail/>}  ></Route>
