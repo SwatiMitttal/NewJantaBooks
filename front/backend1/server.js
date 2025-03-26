@@ -162,14 +162,11 @@ app.post('/ritems',cors(),async(req,res)=>{
     const {ritems}=req.body
     console.log(ritems)
     try{
-        for (let i=0;i<ritems.length;i++){
-       
-         const  res1=await  Item.deleteOne({slug:ritems[i].slug}) 
+        const  res1=await  Item.deleteOne({slug:ritems[0].slug}) 
           console.log(res1)
-        }
-         res.status(200).json('deleted')
+          res.status(200).json('deleted')
        
-    }catch(e){
+        }catch(e){
         console.log(e.message)
     }
 })
