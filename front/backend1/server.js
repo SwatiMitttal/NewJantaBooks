@@ -26,7 +26,7 @@ const storage = multer.diskStorage({
       return cb(null, '../public/uploads')
     },
     filename: function (req, file, cb) {
-      return cb(null,file.originalname+'11')}
+      return cb(null,file.originalname)}
 })
 const upload = multer({storage:storage })
 app.get('/login',async (req,res)=>{
