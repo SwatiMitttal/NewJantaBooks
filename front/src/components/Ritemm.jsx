@@ -27,7 +27,7 @@ function Ritemm(){
 const handleRem= async ()=>{
       try{
       toast(`deleting ...${ritems.length} items`)
-      const res=await axios.post('http://localhost:4007/ritems',{ritems:ritems})
+      const res=await axios.post('https://newjvite3.onrender.com/ritems',{ritems:ritems})
          if (res.status===200){
           toast('selected items deleted successfully')
           fitems()
