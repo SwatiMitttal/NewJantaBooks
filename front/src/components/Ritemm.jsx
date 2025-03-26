@@ -29,8 +29,8 @@ const handleRem= async ()=>{
       toast(`deleting ...${ritems.length} items`)
       const res=await axios.post('https://newjvite3.onrender.com/ritems',{ritems:ritems})
          if (res.status===200){
-          toast('selected items deleted successfully')
-          fitems()
+          //toast('selected items deleted successfully')
+          //fitems()
          }}catch(e){
           console.log(e.message)
          }
