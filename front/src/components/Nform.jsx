@@ -3,6 +3,7 @@ import axios from "axios"
 import { useState } from "react"
 import { FaRupeeSign } from "react-icons/fa"
 import Pbar from "./Pbar"
+//import {cloudinary} from 'cloudinary'
 function Nform(){
     const light="text-sm bg-amber-300 border-2 border-amber-600 p-1 font-medium hover:scale-105"
     const dark="text-sm bg-amber-500 border-2 border-amber-600 p-1 font-medium hover:scale-105"

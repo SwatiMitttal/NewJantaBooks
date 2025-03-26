@@ -49,11 +49,8 @@ return(
          <h3 className='flex justify-center items-center'>
          <span className='inline-flex'>  <FaRupeeSign/> <s> {price} </s> <FaRupeeSign  /> {(price-(.2*price))}    </span>   
            </h3>
-           <h3 className='flex justify-center items-center'>
-         <span className='inline-flex'><s> {price} </s> <FaRupeeSign  /> {(price-((disc/100)*price))}    </span>   
-           </h3>
-            <span className='text-md font-bold text-amber-900'>{disc} % Discount</span>
-            <Rating  rating={rating} />
+          
+                       <Rating  rating={rating} />
          <h3 className='flex justify-center items-center text-md font-semibold text-amber-700 '> {note}
             </h3>
          

@@ -160,9 +160,13 @@ catch(e){
 
 app.post('/ritems',cors(),async(req,res)=>{
     const {ritems}=req.body
+    console.log(ritems)
     try{
-        const items1=Item.find(i=>i.id  in ritems)
-        console.log(items1)
+        for (let i=0;i<ritems.length;i++){
+       
+         const  rr=await  Item.deleteOne({_id:ritems[i]._id})  }
+         res.status(200).res('deleted')
+        console.log(rr)
     }catch(e){
         console.log(e.message)
     }

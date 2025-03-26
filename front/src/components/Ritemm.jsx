@@ -5,30 +5,50 @@ import { FaRupeeSign } from "react-icons/fa"
 function Ritemm(){
     const [aitems,setAitems]=useState([])
     const [ritems,setRitems]=useState([])
+    const [check,setCheck]=useState(false)
     async function fitems(){ try{
         const res= await axios.get('https://newjvite2.onrender.com/items')
         if (res.status===200){
            setAitems(res.data)
-           localStorage.setItem('aitems',res.data.data)
-             toast(res.data)
+           
+             toast(`${res.data.length} items`)
            
           }}catch(err){
     console.log(err.message)
     }}
        
     const handleR=(id,slug)=>{
-       toast(slug)
-       setRitems(i=>([...ritems,id]))
+        toast(slug)
+        const r=ritems.find(i=>i===id)
+     
+       !r?setRitems(ritems=>([...ritems,id])):console.log('')
+     
     }
-
-    const handleRem= async ()=>{
+const handleRem= async ()=>{
       try{
-      const res=await axios.post('https://newjvite3.onrender.com/ritems',ritems)
+      toast(`deleting ...${ritems.length} items`)
+      const res=await axios.post('http://localhost:4007/ritems',{ritems:ritems})
          if (res.status===200){
           toast('selected items deleted successfully')
+          fitems()
          }}catch(e){
           console.log(e.message)
          }
+    }
+
+    const handleR1=()=>{
+        try{
+            alert(ritems)
+            const t=[]
+             for (i=0;i<ritems.length;i++){
+                    t[i]=aitems.find(item=>item.id===ritems[i])}
+                   
+           
+            setRitems([])
+            toast(t)
+        }catch(e){
+            console.log(e.message)
+        }
     }
     useEffect(()=>{
       fitems()
@@ -40,15 +60,11 @@ function Ritemm(){
     <h3 key='h1' className='text-md text-green-950 justify-center text-2xl items-center font-weight-600'></h3>
         <div key='d2' className='flex justify-center items-center '  >
         <div key='d3' className='grid  lg:grid-cols-3  md:grid-cols-2  sm:grid-cols-1 gap-0'  >
-      {aitems && aitems.map((item,ind)=>(
-              <div className="grid grid-cols-1 ">
-               <h3 className="text-sm text-amber-900 font-semibold ml-4">{item.slug}  </h3>
-               <input  type='checkbox' onClick={e=>{handleR(item._id,item.slug)}}></input>
-               </div>
-        ))};
+    <div className='inline-block'>
+      
         <button className="bg-black w-20 hover:scale-105 
-        rounded-md text-white p-1"  onClick={e=>handleRem()} >Remove</button>
-
+        rounded-md text-white p-1"  onClick={e=>handleRem(e)} >Remove</button>
+    </div>
         <div class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                   <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                       <tr>
@@ -80,7 +96,7 @@ function Ritemm(){
                               <FaRupeeSign/>{item.price}
                           </td>
                           <td className="px-6 py-4">
-                             <input   type='checkbox' ></input>
+                             <input   type='checkbox'   onChange={e=>{handleR(item._id,item.slug)}} ></input>
                           </td>
                          
                       </tr>))}
