@@ -142,6 +142,20 @@ app.post('/items',cors(), async (req,res)=>{
  }   
   })
 
+  app.post('/items',cors(), async (req,res)=>{
+    const {slug}=req.body
+    try{
+    const check=await Item.find({slug:slug})
+    if (check.length>0){
+        res.status(200).json(check)}
+    else{
+       res.json('notexist') }
+    }
+ catch(e){
+    console.log(e.message)
+ }   
+  })
+
   app.post('/corders',cors(),async(req,res)=>{
     const {email}=req.body
     console.log(email)
