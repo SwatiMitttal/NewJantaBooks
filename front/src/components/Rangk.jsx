@@ -24,10 +24,8 @@ function Rangk(){
            <img class=" -rotate-25 h-50 w-50 animate-[bounce_20s_linear_infinite] " src="../../rangk/pp2.png" />
         </div>
     <div>
-
-        <h4 className='font-semibold'>Ethnic Wear</h4>
-       
-           <div  className='flex justify-center items-center '  >
+     <h4 className='font-semibold'>Ethnic Wear</h4>
+       <div  className='flex justify-center items-center '  >
            <div  className='grid  lg:grid-cols-2  md:grid-cols-2  sm:grid-cols-1 gap-6'  >
            {aitems &&  aitems.map((item,ind)=>(
               <div>

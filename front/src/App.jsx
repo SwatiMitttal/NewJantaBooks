@@ -12,6 +12,7 @@ import List from './components/List'
 import Aitem from './components/Aitem'
 import Nform from './components/Nform'
 import Rangk from './components/Rangk'
+//import Details from './components/Details'
 function App() {
 
 const url='https://newjvite3.onrender.com'
@@ -23,7 +24,7 @@ const [aitems,setAitems]=useState([])
          const res=  axios.get(`${url}/items`)
             if(res.status===200)
               { setAitems(res.data.data)
-                localStorage.setItem('aitems',res.data.data)
+                
                toast(res.data)
 }
             }catch(err){

@@ -14,7 +14,7 @@ function  Home({url}){
     const res= await axios.get('https://newjvite2.onrender.com/items')
     if (res.status===200){
        setAitems(res.data)
-       localStorage.setItem('aitems',res.data.data)
+       localStorage.setItem('aitems',JSON.stringify(res.data))
          toast(res.data)
        
       }}catch(err){

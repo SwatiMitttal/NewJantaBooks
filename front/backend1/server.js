@@ -146,11 +146,9 @@ app.post('/items',cors(), async (req,res)=>{
     const {slug}=req.body
     try{
     const check=await Item.find({slug:slug})
-    if (check.length>0){
-        res.status(200).json(check)}
-    else{
-       res.json('notexist') }
-    }
+    console.log(check)
+    if (check){
+        res.status(200).json(check)} }
  catch(e){
     console.log(e.message)
  }   
