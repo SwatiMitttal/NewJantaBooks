@@ -6,7 +6,7 @@ const dbcon= async ()=> {
 
 try{
      await  connect('mongodb+srv://swatimittal1981:u0j8DJC9TotKizIq@cluster0.120fk.mongodb.net/',{
-        dbName:'Nstore',})
+        dbName:'Studio',})
      console.log('Database connected')
 }catch(error){
     console.log(error.message)
