@@ -130,9 +130,11 @@ app.post('/orders',cors(),async(req,res)=>{
 })
 app.post('/items',cors(), async (req,res)=>{
     const {cat}=req.body
+    console.log(cat)
     try{
     const check=await Item.find({cat:cat})
-    if (check.length>0){
+    if (check){
+        console.log(check)
         res.status(200).json(check)}
     else{
        res.json('notexist') }
