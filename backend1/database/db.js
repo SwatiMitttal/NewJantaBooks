@@ -38,10 +38,7 @@ const iSchema=mongoose.Schema({
      
      
 })
-const imSchema=mongoose.Schema({
-  img:String
 
-})
 
 const oSchema=mongoose.Schema({
     email:String,
@@ -56,5 +53,5 @@ const oSchema=mongoose.Schema({
  export const User=mongoose.model('user',uSchema)
  export const Item=mongoose.model('item',iSchema)
  export const Order=mongoose.model('order',oSchema)
- export const Imag=mongoose.model('imag',imSchema)
+ 
 export default dbcon

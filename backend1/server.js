@@ -138,7 +138,7 @@ app.post('/items',cors(), async (req,res)=>{
     
      try{
     const check=await Item.find({cat:cat})
-    if (check.length>0){
+    if (check){
         res.status(200).json(check)}
     else{
        res.json('notexist') }

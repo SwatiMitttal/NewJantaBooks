@@ -13,7 +13,7 @@ function Homesc(){
   const dispatch=useDispatch()
   
   const [aitems,setAitems]=useState([])
-  const cat=['Most Popular','rakhis','bags','bottles','stationery']
+  const cat=['Most Popular','rakhis','coords','ethnic wesr','poshaks']
   const [scat,setScat]=useState(null)
   const [citems,setCitems]=useState([])
   const nitems=useSelector(store=>store.cart.items.length)
@@ -35,7 +35,7 @@ useEffect(()=>{
  return(<>
 
   <View   >
-       <Header nitems={nitems}/>  </View>
+       </View>
     <View style={styles.cont}>
         <AntDesign name={"search1"} size={28} color={"darkcyan"}></AntDesign>
           <TextInput style={styles.tinput} placeholder="search"></TextInput>
@@ -45,6 +45,9 @@ useEffect(()=>{
      
           <View style={{flexDirection:"row"}}>
            {aitems &&  <FlatList 
+           ListHeaderComponent={<View>
+               <Header nitems={nitems}/> 
+            </View>}
             numColumns={2}
                 data={aitems}
                 renderItem={({item})=><Text></Text>  }
