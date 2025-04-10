@@ -18,7 +18,7 @@ function Homesc(){
   const [citems,setCitems]=useState([])
   const nitems=useSelector(store=>store.cart.items.length)
    const fprods=async()=>{
-     const res=await axios.get('https://newjvite3.onrender.com/items')
+     const res=await axios.get('https://rk.onrender.com/items')
              if(res.status===200){
                const items=res.data
               setAitems(res.data)
