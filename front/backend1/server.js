@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import dbcon from './database/db.js'
-import { User ,Item,Order} from './database/db.js'
+import { User ,Item,Order,Sitem} from './database/db.js'
 import  pkg from 'razorpay'
 import multer from 'multer'
 
@@ -112,6 +112,17 @@ catch(e){
         console.log(e)
     }
 })
+
+app.get('/sitems',async (req,res)=>{
+    try{
+     const item1= await Sitem.find()
+     console.log(item1[3])
+     res.status(200).json(item1)
+ }
+ catch(e){
+         console.log(e)
+     }
+ })
 app.post('/orders',cors(),async(req,res)=>{
     const{tamt,items,email}=req.body
     console.log(items[0])
