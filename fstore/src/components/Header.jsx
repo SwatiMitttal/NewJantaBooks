@@ -5,13 +5,14 @@ function Header({nitems}){
     const nav=useNavigation()
     return(<>
       <View style={{flex:1,flexDirection:"row",justifyContent:"space-between",margin:10 ,maxHeight:80}}>
-        <View>
+        <View style={{flexDirection:"row"}}>
       <Image   
        source={require('../../assets/roli.png')}
                            style={styles.img}></Image> 
        <Text style={styles.title}>Rang & Kesar </Text>
+       
       </View>
-     <View 
+    <View 
         style={styles.ccart}><Text style={{fontWeight:800,fontSize:14,color:"red"}}>{nitems}</Text><Entypo name={"shopping-cart"}  
           size={25} color={"darkgoldenrod"}></Entypo>  </View>
         
@@ -27,8 +28,8 @@ const styles=StyleSheet.create({
         color:"darkgoldenrod"
       },
       img:{
-        height:50,
-        width:50,
+        height:90,
+        width:90,
         borderRadius:10
       },
       ccart:{

@@ -1,10 +1,10 @@
 
-import { View,StyleSheet,Text,Button,TextInput ,FlatList,Image} from "react-native"     
+import { View,StyleSheet,Text,Button,TextInput ,FlatList,Image,URL} from "react-native"     
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Header  from '../components/Header'
 import { useEffect, useState} from "react"
-//import Category from '../components/Category'
-//import Pcart from '../components/Pcart'
+import Category from '../components/Category'
+import Pcart from '../components/Pcart'
 import { useDispatch, useSelector } from "react-redux"
 
 
@@ -13,12 +13,12 @@ function Homesc(){
   const dispatch=useDispatch()
   
   const [aitems,setAitems]=useState([])
-  const cat=['Most Popular','rakhis','coords','ethnic wesr','poshaks']
+  const cat=['Most Popular','rakhis','coords','ethnic wear','poshaks']
   const [scat,setScat]=useState(null)
   const [citems,setCitems]=useState([])
   const nitems=useSelector(store=>store.cart.items.length)
    const fprods=async()=>{
-     const res=await axios.get('https://rk.onrender.com/items')
+     const res=await axios.get('https://newjvite3.onrender.com/sitems')
              if(res.status===200){
                const items=res.data
               setAitems(res.data)
@@ -33,24 +33,24 @@ useEffect(()=>{
   },[scat])
 
  return(<>
-
-  <View   >
-       </View>
-    <View style={styles.cont}>
-        <AntDesign name={"search1"} size={28} color={"darkcyan"}></AntDesign>
-          <TextInput style={styles.tinput} placeholder="search"></TextInput>
-     </View>
-     <Text style={{fontWeight:600}}>{citems.length} items</Text>
-    <View>
-     
-          <View style={{flexDirection:"row"}}>
+   <View style={{backgroundColor:"burlywood"}}>
+     <View style={{flexDirection:"row"}}>
            {aitems &&  <FlatList 
-           ListHeaderComponent={<View>
+           ListHeaderComponent={<View style={{flex:1,flexDirection:"column"}}>
                <Header nitems={nitems}/> 
-            </View>}
+               <View style={{height:50}}>  </View>
+               <FlatList 
+                onPress={e=>{setScat(item);handleP(e)}}
+                 data={cat} renderItem={({item})=><Category item={item} scat={scat} 
+                setScat={setScat}/>} 
+                horizontal={true}
+                keyExtractor={(item)=>item}
+                 showsHorizontalScrollIndicator={false}/>
+               <Text style={{fontWeight:600}}>{citems.length} items</Text>
+                  </View>}
             numColumns={2}
                 data={aitems}
-                renderItem={({item})=><Text></Text>  }
+                renderItem={({item})=><Pcart  item={item}  />  }
                 keyExtractor={(item)=>item}
                  showsHorizontalScrollIndicator={false}
             />}
@@ -89,10 +89,4 @@ cont1:{justifyContent: "start",
    },})
 
 /*
-<FlatList 
-        onPress={e=>{setScat(item);handleP(e)}}
-         data={cat} renderItem={({item})=><Category item={item} scat={scat} 
-            setScat={setScat}/>} 
-         horizontal={true}
-         keyExtractor={(item)=>item}
-         showsHorizontalScrollIndicator={false}/>*/
+>*/
