@@ -34,6 +34,9 @@ function Nform(){
            toast('processing....pls wait')
            const fdata=new FormData()
            fdata.append('img',img)
+           
+           fdata.append('upload_preset','First_time_using_cloudinary')
+           fdata.append('cloud_name','dsttk9lau')
            fdata.append('slug',data.name)
            fdata.append('note',data.note)
            fdata.append('price',data.price)
@@ -42,8 +45,17 @@ function Nform(){
            
              const res=await axios.post('https://newjvite3.onrender.com/aitems',fdata)
                if(res.status===200){
-                   toast('item added')}}
-
+                   toast('item added')}
+                 
+                  }
+       const iup= async ()=>{
+        const fdata=new FormData()
+       
+       
+          toast('hello')
+          const iurl= await res.json()
+          alert(iurl)
+       }
     
     return(
         <>
@@ -78,3 +90,4 @@ function Nform(){
 }
 
 export default Nform
+//https://res.cloudinary.com/dsttk9lau/image/upload/v1743698191/stumb6_vebufs.jpg

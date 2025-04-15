@@ -19,7 +19,7 @@ function Login(props){
       e.preventDefault()
       setC(true)
     try{
-       const res= await axios.post('https://newjvite2.onrender.com/login',{email:email})
+       const res= await axios.post('https://newjvite3.onrender.com/login',{email:email})
        if(res.status===200) { 
         dispatch(setU({email:res.data.email,
           name:res.data.name,

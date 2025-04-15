@@ -43,7 +43,7 @@ function Signup({url}){
 
         const { isLoaded } = useJsApiLoader({
           id: 'google-map-script',
-          googleMapsApiKey: process.env.GOOGLE_API_KEY,
+          googleMapsApiKey: 'AIzaSyA-yOjY6-NDpkMWFhSr2gC0UtZuyc69qXs',
           libraries:["places"]
         })
     const handleC=()=>{

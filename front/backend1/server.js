@@ -44,9 +44,21 @@ app.get('/login',async (req,res)=>{
 app.post('/aitems',upload.single('img'),async(req,res)=>{
     const {slug,price,note,rating,cat,disc}=req.body
     const img1=req.file.filename
+    const fdata=new FormData()
+    fdata.append('img',img1)
+    
+    fdata.append('upload_preset','First_time_using_cloudinary')
+    fdata.append('cloud_name','dsttk9lau')
+     const res1=await fetch('https://res.cloudinary.com/dsttk9lau/image/upload',{
+              method:'POST',
+              body:fdata
+            })
+        const imgurl=await res1.json()
+            console.log(res1.json())
      const nimg={ 
         slug:slug,
-        imgurl:`../../uploads/${img1}`,
+       // imgurl:`../../uploads/${img1}`,
+       imgurl:imgurl,
         cat:cat,
         price:price,
         note:note,
