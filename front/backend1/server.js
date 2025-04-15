@@ -64,13 +64,11 @@ app.post('/aitems',upload.single('img'),async(req,res)=>{
 
 app.post('/login',cors(), async (req,res)=>{
    const {email}=req.body
-    if (!email ){
-        res.status(400).send('pls enter the required fields')}
-    else{
+    
    try{
     const check=await User.findOne({email:email})
     if (check){
-        console.log('foundback1in',email)
+        console.log('found',email)
         res.status(200).json(check) }
     else{
        res.status(404).json('notexist')
@@ -78,7 +76,7 @@ app.post('/login',cors(), async (req,res)=>{
  catch(e){
     console.log(e.message)
  } }
-}
+
  ) 
 app.post('/signup',cors(), async (req,res)=>{
     const {name,email,passw,mobile,add1,add2,city,stat,country,pin}=req.body
@@ -109,9 +107,7 @@ app.get('/items',async (req,res)=>{
     res.status(200).json(item1)
 }
 catch(e){
-        console.log(e)
-    }
-})
+        console.log(e)}})
 
 app.get('/sitems',async (req,res)=>{
     try{

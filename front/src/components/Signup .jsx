@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useState ,useRef} from "react"
 import {Link} from 'react-router-dom'
 
 import { useDispatch,useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
+
+import { GoogleMap, StandaloneSearchBox, useJsApiLoader } from '@react-google-maps/api'
 import axios from 'axios'
 import { FaEye } from "react-icons/fa"
 import { setU } from "../store/Users"
@@ -26,6 +28,7 @@ function Signup({url}){
   const nav=useNavigate()
   const dispatch=useDispatch()
   const emaill=useSelector(store=>store.users.user)
+  const inputRef=useRef()
   async function handleS(e){
     e.preventDefault()
     const user1= {
@@ -37,15 +40,26 @@ function Signup({url}){
       dispatch(setU(user1))
         nav('/totamt')}
           
+
+        const { isLoaded } = useJsApiLoader({
+          id: 'google-map-script',
+          googleMapsApiKey: process.env.GOOGLE_API_KEY,
+          libraries:["places"]
+        })
     const handleC=()=>{
    tt==='text'?setTt('password'):setTt('text')
  }
+
+ const handlePc=()=>{
+    let add=inputRef.current.getPlaces()
+    console.log(add)
+ }
 return (
     <>
+  
    <div className="bg-white">
        <div  className="w-[300px]">    
     <h2 className="font-semibold text-md text-amber-800">SIGNUP</h2>
-    
     <form  >
     <div className=" inline-flex">
       
@@ -87,7 +101,11 @@ return (
     onChange={(e)=>setAdd1(e.target.value)}
     required='true'
     ></input>
-
+     {isLoaded &&
+  <StandaloneSearchBox
+     onLoad={(ref)=>inputRef.current=ref}
+     onPlacesChanged={handlePc}
+  >
      <input type='text' placeholder="add2"
     className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
     onChange={(e)=>setAdd2(e.target.value)}
@@ -111,7 +129,7 @@ return (
     onChange={(e)=>setCountry(e.target.value)}
     required='true'
     ></input>
-
+    </StandaloneSearchBox>}
      <input type='text'  placeholder="pincode"
     className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
     onChange={(e)=>setPin(e.target.value)}
@@ -130,6 +148,8 @@ return (
 <h3>Already have an account? <Link to='/login' className="hover:text-blue-900 font-semibold">{!isSignup ? 'Login' : 'Register'}  </Link>  </h3>
 </div>
 </div>
+
+
     </>
 )
 }

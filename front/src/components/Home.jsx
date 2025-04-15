@@ -11,7 +11,7 @@ function  Home({url}){
   async function fitems(){ 
      toast('loading ....pls wait')
     try{
-    const res= await axios.get('https://newjvite2.onrender.com/items')
+    const res= await axios.get('https://newjvite3.onrender.com/items')
     if (res.status===200){
        setAitems(res.data)
        localStorage.setItem('aitems',JSON.stringify(res.data))

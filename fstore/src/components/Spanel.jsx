@@ -6,7 +6,7 @@ function Spanel(){
    <View style={styles.cont2}>
      <View style={styles.cont1}>
         <Image  style={styles.img} source={require('../../assets/lprice.jpg')}  ></Image>
-        <Text style={styles.txt1}> Pure Fabrics with Lowest Price</Text>
+        <Text style={styles.txt1}> Pure Fabrics</Text>
      </View>
 
      <View style={styles.cont1}>
@@ -33,7 +33,7 @@ const styles=StyleSheet.create({
     cont1:{
        flexDirection:"column",
        marginTop:10,
-       marginLeft:40
+       marginLeft:10
      },
     img:{
         height:74,

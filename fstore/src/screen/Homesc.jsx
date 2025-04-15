@@ -1,5 +1,5 @@
 
-import { View,StyleSheet,Text,Button,TextInput ,FlatList,Image,URL} from "react-native"     
+import { View,StyleSheet,Text,Button,TextInput ,ImageBackground,FlatList,Image,URL} from "react-native"     
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Header  from '../components/Header'
 import { useEffect, useState} from "react"
@@ -33,10 +33,13 @@ useEffect(()=>{
   },[scat])
 
  return(<>
+
    <View style={{backgroundColor:"burlywood"}}>
+  
      <View style={{flexDirection:"row"}}>
            {aitems &&  <FlatList 
            ListHeaderComponent={<View style={{flex:1,flexDirection:"column"}}>
+           
                <Header nitems={nitems}/> 
                <View style={{height:50}}>  </View>
                <FlatList 
@@ -46,7 +49,9 @@ useEffect(()=>{
                 horizontal={true}
                 keyExtractor={(item)=>item}
                  showsHorizontalScrollIndicator={false}/>
+                
                <Text style={{fontWeight:600}}>{citems.length} items</Text>
+              
                   </View>}
             numColumns={2}
                 data={aitems}
@@ -55,8 +60,9 @@ useEffect(()=>{
                  showsHorizontalScrollIndicator={false}
             />}
              </View>
+            
         </View>
-       
+     
     </>)}
 export default Homesc
 const styles=StyleSheet.create({

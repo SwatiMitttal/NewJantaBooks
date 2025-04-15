@@ -38,7 +38,7 @@ function Pcart({item}){
 return(
   
          <View style={styles.container} onPress={e=>handleS(e)}>
-           <Text style={{fontWeight:600,color:"darkcyan"}}>{slug}</Text>
+           <Text style={{fontWeight:600,color:"darkgoldenrod"}}>{slug}</Text>
            <Text style={styles.note}>
              <FontAwesome5 name={"rupee-sign"} size={15} color={"darkcyan"}></FontAwesome5>    
              <Text style={styles.stxt}>{item.price}</Text> {item.price- (item.disc?item.disc:.2*item.price)}</Text> 

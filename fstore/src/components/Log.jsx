@@ -5,8 +5,8 @@ import { TextInput,Text,View,Button,StyleSheet } from "react-native";
 import axios from "axios"
 import { ToastAndroid } from "react-native";
 import { setU } from "../../store/Users";
-//import Signup from './Signup '
-
+import Signup from './Signup '
+import Totamt from './Totamt'
 import Spanel from './Spanel'
 import Header from './Header'
 function Log(){
@@ -22,6 +22,7 @@ async function handleS(e){
 try{
    const res= await axios.post('https://newjvite3.onrender.com/login',{email:email})
    if(res.status===200) { 
+      alert('user there')
    dispatch(setU({email:res.data.email,
       name:res.data.name,
       passw:res.data.passw,
@@ -34,8 +35,7 @@ try{
       pin:res.data.pin,
     newu:false}))
   setUser(true)
-  
-  }else{ }}
+ }else{ }}
     catch(err){
         console.log(err.message)
       }}
@@ -45,7 +45,7 @@ useEffect(()=>{
 },[])
    return(
     <>
- <View  style={{flex:1}}>
+ <View  style={{flex:1,backgroundColor:"beige"}}>
        <Header nitems={nitems}/>
     <Text style={styles.txt1}>Enter email</Text>
     <View style={styles.cont1}>
@@ -56,14 +56,14 @@ useEffect(()=>{
     
      </View>
     <View  style={styles.cont3}>
-    <Text type='submit' style={styles.txtb}
-     
-    onPress={e=>handleS(e)}
+    <Text  style={styles.txtb}
+     onPress={e=>handleS(e)}
      >Place order</Text>
     
     </View>
   <Spanel/>
    {!user && c?<Signup/>:<></>}
+   {user && c?<Totamt/>:<></>}
 </View> 
     </>
    )
@@ -77,7 +77,7 @@ const styles=StyleSheet.create({
   tinput:{
   fontSize:14,
   fontWeight:400,
-  backgroundColor:"white",
+  backgroundColor:"beige",
   height:59,
   borderRadius:10,
   borderColor:"darkgoldenrod",
@@ -85,7 +85,8 @@ const styles=StyleSheet.create({
   color:"darkgoldenrod"
 },
   txtb:{
-    color:"white"
+    color:"white",
+   
   },
 cont1:{
     flexDirection:"column",
@@ -93,6 +94,7 @@ cont1:{
     width:300,
     borderRadius:10,
     marginLeft:10,
+    backgroundColor:"beige"
 },
 txt1:{fontWeight:600,color:"darkgoldenrod"},
 
