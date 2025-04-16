@@ -2,12 +2,13 @@ import { toast } from "react-toastify"
 import axios from "axios"
 import { useState } from "react"
 import { FaRupeeSign } from "react-icons/fa"
-import Pbar from "./Pbar"
-//import {cloudinary} from 'cloudinary'
+import Nitem from "./Nitem"
+
+
 function Nform(){
     const light="text-sm bg-amber-300 border-2 border-amber-600 p-1 font-medium hover:scale-105"
     const dark="text-sm bg-amber-500 border-2 border-amber-600 p-1 font-medium hover:scale-105"
-    const litems=['name','price','rating','category','discount','note',]
+    const litems=['name','price','rating','category','discount','note','image']
     const citems=['bags','toys','rakhis','stationary','bottles','brands','clothing store','poshaks']
 
      const [data,setData]=useState({
@@ -16,15 +17,20 @@ function Nform(){
              price:'',
              cat:'',
              disc:'',
-             rating:''})
-     const [email,setEmail]=useState('')
-     const [pbar,setPbar]=useState(true)
+             rating:'',
+            image:''})
+    
      const [cat,setCat]=useState('')
      const [img,setImg]=useState()
-
+    
+     const [fdata,setFdata]=useState()
      function handleC(e){
         const name=e.target.name 
-        const val=e.target.value
+        let val=e.target.value
+         if(img){
+          
+            val=e.target.files[0].filename
+         }
          setData(data=>({...data,[name]:val}))
       }
       
@@ -32,30 +38,15 @@ function Nform(){
      async function handleS(e) {
            e.preventDefault()
            toast('processing....pls wait')
-           const fdata=new FormData()
-           fdata.append('img',img)
+            const fdata1=new FormData()
+           fdata1.append('file',img)
            
-           fdata.append('upload_preset','First_time_using_cloudinary')
-           fdata.append('cloud_name','dsttk9lau')
-           fdata.append('slug',data.name)
-           fdata.append('note',data.note)
-           fdata.append('price',data.price)
-           fdata.append('rating',data.rating)
-           fdata.append('cat',cat)
+           fdata1.append('upload_preset','Newjupload')
+           fdata1.append('cloud_name','dsttk9lau')
            
-             const res=await axios.post('https://newjvite3.onrender.com/aitems',fdata)
-               if(res.status===200){
-                   toast('item added')}
-                 
-                  }
-       const iup= async ()=>{
-        const fdata=new FormData()
-       
-       
-          toast('hello')
-          const iurl= await res.json()
-          alert(iurl)
-       }
+             const res=await axios.post('https://https://res.cloudinary.com/dsttk9lau/image/upload',fdata1)
+               const url=res.json
+            }
     
     return(
         <>
@@ -67,9 +58,9 @@ function Nform(){
            <p className="text-sm font-semibold">{item}</p>
            <div className="inline-flex">
            { i===1? <span><FaRupeeSign/></span>:<></>  }
-           {  i!==3?  <input type={i===5?'file':'text'  } name={item} placeholder={item}
+           {  i!==3?  <input type={i===6?'file':'text'  } name={item} placeholder={item}
                  className="border-2 border-gray-400 rounded-sm hover:bg-slate-100  text-sm"
-                  onChange={e=>{i===5?setImg(e.target.files[0]):handleC(e)}}
+                  onChange={e=>{i===6?setImg(e.target.files[0]):handleC(e)}}
                 ></input>:<></>  } 
              {i===3? citems.map((i,n)=>(<span className={cat===i?dark:light} 
                   onClick={e=>setCat(i)}>{i}</span>))
@@ -84,10 +75,11 @@ function Nform(){
               </div>
      </div>
 </form>
-{pbar?<div> <Pbar/></div>:<></>}
+   {img &&   <Nitem  data={data}  cat={cat} img={img} />  }
         </>
     )
 }
 
 export default Nform
-//https://res.cloudinary.com/dsttk9lau/image/upload/v1743698191/stumb6_vebufs.jpg
+
+
