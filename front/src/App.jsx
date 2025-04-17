@@ -43,7 +43,7 @@ const [aitems,setAitems]=useState([])
       <Route  path='/:slug' element={<Detail/>}></Route>
       <Route  path='/home1/:slug' element={<Detail/>}  ></Route>
       <Route path='/login'  element={<Login2/>}  ></Route>
-      <Route path='/home1/login'  element={<Login1 url={url}/>}  ></Route>
+      <Route path='/home1/login'  element={<Login2 url={url}/>}  ></Route>
       <Route   path='/list'  element={<List />} ></Route>
       <Route   path='/admin'  element={<Aitem url={url}/>} ></Route>
       <Route   path='/nform'  element={<Nform url={url}/>} ></Route>
