@@ -2,12 +2,12 @@ import { FaGifts,FaList,FaEdit } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import List from "./List"
-import { toast } from "react-toastify"
+
 import Ritemm from "./Ritemm"
 function Aitem(){
     const [sorder,setSorder]=useState(false)
       const [ritem,setRitem]=useState(false)
-      const [aitems,setAitems]=useState([])
+      const [nform,setNform]=useState(false)
       const [email,setEmail]=useState('')
 
       
