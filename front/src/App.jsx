@@ -1,7 +1,7 @@
 import {Route,Routes,BrowserRouter}  from 'react-router-dom'
 import Home from './components/Home'
 import Detail from './components/Detail'
-import Login1 from './components/Login1'
+import Login2 from './components/Login2'
 import Signup from './components/Signup '
 import Home1 from './components/Home1'
 import Total from './components/Total'
@@ -12,7 +12,7 @@ import List from './components/List'
 import Aitem from './components/Aitem'
 import Nform from './components/Nform'
 import Rangk from './components/Rangk'
-//import Details from './components/Details'
+
 function App() {
 
 const url='https://newjvite3.onrender.com'
@@ -42,7 +42,7 @@ const [aitems,setAitems]=useState([])
       <Route index  element={<Home/>}></Route>
       <Route  path='/:slug' element={<Detail/>}></Route>
       <Route  path='/home1/:slug' element={<Detail/>}  ></Route>
-      <Route path='/login'  element={<Login1/>}  ></Route>
+      <Route path='/login'  element={<Login2/>}  ></Route>
       <Route path='/home1/login'  element={<Login1 url={url}/>}  ></Route>
       <Route   path='/list'  element={<List />} ></Route>
       <Route   path='/admin'  element={<Aitem url={url}/>} ></Route>

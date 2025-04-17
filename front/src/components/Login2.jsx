@@ -69,7 +69,7 @@ function Login2(props){
      >Submit</button>  </Link> :  <button className="bg-amber-600 text-white font-semibold  p-3 ml-10
      rounded-md hover:bg-amber-900"  onClick={handleS}
       >Submit</button>  }
-      <LoginButton  />
+      
    { !user && c===true?<Signup />:<></>}
     
   </div>
