@@ -42,12 +42,15 @@ app.get('/login',async (req,res)=>{
 
 
 app.post('/aitems',upload.single('img'),async(req,res)=>{
-    const {slug,price,note,rating,cat,disc,imgurl}=req.body
+    const {slug,price,note,rating,cat,disc,imgurl,url}=req.body
     
       const inam=req.file.filename
+      const ext=inam.split('.')[1]
+      const fname=url+'.'+ext
+      console.log(fname)
      const nimg={ 
         slug:slug,
-        imgurl:`https://res.cloudinary.com/dsttk9lau/image/upload/v1744778904/${inam}`,
+        imgurl:`https://res.cloudinary.com/dsttk9lau/image/upload/v1744778904/${fname}`,
         cat:cat,
         price:price,
         note:note,

@@ -22,7 +22,8 @@ function Nform(){
     
      const [cat,setCat]=useState('')
      const [img,setImg]=useState()
-    
+      const [url,setUrl]=useState('')
+      const [c,setC]=useState(false)
      const [fdata,setFdata]=useState()
      function handleC(e){
         const name=e.target.name 
@@ -44,8 +45,11 @@ function Nform(){
            fdata1.append('upload_preset','Newjupload')
            fdata1.append('cloud_name','dsttk9lau')
            
-             const res=await axios.post('https://https://res.cloudinary.com/dsttk9lau/image/upload',fdata1)
-               const url=res.json
+           
+            const res= await  axios.post('https://api.cloudinary.com/v1_1/dsttk9lau/image/upload',fdata1)
+              const url=res.data.public_id
+              setUrl(url)
+               console.log(url)
             }
     
     return(
@@ -71,15 +75,16 @@ function Nform(){
            <img src={img?URL.createObjectURL(img):'../../up.png'} alt='' className="h-20 w-20 rounded-sm ml-100">
             </img>
             <button  type='submit' className="bg-black font-semibold text-white p-2 rounded-md
-             hover:scale-105 h-7" >Add</button>
+             hover:scale-105 h-7"  onClick={e=>setC(true)}>Add</button>
               </div>
      </div>
 </form>
-   {img &&   <Nitem  data={data}  cat={cat} img={img} />  }
-        </>
+   {c  &&   <Nitem  data={data}  cat={cat} img={img} url={url} />  }
+         </>
     )
 }
 
 export default Nform
+//https://res.cloudinary.com/dsttk9lau/image/upload/v1744866470/sbag2_gfd08i.jpg
 
 

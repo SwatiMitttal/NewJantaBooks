@@ -4,7 +4,7 @@ function Nitem(props){
     const [flag,setFlag]=useState('adding item..')
     async function handleS() {
         const fdata=new FormData()
-       
+        
         fdata.append('img',props.img)
         fdata.append('imgurl',props.data.image)
            fdata.append('slug',props.data.name)
@@ -13,8 +13,8 @@ function Nitem(props){
            fdata.append('rating',props.data.rating)
            fdata.append('cat',props.cat)
            fdata.append('disc',props.data.discount)
-         
-          const res=await axios.post('https://newjvite3.onrender.com/aitems',fdata)
+           fdata.append('url',props.url)
+          const res=await axios.post('http://localhost:4007/aitems',fdata)
             if(res.status===200){
                 setFlag('item added')}
               }

@@ -11,7 +11,6 @@ createRoot(document.getElementById('root')).render(
   <Provider  store={appStore}>
     <App />
   </Provider>
- 
 )
 
-
+//No 'Access-Control-Allow-Origin' header is present on the requested resource.

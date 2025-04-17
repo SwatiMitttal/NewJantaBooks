@@ -95,29 +95,24 @@ return (
     onChange={(e)=>setMobile(e.target.value)}
     required='true'
     ></input>
-
+   
+ 
      <input type='text'  placeholder="add1"
     className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
     onChange={(e)=>setAdd1(e.target.value)}
     required='true'
     ></input>
-     {isLoaded &&
-  <StandaloneSearchBox
-     onLoad={(ref)=>inputRef.current=ref}
-     onPlacesChanged={handlePc}
-  >
+    
      <input type='text' placeholder="add2"
     className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
     onChange={(e)=>setAdd2(e.target.value)}
     required='true'
     ></input>
-
-     <input type='text'  placeholder="city"
+      <input type='text'  placeholder="city"
     className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
     onChange={(e)=>setCity(e.target.value)}
     required='true'
-    ></input>
-
+    ></input>  
      <input type='text'  placeholder="state"
     className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
     onChange={(e)=>setStat(e.target.value)}
@@ -129,7 +124,7 @@ return (
     onChange={(e)=>setCountry(e.target.value)}
     required='true'
     ></input>
-    </StandaloneSearchBox>}
+   
      <input type='text'  placeholder="pincode"
     className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
     onChange={(e)=>setPin(e.target.value)}
@@ -154,3 +149,8 @@ return (
 )
 }
 export default Signup
+
+/* <StandaloneSearchBox
+     onLoad={(ref)=>inputRef.current=ref}
+     onPlacesChanged={handlePc}
+  >*/

@@ -1,7 +1,7 @@
 import {Route,Routes,BrowserRouter}  from 'react-router-dom'
 import Home from './components/Home'
 import Detail from './components/Detail'
-import Login from './components/Login'
+import Login1 from './components/Login1'
 import Signup from './components/Signup '
 import Home1 from './components/Home1'
 import Total from './components/Total'
@@ -42,8 +42,8 @@ const [aitems,setAitems]=useState([])
       <Route index  element={<Home/>}></Route>
       <Route  path='/:slug' element={<Detail/>}></Route>
       <Route  path='/home1/:slug' element={<Detail/>}  ></Route>
-      <Route path='/login'  element={<Login/>}  ></Route>
-      <Route path='/home1/login'  element={<Login url={url}/>}  ></Route>
+      <Route path='/login'  element={<Login1/>}  ></Route>
+      <Route path='/home1/login'  element={<Login1 url={url}/>}  ></Route>
       <Route   path='/list'  element={<List />} ></Route>
       <Route   path='/admin'  element={<Aitem url={url}/>} ></Route>
       <Route   path='/nform'  element={<Nform url={url}/>} ></Route>
