@@ -27,18 +27,18 @@ function Nform(){
      const [fdata,setFdata]=useState()
      function handleC(e){
         const name=e.target.name 
-        let val=e.target.value
-         if(img){
-          
-            val=e.target.files[0].filename
-         }
-         setData(data=>({...data,[name]:val}))
-      }
+        const val=e.target.value
+        
+        setData(data=>({...data,[name]:val}))
+          }
       
-
+     const handleI=(e)=>{
+           setImg(e.target.files[0])
+           setData(data=>({...data,["image"]:e.target.files[0].filename}))
+     }
      async function handleS(e) {
            e.preventDefault()
-           toast('processing....pls wait')
+           //toast('processing....pls wait')
             const fdata1=new FormData()
            fdata1.append('file',img)
            
@@ -46,10 +46,12 @@ function Nform(){
            fdata1.append('cloud_name','dsttk9lau')
            
            
-            const res= await  axios.post('https://api.cloudinary.com/v1_1/dsttk9lau/image/upload',fdata1)
-              const url=res.data.public_id
-              setUrl(url)
-               console.log(url)
+             await  axios.post('https://api.cloudinary.com/v1_1/dsttk9lau/image/upload',fdata1).then(res=>{
+            const url=res.data.public_id
+               setUrl(res.data.public_id)
+                console.log(url)
+            })
+             
             }
     
     return(
@@ -64,7 +66,7 @@ function Nform(){
            { i===1? <span><FaRupeeSign/></span>:<></>  }
            {  i!==3?  <input type={i===6?'file':'text'  } name={item} placeholder={item}
                  className="border-2 border-gray-400 rounded-sm hover:bg-slate-100  text-sm"
-                  onChange={e=>{i===6?setImg(e.target.files[0]):handleC(e)}}
+                  onChange={e=>{i===6?handleI(e):handleC(e)}}
                 ></input>:<></>  } 
              {i===3? citems.map((i,n)=>(<span className={cat===i?dark:light} 
                   onClick={e=>setCat(i)}>{i}</span>))
@@ -79,7 +81,7 @@ function Nform(){
               </div>
      </div>
 </form>
-   {c  &&   <Nitem  data={data}  cat={cat} img={img} url={url} />  }
+   {url  && alert(url) && <Nitem  data={data}  cat={cat} img={img} url={url} />  }
          </>
     )
 }

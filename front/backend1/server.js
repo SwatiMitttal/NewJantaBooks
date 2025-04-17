@@ -42,7 +42,7 @@ app.get('/login',async (req,res)=>{
 
 
 app.post('/aitems',upload.single('img'),async(req,res)=>{
-    const {slug,price,note,rating,cat,disc,imgurl,url}=req.body
+    const {slug,price,note,rating,cat,disc,url}=req.body
     
       const inam=req.file.filename
       const ext=inam.split('.')[1]
