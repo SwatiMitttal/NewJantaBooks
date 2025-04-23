@@ -24,8 +24,8 @@ function Nform(){
      const [cat,setCat]=useState('')
      const [img,setImg]=useState(null)
      const [img2,setImg2]=useState(null)
-      const [url,setUrl]=useState([])
-     
+      const [url,setUrl]=useState('')
+      const [url2,setUrl2]=useState('')
       const [c,setC]=useState(false)
      
      function handleC(e){
@@ -35,26 +35,30 @@ function Nform(){
           }
       
    async function handleS(e) {
+         
            e.preventDefault()
+           const purl='https://res.cloudinary.com/dsttk9lau/image/upload/v1744778904/'
             toast('processing....pls wait')
             const fdata1=new FormData()
             const files1=[]
-            const url1=[]
+            const names=[]
+            
             files1[0]=img
             files1[1]=img2
-           
+            names[0]='.'+img.name.split('.')[1]
+            names[1]='.'+img2.name.split('.')[1]
            fdata1.append('upload_preset','Newjupload')
            fdata1.append('cloud_name','dsttk9lau')
 
            for (const i in files1){
             fdata1.append('file',files1[i])
               await  axios.post('https://api.cloudinary.com/v1_1/dsttk9lau/image/upload',fdata1).then(res=>{
-             url1[i]=res.data.public_id
-             alert(res.data.public_id)
+               i===0?setUrl(purl+res.data.public_id+names[i]):setUrl2(purl+res.data.public_id+names[i])
+               
                 })
            }
-           setUrl(url1)
-         
+           alert(url)
+
             }
 return(
         <>
@@ -69,7 +73,7 @@ return(
           {i===0?<div className="inline-block"></div> :<></>}
            { i===1? <span><FaRupeeSign/></span>:<></>  }
            
-           {  i!==3 || i!==6?  <input type={i===7 || i===8?'file':'text'  } name={item} placeholder={item}
+           {  i!==3 ? <input type={i===7 || i===8?'file':'text'  } name={item} placeholder={item}
                  className="border-2 border-gray-400 rounded-sm hover:bg-slate-100  text-sm ml-1"
                   onChange={e=>{i===7?setImg(e.target.files[0]):i===8?setImg2(e.target.files[0]):handleC(e)}}
                 ></input>:<></>  } 
@@ -91,7 +95,7 @@ return(
      <button  type='submit' className="bg-black font-semibold text-white p-2 rounded-md 
              hover:scale-105 h-7"  onClick={e=>setC(true)}>Add</button>
 </form>
-   { url && c && <Nitem  data={data}  cat={cat} img={img} img2={img2} url={url} />  }
+   { url && url2 && c && <Nitem  data={data}  cat={cat} img={img} img2={img2} url={url} url2={url2}/>  }
          </>
     )
 }
