@@ -45,15 +45,16 @@ app.post('/aitems',upload.array('files'),async(req,res)=>{
     const {slug,price,note,rating,cat,disc,url}=req.body
     
       const inam=req.files[0].filename
+      console.log(inam)
       const ext=inam.split('.')[1]
-       const fname=url+'.'+ext
+       const fname=url[0]+'.'+ext
       let inam2=''
       let ext2=''
       let fname2=''
       if (req.files[1]){
          inam2=req.files[1].filename
          ext2=inam2.split('.')[1]
-         fname2=url+'.'+ext
+         fname2=url[1]+'.'+ext
         }
      
       console.log(fname)

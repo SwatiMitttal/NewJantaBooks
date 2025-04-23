@@ -3,8 +3,6 @@ import axios from "axios"
 import {  useState } from "react"
 import { FaRupeeSign } from "react-icons/fa"
 import Nitem from "./Nitem"
-
-
 function Nform(){
     const light="text-sm bg-amber-300 border-2 border-amber-600 p-1 font-medium hover:scale-105"
     const dark="text-sm bg-amber-500 border-2 border-amber-600 p-1 font-medium hover:scale-105"
@@ -26,35 +24,39 @@ function Nform(){
      const [cat,setCat]=useState('')
      const [img,setImg]=useState(null)
      const [img2,setImg2]=useState(null)
-      const [url,setUrl]=useState('')
+      const [url,setUrl]=useState([])
+     
       const [c,setC]=useState(false)
      
      function handleC(e){
         const name=e.target.name 
         const val=e.target.value
-        
         setData(data=>({...data,[name]:val}))
           }
       
-     
-     async function handleS(e) {
+   async function handleS(e) {
            e.preventDefault()
             toast('processing....pls wait')
             const fdata1=new FormData()
-            const files=[]
-            files[0]=img
-            files[1]=img2
-           fdata1.append('files',files)
+            const files1=[]
+            const url1=[]
+            files1[0]=img
+            files1[1]=img2
+           
            fdata1.append('upload_preset','Newjupload')
            fdata1.append('cloud_name','dsttk9lau')
-           await  axios.post('https://api.cloudinary.com/v1_1/dsttk9lau/image/upload',fdata1).then(res=>{
-            const url=res.data.public_id
-               setUrl(res.data.public_id)
-                console.log(url)
-            })}
 
+           for (const i in files1){
+            fdata1.append('file',files1[i])
+              await  axios.post('https://api.cloudinary.com/v1_1/dsttk9lau/image/upload',fdata1).then(res=>{
+             url1[i]=res.data.public_id
+             alert(res.data.public_id)
+                })
+           }
+           setUrl(url1)
          
-    return(
+            }
+return(
         <>
 <form onSubmit={e=>handleS(e)}>
 <h4 className="text-sm ml-10 font-semibold">Add new Item</h4>
@@ -89,7 +91,7 @@ function Nform(){
      <button  type='submit' className="bg-black font-semibold text-white p-2 rounded-md 
              hover:scale-105 h-7"  onClick={e=>setC(true)}>Add</button>
 </form>
-   { url && c && <Nitem  data={data}  cat={cat} img={img} url={url} />  }
+   { url && c && <Nitem  data={data}  cat={cat} img={img} img2={img2} url={url} />  }
          </>
     )
 }
