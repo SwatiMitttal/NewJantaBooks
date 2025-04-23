@@ -18,7 +18,7 @@ function Nitem(props){
            fdata.append('cat',props.cat)
            fdata.append('disc',props.data.discount)
            fdata.append('url',props.url)
-          const res=await axios.post('http://localhost:4007/aitems',fdata)
+          const res=await axios.post('https://newjvite3.onrender.com/aitems',fdata)
             if(res.status===200){
                 setFlag('item added')}
               }
