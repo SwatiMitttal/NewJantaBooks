@@ -27,6 +27,16 @@ function Mdrop(props){
       onClick={()=>{localStorage.setItem("scat","bottlesm")}}
     
     >BOTTLES</h4></Link>
+
+<Link  to='/home1' >  <h4 className='font-bold text-sm hover:scale-105 gap-2 text-amber-900 mr-6'
+      onClick={()=>{localStorage.setItem("scat","books")}}
+    
+    >POOL-SUMMER</h4></Link>
+
+<Link  to='/home1' >  <h4 className='font-bold text-sm hover:scale-105 gap-2 text-amber-900 mr-6'
+      onClick={()=>{localStorage.setItem("scat","summer")}}
+    
+    >BOOKS</h4></Link>
   
   </div>:<FaSearch/>}</button>
   <div id="dc">

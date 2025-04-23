@@ -8,7 +8,7 @@ import axios from "axios"
 import { setU } from "../store/Users";
 import { useNavigate } from "react-router-dom"
 import Signup from './Signup '
-import LoginButton from "./Login";
+import Login1 from "./Address";
 function Login2(props){
     
     const nav=useNavigate()
@@ -71,7 +71,7 @@ function Login2(props){
       >Submit</button>  }
       
    { !user && c===true?<Signup />:<></>}
-    
+  
   </div>
         <Spanel  />
         <Cartab/>

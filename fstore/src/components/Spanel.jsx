@@ -18,9 +18,7 @@ function Spanel(){
      <View style={styles.cont1}>
         <Image  style={styles.img} source={require('../../assets/nday.jpg')}  ></Image>
         <Text style={styles.txt1}>4-5 Days Dispatch</Text>
-     </View></View>
-
-   )
+     </View></View>)
 }
 
 export default Spanel
@@ -32,7 +30,7 @@ const styles=StyleSheet.create({
       },
     cont1:{
        flexDirection:"column",
-       marginTop:10,
+       marginTop:5,
        marginLeft:10
      },
     img:{

@@ -6,12 +6,9 @@ const cid1='373613249976-9bdfj72fgfri91iersqc30or6osu6h0k.apps.googleusercontent
 function Login(){
 
     const onSuccess=(res)=>{
-        console.log('Login Success',res.profileObj)
-    }
-
+        console.log('Login Success',res.profileObj)}
     const onFailure=(res)=>{
-        console.log('Login Success',res)
-    }
+        console.log('Login Success',res)}
     return(<div id='signInButton'>
 <GoogleLogin
       clientid={cid1}
@@ -25,3 +22,13 @@ function Login(){
 }
 
 export default Login
+
+/*<GoogleLogin
+  onSuccess={credentialResponse => {
+    console.log(credentialResponse);
+  }}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+  useOneTap
+/>  */

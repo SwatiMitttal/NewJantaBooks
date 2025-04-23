@@ -1,14 +1,15 @@
 
 import { useEffect, useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
-import { TextInput,Text,View,Button,StyleSheet } from "react-native";
+import { TextInput,Text,View,StyleSheet } from "react-native";
 import axios from "axios"
-import { ToastAndroid } from "react-native";
+import Button1 from "./Button1";
 import { setU } from "../../store/Users";
 import Signup from './Signup '
 import Totamt from './Totamt'
 import Spanel from './Spanel'
 import Header from './Header'
+import Register from './Register'
 function Log(){
 const [email,setEmail]=useState('');
 const [user,setUser]=useState(false)
@@ -22,7 +23,7 @@ async function handleS(e){
 try{
    const res= await axios.post('https://newjvite3.onrender.com/login',{email:email})
    if(res.status===200) { 
-      alert('user there')
+    
    dispatch(setU({email:res.data.email,
       name:res.data.name,
       passw:res.data.passw,
@@ -45,7 +46,7 @@ useEffect(()=>{
 },[])
    return(
     <>
- <View  style={{flex:1,backgroundColor:"beige"}}>
+ <View  style={{flex:1,backgroundColor:"grainsboro"}}>
        <Header nitems={nitems}/>
     <Text style={styles.txt1}>Enter email</Text>
     <View style={styles.cont1}>
@@ -55,34 +56,30 @@ useEffect(()=>{
     </TextInput>
     
      </View>
-    <View  style={styles.cont3}>
-    <Text  style={styles.txtb}
+      <View  style={{height:20}}></View>
+     <Button1 text='Place Order'
      onPress={e=>handleS(e)}
-     >Place order</Text>
-    
-    </View>
-  <Spanel/>
-   {!user && c?<Signup/>:<></>}
-   {user && c?<Totamt/>:<></>}
+     ></Button1>
+    <Spanel/>
+   {!user && c?<Register mail={email}/>:<></>}
+   
 </View> 
     </>
-   )
-
-}
+   )}
 
 export default Log
 const styles=StyleSheet.create({
      txt1:{ fontWeight:600,
-      color:"darkgoldenrod"},
+      color:"darkcyan"},
   tinput:{
   fontSize:14,
   fontWeight:400,
   backgroundColor:"beige",
   height:59,
   borderRadius:10,
-  borderColor:"darkgoldenrod",
+  borderColor:"darkcyan",
   borderWidth:2,
-  color:"darkgoldenrod"
+  color:"darkcyan"
 },
   txtb:{
     color:"white",
@@ -96,13 +93,13 @@ cont1:{
     marginLeft:10,
     backgroundColor:"beige"
 },
-txt1:{fontWeight:600,color:"darkgoldenrod"},
+txt1:{fontWeight:600,color:"darkcyan"},
 
 cont3:{
    width:90,
    marginLeft:10,
    marginTop:20,
-   backgroundColor:"darkgoldenrod",
+   backgroundColor:"darkcyan",
     padding:8,
     borderRadius:8,
 }

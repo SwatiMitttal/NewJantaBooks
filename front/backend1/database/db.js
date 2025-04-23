@@ -1,5 +1,5 @@
 
-import mongoose, { connect,Schema } from 'mongoose'
+import mongoose, { connect } from 'mongoose'
 
 
 const dbcon= async ()=> {
@@ -11,10 +11,18 @@ try{
 }catch(error){
     console.log(error.message)
 }}
+
+
 const uSchema=mongoose.Schema({
-    email:String,
+    email:{
+      required:true,
+      
+      type:String
+    },
     passw:String,
-    mobile:String,
+    mobile:{
+    required:true,
+    type:String},
     name:String,
     add1:String,
     add2:String,
@@ -32,6 +40,7 @@ const iSchema=mongoose.Schema({
       slug:String,
      price:String,
      imgurl:String,
+     img2:String,
      note:String,
      rating:String,
       img:String,

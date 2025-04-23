@@ -1,7 +1,5 @@
-import { useState } from "react"
+
 import { StyleSheet ,Text,  TouchableOpacity} from "react-native"
-
-
 function Category({item,scat,setScat}){
    
  return(<>
@@ -16,7 +14,7 @@ function Category({item,scat,setScat}){
 export default Category
 const styles=StyleSheet.create({
    text1:{
-    backgroundColor:"darkgoldenrod",
+    backgroundColor:"darkcyan",
      height:40,
       width:100,
       color:"white",

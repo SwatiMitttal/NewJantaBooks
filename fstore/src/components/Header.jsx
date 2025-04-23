@@ -5,20 +5,19 @@ function Header({nitems}){
     const nav=useNavigation()
     return(<>
   
-      <View style={{flex:1,flexDirection:"row",justifyContent:"space-between",margin:10 ,maxHeight:80}}>
-      <ImageBackground  source={require('../../assets/rang/sidedes.jpg')}>
+      <View style={{flex:1,flexDirection:"row",justifyContent:"space-between",margin:5 ,maxHeight:80}}>
+      <ImageBackground  source={require('../../assets/newj/public/brands/probot.jpg')}>
         <View style={{flexDirection:"row"}}>
-     
-       <Text style={styles.title}>Rang & Kesar </Text>
+        <Image  style={styles.img1} source={require('../../assets/newj/public/newjanta.jpeg')}  ></Image>
+       <Text style={styles.title}>New Janta Books & Stationery </Text>
        </View>
-
-      <View style={{flex:1,flexDirection:"row",marginLeft:200 ,borderRadius:10}}>
-      <Image  style={styles.img1} source={require('../../assets/rang/poshaks.jpg')}  ></Image>
-      <Image  style={styles.img1} source={require('../../assets/roli.png')}  ></Image>
+ <View style={{flex:1,flexDirection:"row",marginLeft:200 ,borderRadius:10}}>
+      <Image  style={styles.img1} source={require('../../assets/newj/toys/santa.jpeg')}  ></Image>
+      <Image  style={styles.img1} source={require('../../assets/newj/public/brands/cross_logo.png')}  ></Image>
       </View>
     <View 
-        style={styles.ccart}><Text style={{fontWeight:800,fontSize:14,color:"red"}}>{nitems}</Text><Entypo name={"shopping-cart"}  
-          size={25} color={"darkgoldenrod"}></Entypo>  </View>
+        style={styles.ccart}><Text style={{fontWeight:700,fontSize:16,color:"red"}}>{nitems}</Text><Entypo name={"shopping-cart"}  
+          size={25} color={"darkcyan"}></Entypo>  </View>
          </ImageBackground> 
       </View>
      
@@ -50,6 +49,8 @@ const styles=StyleSheet.create({
         borderRadius:60,
          width:30,
         justifyContent:"center",
+        position:'absolute',
+        marginLeft:300
         
     }
 })

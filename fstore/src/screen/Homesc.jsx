@@ -1,6 +1,6 @@
 
 import { View,StyleSheet,Text,Button,TextInput ,ImageBackground,FlatList,Image,URL} from "react-native"     
-import AntDesign from 'react-native-vector-icons/AntDesign'
+
 import Header  from '../components/Header'
 import { useEffect, useState} from "react"
 import Category from '../components/Category'
@@ -13,12 +13,12 @@ function Homesc(){
   const dispatch=useDispatch()
   
   const [aitems,setAitems]=useState([])
-  const cat=['Most Popular','rakhis','coords','ethnic wear','poshaks']
+  const cat=['Most Popular','rakhis','bags','bottles','stationaery','books']
   const [scat,setScat]=useState(null)
   const [citems,setCitems]=useState([])
   const nitems=useSelector(store=>store.cart.items.length)
    const fprods=async()=>{
-     const res=await axios.get('https://newjvite3.onrender.com/sitems')
+     const res=await axios.get('https://newjvite3.onrender.com/items')
              if(res.status===200){
                const items=res.data
               setAitems(res.data)
@@ -34,7 +34,7 @@ useEffect(()=>{
 
  return(<>
 
-   <View style={{backgroundColor:"burlywood"}}>
+   <View style={{backgroundColor:"white"}}>
   
      <View style={{flexDirection:"row"}}>
            {aitems &&  <FlatList 

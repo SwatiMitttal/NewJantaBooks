@@ -4,7 +4,7 @@ function Nitem(props){
     const [flag,setFlag]=useState('adding item..')
     async function handleS() {
         const fdata=new FormData()
-        alert('hello')
+        
         fdata.append('img',props.img)
         fdata.append('imgurl',props.data.image)
            fdata.append('slug',props.data.name)

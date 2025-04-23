@@ -11,6 +11,7 @@ import {ToastContainer,toast} from 'react-toastify'
 import List from './components/List'
 import Aitem from './components/Aitem'
 import Nform from './components/Nform'
+import Login1 from './components/Address'
 import Rangk from './components/Rangk'
 
 function App() {
@@ -49,6 +50,7 @@ const [aitems,setAitems]=useState([])
       <Route   path='/nform'  element={<Nform url={url}/>} ></Route>
       <Route  path='/rangk'  element={<Rangk/>}  ></Route>
       <Route   path='/signup'  element={<Signup url={url}/>} ></Route>
+      <Route   path='/add'  element={<Login1 url={url}/>} ></Route>
       <Route   path='/totamt'  element={<Total url={url}/>}  ></Route>
       </Routes>
       

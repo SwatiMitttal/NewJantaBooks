@@ -3,10 +3,9 @@ import {Link} from 'react-router-dom'
 
 import { useDispatch,useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { toast } from "react-toastify"
+import Address from "./Address"
 
-import { GoogleMap, StandaloneSearchBox, useJsApiLoader } from '@react-google-maps/api'
-import axios from 'axios'
+
 import { FaEye } from "react-icons/fa"
 import { setU } from "../store/Users"
 function Signup({url}){
@@ -39,21 +38,11 @@ function Signup({url}){
       country:country, pin:pin,newu:true}
       dispatch(setU(user1))
         nav('/totamt')}
-          
-
-        const { isLoaded } = useJsApiLoader({
-          id: 'google-map-script',
-          googleMapsApiKey: 'AIzaSyA-yOjY6-NDpkMWFhSr2gC0UtZuyc69qXs',
-          libraries:["places"]
-        })
-    const handleC=()=>{
+  const handleC=()=>{
    tt==='text'?setTt('password'):setTt('text')
  }
 
- const handlePc=()=>{
-    let add=inputRef.current.getPlaces()
-    console.log(add)
- }
+ 
 return (
     <>
   
@@ -65,17 +54,16 @@ return (
       
     <div className="inline-block">
    {ffields.map((item,ind)=>(<div>
-    <label className="  text-white ml-10 mt-2 p-1 w-100 rounded-lg bg-slate-800 text-sm ">{item}</label>
+    <label className="  text-white ml-10 mt-2 p-1 w-200 h-30 rounded-lg bg-slate-800 text-sm ">{item}</label>
     </div>))}
-
-    </div>
+</div>
     <div  className='block'  >
     <input type='text'  key='name' placeholder="name"
     className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
     onChange={(e)=>setName(e.target.value)}
     required='true'
     ></input>
-
+     
      <input type='email' key='email' placeholder="email" 
     className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
     onChange={(e)=>setEmail(e.target.value)}
@@ -96,41 +84,22 @@ return (
     required='true'
     ></input>
    
- 
-     <input type='text'  placeholder="add1"
-    className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
-    onChange={(e)=>setAdd1(e.target.value)}
-    required='true'
-    ></input>
+   <Address  pc='address1'  onChange={(e)=>setAdd1(e.target.value)} />
+   <Address  pc='address2'  onChange={(e)=>setAdd2(e.target.value)}/>
+   <Address  pc='city'  onChange={(e)=>setCity(e.target.value)}/>
+   <Address  pc='state' onChange={(e)=>setStat(e.target.value)} />
+   <Address  pc='country'  onChange={(e)=>setCountry(e.target.value)}
+    />
     
-     <input type='text' placeholder="add2"
-    className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
-    onChange={(e)=>setAdd2(e.target.value)}
-    required='true'
-    ></input>
-      <input type='text'  placeholder="city"
-    className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
-    onChange={(e)=>setCity(e.target.value)}
-    required='true'
-    ></input>  
-     <input type='text'  placeholder="state"
-    className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
-    onChange={(e)=>setStat(e.target.value)}
-    required='true'
-    ></input>
-
-     <input type='text'   placeholder="country"
-    className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
-    onChange={(e)=>setCountry(e.target.value)}
-    required='true'
-    ></input>
+    
+    
    
      <input type='text'  placeholder="pincode"
     className='ml-6 text-gray-950 p-2  h-5 rounded-lg bg-slate-200 hover:bg-slate-100'
     onChange={(e)=>setPin(e.target.value)}
     required='true'
     ></input>
-  <br></br><br></br>
+  <br></br>
   </div>
     </div>
  

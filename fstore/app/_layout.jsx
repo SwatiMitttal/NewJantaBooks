@@ -2,8 +2,8 @@ import { Stack } from "expo-router";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Text, View,StyleSheet,Image} from "react-native";
-import AntDesign from 'react-native-vector-icons/AntDesign'
-import Entypo from 'react-native-vector-icons/Entypo'
+import AntDesign from '@expo/vector-icons/AntDesign'
+import Entypo from '@expo/vector-icons/Entypo'
 
 import Homesc from "../src/screen/Homesc"
 import Log from '../src/components/Log'
@@ -22,8 +22,7 @@ export default function RootLayout() {
     )
   }
   
-  
-  return <>
+return <>
   
   <Provider store={appStore} >
    <tab.Navigator  screenOptions={{
@@ -31,14 +30,14 @@ export default function RootLayout() {
     tabBarShowLabel:false
   }}>
         <tab.Screen name="Home" component={Homesc} options={
-          { tabBarIcon:()=>{return <AntDesign name={"home"} size={25} color={"darkgoldenrod"}></AntDesign>}}
+          { tabBarIcon:()=>{return <AntDesign name={"home"} size={25} color={"darkcyan"}></AntDesign>}}
          }/>
         <tab.Screen name="Account" component= {Log} options={
-          { tabBarIcon:()=>{return <Entypo name={"user"} size={25} color={"darkgoldenrod"}></Entypo>}}
+          { tabBarIcon:()=>{return <Entypo name={"user"} size={25} color={"darkcyan"}></Entypo>}}
          }></tab.Screen>
 
         <tab.Screen name="Total" component= {Totamt} options={
-          { tabBarIcon:()=>{return <FontAwesome5 name={"gift"}    size={25} color={"darkgoldenrod"}></FontAwesome5>}}
+          { tabBarIcon:()=>{return <FontAwesome5 name={"gift"}    size={25} color={"darkcyan"}></FontAwesome5>}}
          }></tab.Screen>
  </tab.Navigator>
  

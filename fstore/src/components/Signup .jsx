@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { useDispatch,useSelector } from "react-redux"
-import {View,TextInput,Text,StyleSheet,Button,} from 'react-native'
+import {View,TextInput,Text,StyleSheet} from 'react-native'
 
 import axios from 'axios'
 
 import { setU } from "../../store/Users"
 function Signup({url}){
    
-  const [isSignup,SetisSignup]=useState(false)
+  
   const [email,setEmail]=useState('')
   const [mobile,setMobile]=useState('')
   const [passw,setPassw]=useState('')
@@ -24,7 +24,7 @@ function Signup({url}){
   const [data,setData]=useState({})
   
   const dispatch=useDispatch()
-  const emaill=useSelector(store=>store.users.user)
+
   async function handleS(e){
     e.preventDefault()
     const user1= {
@@ -40,8 +40,7 @@ function Signup({url}){
        }}
       
 const handleC=(e)=>{
-     
-    let nam=e.target.name
+     let nam=e.target.name
     let val=e.target.value
     setData(data=>({...data,[nam]:val}))
  }
@@ -55,7 +54,7 @@ return (<>
         <View style={{flexDirection:"row"}}>
          <Text style={styles.txt}>{item}</Text>
          <TextInput  name={item} style={styles.tinput} 
-             onChange={e=>handleC(e)}  placeholder={item}
+             onChangeText={e=>handleC(e)}  placeholder={item}
          ></TextInput></View>
     ))}
   </View>
@@ -70,7 +69,7 @@ export default Signup
 const styles=StyleSheet.create({
   txt:{
     fontWeight:600,
-    color:"darkgoldenrod",
+    color:"darkcyan",
     padding:2,
   },
   cont1:{
@@ -78,8 +77,8 @@ const styles=StyleSheet.create({
     flexDirection:"row"
   },
   tinput:{
-      color:"darkgoldenrod",
-      borderColor:"darkgoldenrod",
+      color:"darkcyan",
+      borderColor:"darkcyan",
       borderWidth:2,
       height:20,
       borderRadius:6,
@@ -92,7 +91,7 @@ const styles=StyleSheet.create({
   contr:{
     position:"absolute",
     marginLeft:340,
-    backgroundColor:"darkgoldenrod",
+    backgroundColor:"darkcyan",
     color:"white",
     padding:6,
     borderRadius:6,

@@ -38,7 +38,7 @@ function Pcart({item}){
 return(
   
          <View style={styles.container} onPress={e=>handleS(e)}>
-           <Text style={{fontWeight:600,color:"darkgoldenrod"}}>{slug}</Text>
+           <Text style={{fontWeight:600,color:"darkcyan"}}>{slug}</Text>
            <Text style={styles.note}>
              <FontAwesome5 name={"rupee-sign"} size={15} color={"darkcyan"}></FontAwesome5>    
              <Text style={styles.stxt}>{item.price}</Text> {item.price- (item.disc?item.disc:.2*item.price)}</Text> 
@@ -46,11 +46,9 @@ return(
                 > <Text style={styles.txt1}
               onPress={e=>handleA(e) } 
              >Add to Cart</Text>  </View>
-            <Image style={styles.img} source={{uri:item.imgurl}} 
-                >
+            <Image style={styles.img} source={{uri:item.imgurl}} >
           </Image>
-         
-           </View>
+         </View>
   
            )}
 
@@ -66,7 +64,7 @@ const styles=StyleSheet.create({
      marginLeft:10,
   },
   cont1:{
-      backgroundColor:"darkgoldenrod",
+      backgroundColor:"darkcyan",
        height:30,
        width:100,
        borderRadius:10,
@@ -75,7 +73,7 @@ const styles=StyleSheet.create({
    },
   
  cont2:{
-  backgroundColor:"goldenrod",
+  backgroundColor:"darkcyan",
    height:30,
    width:100,
    borderRadius:10,

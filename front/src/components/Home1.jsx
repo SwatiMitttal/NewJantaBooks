@@ -10,7 +10,7 @@ function Home1(props){
        const [aitems,setAitems]=useState([])
  async function fitems(){
       try{
-        const res= await axios.post('https://newjvite2.onrender.com/items',{cat})
+        const res= await axios.post('https://newjvite3.onrender.com/items',{cat})
           if (res.status===200){
            setCitems(res.data)
           }
