@@ -3,11 +3,11 @@ import axios from "axios"
 import {  useState } from "react"
 import { FaRupeeSign } from "react-icons/fa"
 import Nitem from "./Nitem"
-import { useNavigate } from "react-router-dom"
+
 function Nform(){
     const light="text-sm bg-amber-300 border-2 border-amber-600 p-1 font-medium hover:scale-105"
     const dark="text-sm bg-amber-500 border-2 border-amber-600 p-1 font-medium hover:scale-105"
-    const litems=['name','price','rating','category','discount','note','count','image','image2']
+    const litems=['name','price','rating','category','discount','note','count','image']
     const citems=['bags','toys','rakhis','stationery','bottles','brands','books','poshaks','pool-summer-wear','pool-summer-accessories']
 
      const [data,setData]=useState({
@@ -24,42 +24,35 @@ function Nform(){
     
      const [cat,setCat]=useState('')
      const [img,setImg]=useState(null)
-     const [img2,setImg2]=useState(null)
-      const [url,setUrl]=useState('')
-      const [url2,setUrl2]=useState('')
-      const [c,setC]=useState(false)
-     
+     const [c,setC]=useState(false)
+      let [url,setUrl]=useState('')
+      
      function handleC(e){
         const name=e.target.name 
         const val=e.target.value
         setData(data=>({...data,[name]:val}))
           }
-      
+   
    async function handleS(e) {
          
            e.preventDefault()
-           const purl='https://res.cloudinary.com/dsttk9lau/image/upload/v1744778904/'
             toast('processing....pls wait')
             const fdata1=new FormData()
-            const files1=[]
-            const names=[]
             
-            files1[0]=img
-            files1[1]=img2
-            names[0]='.'+img.name.split('.')[1]
-            names[1]='.'+img2.name.split('.')[1]
+           
            fdata1.append('upload_preset','Newjupload')
            fdata1.append('cloud_name','dsttk9lau')
-
-           for (const i in files1){
-            fdata1.append('file',files1[i])
-              await  axios.post('https://api.cloudinary.com/v1_1/dsttk9lau/image/upload',fdata1).then(res=>{
-               
-               const url1=res.data.public_id
-                i===0?setUrl(res.data.public_id):setUrl2(res.data.public_id)
-                 console.log(url)
-               })
-           }}
+           fdata1.append('file',img)
+           
+             const res= await  axios.post('https://api.cloudinary.com/v1_1/dsttk9lau/image/upload',fdata1)
+              if(res.data){
+               setUrl (res.data.public_id)
+               console.log(url)
+              }
+           }
+         
+         
+ 
 return(
         <>
 <form onSubmit={e=>handleS(e)}>
@@ -73,16 +66,15 @@ return(
           {i===0?<div className="inline-block"></div> :<></>}
            { i===1? <span><FaRupeeSign/></span>:<></>  }
            
-           {  i!==3 ? <input type={i===7 || i===8?'file':'text'  } name={item} placeholder={item}
+           {  i!==3 ? <input type={i===7 ?'file':'text'  } name={item} placeholder={item}
                  className="border-2 border-gray-400 rounded-sm hover:bg-slate-100  text-sm ml-1"
-                  onChange={e=>{i===7?setImg(e.target.files[0]):i===8?setImg2(e.target.files[0]):handleC(e)}}
+                  onChange={e=>{i===7?setImg(e.target.files[0]):handleC(e)}}
                 ></input>:<></>  } 
 
 <div className="inline-block ml-1">
               {i===7?<>  <img alt='' src={img?URL.createObjectURL(img):'../../up.png'}
                className="h-20 w-20 rounded-sm ml-25" ></img></>    :<></>    }
-              { i===8?<>  <img alt='' src={img2?URL.createObjectURL(img2):'../../up.png'}
-               className="h-20 w-20 rounded-sm ml-25" ></img></>    :<></>    }
+             
 
           </div>
                {i===3? citems.map((i,n)=>(<span className={cat===i?dark:light} 
@@ -93,9 +85,9 @@ return(
           
      </div>
      <button  type='submit' className="bg-black font-semibold text-white p-2 rounded-md 
-             hover:scale-105 h-7"  onClick={e=>setC(true)}>Add</button>
+             hover:scale-105 h-7" onClick={e=>handleC(e)}>Add</button>
 </form>
-   { url  && c && <Nitem  data={data}  cat={cat} img={img} img2={img2} url={url} url2={url2}/>  }
+   { url &&  c && <Nitem  data={data}  cat={cat} img={img}  url={url} />  }
          </>
     )
 }

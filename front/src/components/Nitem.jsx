@@ -4,17 +4,15 @@ function Nitem(props){
     const [flag,setFlag]=useState('adding item..')
     async function handleS() {
         const fdata=new FormData()
-        const files=[]
-        files[0]=props.img
-        files[1]=props.img2
-    
+        
+       
         fdata.append('img',props.img)
          fdata.append('slug',props.data.name)
            fdata.append('note',props.data.note)
            fdata.append('price',props.data.price)
            fdata.append('rating',props.data.rating)
            fdata.append('cat',props.cat)
-           fdata.append('url2',props.url2)
+           
            fdata.append('disc',props.data.discount)
            fdata.append('cbot',props.data.count)
            fdata.append('url',props.url)
@@ -38,16 +36,3 @@ function Nitem(props){
 
 export default Nitem
 
-/*
- fdata.append('img',props.img)
-         fdata.append('imgurl',props.data.image)
-            fdata.append('slug',props.data.name)
-            fdata.append('note',props.data.note)
-            fdata.append('price',props.data.price)
-            fdata.append('rating',props.data.rating)
-            fdata.append('cat',props.cat)
-            fdata.append('disc',props.data.discount)
-            fdata.append('url',props.url)
-           const res=await axios.post('https://newjvite3.onrender.com/aitems',fdata)
-             if(res.status===200){
-                 setFlag('item added')}*/

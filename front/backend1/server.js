@@ -173,28 +173,19 @@ app.post('/ritems',cors(),async(req,res)=>{
 })
 
 
-app.post('/aitems',upload.single('file'),async(req,res)=>{
-    const {slug,price,note,rating,cat,disc,url,url2,cbot}=req.body
+app.post('/aitems',upload.single('img'),async(req,res)=>{
+    const {slug,price,note,rating,cat,disc,url,cbot}=req.body
    
     const inam=req.file.filename
-    //const inam=req.files[0].filename
-    const ext=inam.split('.')[1]
+   const ext=inam.split('.')[1]
     const fname=url+'.'+ext
-    
-    let inam2=''
-    let ext2=''
-    let fname2=''
-    if (req.files[1]){
-       inam2=req.files[1].filename
-       ext2=inam2.split('.')[1]
-       fname2=url+'.'+ext
-      }
+    console.log(url)
    
     console.log(fname)
     const nimg={ 
         slug:slug,
         imgurl:`https://res.cloudinary.com/dsttk9lau/image/upload/v1744778904/${fname}`,
-        img2:`https://res.cloudinary.com/dsttk9lau/image/upload/v1744778904/${fname2}`,
+       
         cat:cat,
         price:price,
         note:note,
@@ -213,35 +204,5 @@ app.post('/aitems',upload.single('file'),async(req,res)=>{
 
 
 
-/*app.post('/aitems',upload.single('img'),async(req,res)=>{
- app.post('/aitems',upload.array('files'),async(req,res)=>{
-     const {slug,price,note,rating,cat,disc,url}=req.body
- 
-       const inam=req.file.filename
-       const inam=req.files[0].filename
-       const ext=inam.split('.')[1]
-       const fname=url+'.'+ext
-        const fname=url+'.'+ext
-       let inam2=''
-       let ext2=''
-       let fname2=''
-       if (req.files[1]){
-          inam2=req.files[1].filename
-          ext2=inam2.split('.')[1]
-          fname2=url+'.'+ext
-         }
-      
-       console.log(fname)
-      const nimg={ 
-         slug:slug,
-         imgurl:`https://res.cloudinary.com/dsttk9lau/image/upload/v1744778904/${fname}`,
-         img2:`https://res.cloudinary.com/dsttk9lau/image/upload/v1744778904/${fname2}`,
-         cat:cat,
-         price:price,
-         note:note,
-         rating:rating,
-         disc:disc
-         disc:disc,
-         cbot:cbot
-     }
-     console.log("Item added",nimg)  */
+
+        
