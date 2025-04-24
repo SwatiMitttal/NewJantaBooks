@@ -46,6 +46,7 @@ function Nform(){
            
              const res= await  axios.post('https://api.cloudinary.com/v1_1/dsttk9lau/image/upload',fdata1)
               if(res.data){
+               const url=res.data.public_id
                setUrl (res.data.public_id)
                console.log(url)
               }
@@ -85,7 +86,7 @@ return(
           
      </div>
      <button  type='submit' className="bg-black font-semibold text-white p-2 rounded-md 
-             hover:scale-105 h-7" onClick={e=>handleC(e)}>Add</button>
+             hover:scale-105 h-7" onClick={e=>setC(true)}>Add</button>
 </form>
    { url &&  c && <Nitem  data={data}  cat={cat} img={img}  url={url} />  }
          </>

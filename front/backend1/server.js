@@ -185,7 +185,6 @@ app.post('/aitems',upload.single('img'),async(req,res)=>{
     const nimg={ 
         slug:slug,
         imgurl:`https://res.cloudinary.com/dsttk9lau/image/upload/v1744778904/${fname}`,
-       
         cat:cat,
         price:price,
         note:note,
