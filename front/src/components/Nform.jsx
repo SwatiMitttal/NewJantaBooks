@@ -3,6 +3,7 @@ import axios from "axios"
 import {  useState } from "react"
 import { FaRupeeSign } from "react-icons/fa"
 import Nitem from "./Nitem"
+import { useNavigate } from "react-router-dom"
 function Nform(){
     const light="text-sm bg-amber-300 border-2 border-amber-600 p-1 font-medium hover:scale-105"
     const dark="text-sm bg-amber-500 border-2 border-amber-600 p-1 font-medium hover:scale-105"
@@ -53,13 +54,12 @@ function Nform(){
            for (const i in files1){
             fdata1.append('file',files1[i])
               await  axios.post('https://api.cloudinary.com/v1_1/dsttk9lau/image/upload',fdata1).then(res=>{
-               i===0?setUrl(purl+res.data.public_id+names[i]):setUrl2(purl+res.data.public_id+names[i])
                
-                })
-           }
-           alert(url)
-
-            }
+               const url1=res.data.public_id
+                i===0?setUrl(res.data.public_id):setUrl2(res.data.public_id)
+                 console.log(url)
+               })
+           }}
 return(
         <>
 <form onSubmit={e=>handleS(e)}>
@@ -95,7 +95,7 @@ return(
      <button  type='submit' className="bg-black font-semibold text-white p-2 rounded-md 
              hover:scale-105 h-7"  onClick={e=>setC(true)}>Add</button>
 </form>
-   { url && url2 && c && <Nitem  data={data}  cat={cat} img={img} img2={img2} url={url} url2={url2}/>  }
+   { url  && c && <Nitem  data={data}  cat={cat} img={img} img2={img2} url={url} url2={url2}/>  }
          </>
     )
 }

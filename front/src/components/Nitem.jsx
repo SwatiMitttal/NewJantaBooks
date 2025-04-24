@@ -8,7 +8,7 @@ function Nitem(props){
         files[0]=props.img
         files[1]=props.img2
     
-        fdata.append('file',props.img)
+        fdata.append('img',props.img)
          fdata.append('slug',props.data.name)
            fdata.append('note',props.data.note)
            fdata.append('price',props.data.price)
@@ -19,15 +19,14 @@ function Nitem(props){
            fdata.append('cbot',props.data.count)
            fdata.append('url',props.url)
            console.log(fdata)
+           alert('hello')
           const res=await axios.post('https://newjvite3.onrender.com/aitems',fdata)
             if(res.status===200){
                 setFlag('item added')}
               }
 
         useEffect(()=>{
-            handleS()
-
-        },[])
+            handleS() },[])
     return(
         <>
         <p className="font-semibold">{flag}</p>
@@ -38,3 +37,17 @@ function Nitem(props){
 }
 
 export default Nitem
+
+/*
+ fdata.append('img',props.img)
+         fdata.append('imgurl',props.data.image)
+            fdata.append('slug',props.data.name)
+            fdata.append('note',props.data.note)
+            fdata.append('price',props.data.price)
+            fdata.append('rating',props.data.rating)
+            fdata.append('cat',props.cat)
+            fdata.append('disc',props.data.discount)
+            fdata.append('url',props.url)
+           const res=await axios.post('https://newjvite3.onrender.com/aitems',fdata)
+             if(res.status===200){
+                 setFlag('item added')}*/

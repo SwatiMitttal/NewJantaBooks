@@ -70,7 +70,7 @@ function Login2(props){
      rounded-md hover:bg-amber-900"  onClick={handleS}
       >Submit</button>  }
       
-   { !user && c===true?<Signup />:<></>}
+   { !user && c===true?<Signup mail={email} />:<></>}
   
   </div>
         <Spanel  />

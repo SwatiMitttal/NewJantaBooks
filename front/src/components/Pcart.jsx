@@ -4,12 +4,14 @@ import {useDispatch}  from 'react-redux'
 import { FaRupeeSign,FaCartPlus } from 'react-icons/fa'
 import Rating from './Rating'
 import { addItem } from '../store/Cart'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { toast } from 'react-toastify'
 
+import SimpleImageSlider from 'react-simple-image-slider'
+
 function Pcart(props){
-    const {_id,note,cat,count,imgurl,rating,price,slug,disc}=props.data
-   
+    const {_id,note,cat,count,imgurl,img2,rating,price,slug,disc}=props.data
+    const images=[{url:imgurl},{url:img2}]
     const dispatch=useDispatch()
     const [cbot,setCbot]=useState(0)
     const light='w-5 h text-red-700  text-center align-center text-bold hover:bg-green-100 rounded-md border-2 hover:bg-green-200 border-red-700'
@@ -22,6 +24,7 @@ function Pcart(props){
             quantity:1,
             price:price,
             imgurl:imgurl,
+            img2:img2,
             note:note,
             cbot:cbot,
             rating:rating,
@@ -34,8 +37,14 @@ return(
         <p className='text-sm text-amber-700 font-semibold'>{slug}</p>
           <Link  to={slug}>
             <br></br>
-        <img   src={imgurl} alt='' className='h-60 w-60 object-contain 
-  rounded-xl object-top hover:scale-105' ></img>   
+      <SimpleImageSlider     width={250}
+        height={250}
+        borderRadius={10}
+        images={images}
+        showBullets={true}
+        showNavs={true}  />
+        
+       
       </Link>
       {cat==='bottlesm'?  <>
   <h4 className="text-green-900 ">PICK BOTTLE</h4>
@@ -65,3 +74,6 @@ return(
 }
 
 export default Pcart
+
+/* <img   src={imgurl} alt='' className='h-60 w-60 object-contain 
+  rounded-xl object-top hover:scale-105' ></img>  */
