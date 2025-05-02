@@ -16,6 +16,13 @@
       }
     },
     "android": {
+      
+        "config": {
+          "googleMaps": {
+            "apiKey": "AIzaSyCQxWEFRtkp67knHFCEHquvqaaC4LoVRp8"
+          }
+        },
+      
       "adaptiveIcon": {
         "foregroundImage": "./assets/newjanta.png",
         "backgroundColor": "#ffffff"

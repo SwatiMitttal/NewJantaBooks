@@ -4,7 +4,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { Text, View,StyleSheet,Image} from "react-native";
 import AntDesign from '@expo/vector-icons/AntDesign'
 import Entypo from '@expo/vector-icons/Entypo'
-
+import 'react-native-get-random-values'
 import Homesc from "../src/screen/Homesc"
 import Log from '../src/components/Log'
 import { Provider, useSelector } from "react-redux"

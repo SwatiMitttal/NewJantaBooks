@@ -2,9 +2,9 @@ import { Text, View,StyleSheet,Button } from "react-native";
 //android:373613249976-g6pb5m6flcv1pvucef2gocm9ohr3qh5u.apps.googleusercontent.com
 //web:373613249976-9bdfj72fgfri91iersqc30or6osu6h0k.apps.googleusercontent.com
 import * as Browser from 'expo-web-browser'
-import * as Google from 'expo-auth-session/providers/google'
+//import * as Google from 'expo-auth-session/providers/google'
 import { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 Browser.maybeCompleteAuthSession()
 export default function Index() {

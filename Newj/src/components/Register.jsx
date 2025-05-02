@@ -1,39 +1,38 @@
 
 import { useState,useRef } from "react"
 import { useDispatch } from "react-redux"
-import {View,TextInput,Text,StyleSheet,Button} from 'react-native'
+import {View,TextInput,Text,StyleSheet} from 'react-native'
 import { StandaloneSearchBox ,useJsApiLoader} from "@react-google-maps/api"
 import axios from 'axios'
 import { setU } from "../../store/Users"
 import Button1 from './Button1'
+
+import { GooglePlacesAutocomplete}  from 'react-native-google-places-autocomplete'
 function Register(props){
     const [add,onChangeText]=useState('')
   
     const iref=useRef()
     const handlePc=()=>{
         let add=iref.current.getPlaces()
-        const len=add[0].formatted_address.split(',').length
-        const details=add[0].formatted_address.split(',')
-          setPin(details[len-1])
-          setCountry(details[len-2])
-          setState(details[len-3])
-          setCity(details[len-4])
-          setAdd1(details.slice(0,len-5))
-       }
+        const det=add[0].address_components
+        const len=det.length
+        console.log(det[1])
+              setPin(det[len-1].short_name)
+                  setCountry(det[len-2].long_name)
+                  setStat(det[len-3].long_name)
+                  setCity(det[len-4].short_name)
+                  setAdd1(det[0].long_name+det[1].long_name+det[2].long_name)
+        }
+       
       
-     const { isLoaded } = useJsApiLoader({
-               id: 'google-map-script',
-               googleMapsApiKey: 'AIzaSyA-yOjY6-NDpkMWFhSr2gC0UtZuyc69qXs',
-               libraries:['places']
-             })
-
+    
    const [name,setName]=useState('')
      const [email,setEmail]=useState('')
      const [passw,setPassw]=useState('')
      const [mobile,setMobile]=useState('')
      const [pin,setPin]=useState('')
      const [country,setCountry]=useState('')
-     const [state,setState]=useState('')
+     const [stat,setStat]=useState('')
      const [city,setCity]=useState('')
      const [add1,setAdd1]=useState('')
       const ffields=['name','email','password','mobile','address'];
@@ -44,7 +43,7 @@ function Register(props){
         const user1= {
           name:name,email:props.mail,
           passw:passw,mobile:mobile,
-          add1:add1,pin:pin,country:country,city:city,stat:state,newu:true}
+          add1:add1,pin:pin,country:country,city:city,stat:stat,newu:true}
           dispatch(setU(user1))
           alert(user1.country)
           const res=await axios.post('https://newjvite3.onrender.com/signup',user1)
@@ -82,16 +81,21 @@ function Register(props){
               value={mobile} 
               style={styles.tinput} 
                />
-              { isLoaded &&  <StandaloneSearchBox
-                 onLoad={(ref)=>iref.current=ref}
-                 onPlacesChanged={handlePc}>
+
+               <GooglePlacesAutocomplete  
+                  placeholder="address"
+                  onPress={(data,detail=null)=>{
+                    console.log(data)
+                  }}
+
+                query={{
+                  key:'AIzaSyCQxWEFRtkp67knHFCEHquvqaaC4LoVRp8',
+                  language:'en'
+                }}
+
                 
-                    <TextInput  placeholder='address'
-                             onChangeText={onChangeText}  
-                             value={add} 
-                             style={styles.tinput1} 
-                              />
-                 </StandaloneSearchBox>}
+               ></GooglePlacesAutocomplete>
+           
                  </View>
              </View>
   <Button1 text="Submit"  onPress={e=>handleS(e)}  />
@@ -141,5 +145,26 @@ const styles=StyleSheet.create({
      color:"darkcyan"
    },
 })
+
+/*   { isLoaded &&  <StandaloneSearchBox
+                 onLoad={(ref)=>iref.current=ref}
+                 onPlacesChanged={handlePc}>
+                
+                    <TextInput  placeholder='address'
+                             onChangeText={onChangeText}  
+                             value={add} 
+                             style={styles.tinput1} 
+                              />
+                 </StandaloneSearchBox>}
+
+
+                  const { isLoaded } = useJsApiLoader({
+               id: 'google-map-script',
+               //apikeyandroid:'AIzaSyCQxWEFRtkp67knHFCEHquvqaaC4LoVRp8'
+               googleMapsApiKey: 'AIzaSyA-yOjY6-NDpkMWFhSr2gC0UtZuyc69qXs',
+               googleMapsApiKey:'AIzaSyCQxWEFRtkp67knHFCEHquvqaaC4LoVRp8',
+               libraries:['places']
+             }) */
+
 
 

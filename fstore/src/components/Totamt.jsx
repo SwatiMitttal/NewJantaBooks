@@ -7,7 +7,7 @@ import Header from "./Header"
 import But from './But'
 import Button1 from "./Button1"
 function Totamt(props){
-const payl='https://razorpay.me/@rangkesar'
+const payl='https://razorpay.me/@newjantabooks'
 const citems=useSelector(store=>store.cart.items)
 const tamt=useSelector(store=>store.cart.totamt)
 const dets=useSelector(store=>store.users.user)

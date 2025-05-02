@@ -23,7 +23,7 @@ async function handleS(e){
 try{
    const res= await axios.post('https://newjvite3.onrender.com/login',{email:email})
    if(res.status===200) { 
-    
+    alert('user registered')
    dispatch(setU({email:res.data.email,
       name:res.data.name,
       passw:res.data.passw,
@@ -57,10 +57,10 @@ useEffect(()=>{
     
      </View>
       <View  style={{height:20}}></View>
-     <Button1 text='Place Order'
+   {!user && c?<></> : <Button1 text='Place Order'
      onPress={e=>handleS(e)}
-     ></Button1>
-    <Spanel/>
+     ></Button1>   }
+   {!user && c ?<></>:<Spanel/>      }
    {!user && c?<Register mail={email}/>:<></>}
    
 </View> 

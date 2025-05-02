@@ -102,7 +102,7 @@ return (
 
        <br></br>   
                  
-  <Link to ='https://razorpay.me/@rangkesar'>  <button  className='rounded-md bg-amber-600
+  <Link to ='https://razorpay.me/@newjantabooks'>  <button  className='rounded-md bg-amber-600
    hover:bg-amber-900 text-white 
   font-semibold text-md   p-3 ml-8 w-40'
   onClick={handleC}

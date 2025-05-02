@@ -7,7 +7,7 @@ function Ritemm(){
     const [ritems,setRitems]=useState([])
     const [check,setCheck]=useState(false)
     async function fitems(){ try{
-        const res= await axios.get('https://newjvite2.onrender.com/items')
+        const res= await axios.get('https://newjvite3.onrender.com/items')
         if (res.status===200){
            setAitems(res.data)
            
@@ -29,7 +29,7 @@ const handleRem= async ()=>{
       toast(`deleting ...${ritems.length} items`)
       const res=await axios.post('https://newjvite3.onrender.com/ritems',{ritems:ritems})
          if (res.status===200){
-          //toast('selected items deleted successfully')
+          toast('selected item deleted successfully')
           //fitems()
          }}catch(e){
           console.log(e.message)
@@ -42,9 +42,7 @@ const handleRem= async ()=>{
             const t=[]
              for (i=0;i<ritems.length;i++){
                     t[i]=aitems.find(item=>item.id===ritems[i])}
-                   
-           
-            setRitems([])
+                   setRitems([])
             toast(t)
         }catch(e){
             console.log(e.message)

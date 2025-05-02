@@ -37,14 +37,9 @@ return(
         <p className='text-sm text-amber-700 font-semibold'>{slug}</p>
           <Link  to={slug}>
             <br></br>
-      <SimpleImageSlider     width={250}
-        height={250}
-        borderRadius={10}
-        images={images}
-        showBullets={true}
-        showNavs={true}  />
-        
-       
+
+  <img   src={imgurl} alt='' className='h-50 w-50 object-contain 
+  rounded-xl object-top hover:scale-105' ></img>
       </Link>
       {cat==='bottlesm'?  <>
   <h4 className="text-green-900 ">PICK BOTTLE</h4>
@@ -75,5 +70,9 @@ return(
 
 export default Pcart
 
-/* <img   src={imgurl} alt='' className='h-60 w-60 object-contain 
-  rounded-xl object-top hover:scale-105' ></img>  */
+/* <SimpleImageSlider     width={250}
+        height={250}
+        borderRadius={10}
+        images={images}
+        showBullets={true}
+        showNavs={true}  />  */

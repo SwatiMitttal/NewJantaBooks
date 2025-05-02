@@ -1,4 +1,4 @@
-import { View,Text  ,Image,StyleSheet ,ImageBackground  }    from   "react-native"
+import { View,Text  ,Image,StyleSheet  }    from   "react-native"
 import Entypo from 'react-native-vector-icons/Entypo'
 import { useNavigation } from "expo-router"
 function Header({nitems}){
@@ -6,7 +6,7 @@ function Header({nitems}){
     return(<>
   
       <View style={{flex:1,flexDirection:"row",justifyContent:"space-between",margin:5 ,maxHeight:80}}>
-      <ImageBackground  source={require('../../assets/newj/public/brands/probot.jpg')}>
+     
         <View style={{flexDirection:"row"}}>
         <Image  style={styles.img1} source={require('../../assets/newj/public/newjanta.jpeg')}  ></Image>
        <Text style={styles.title}>New Janta Books & Stationery </Text>
@@ -18,7 +18,7 @@ function Header({nitems}){
     <View 
         style={styles.ccart}><Text style={{fontWeight:700,fontSize:16,color:"red"}}>{nitems}</Text><Entypo name={"shopping-cart"}  
           size={25} color={"darkcyan"}></Entypo>  </View>
-         </ImageBackground> 
+        
       </View>
      
     </>)
@@ -50,11 +50,11 @@ const styles=StyleSheet.create({
          width:30,
         justifyContent:"center",
         position:'absolute',
-        marginLeft:300
+        marginLeft:310
         
     }
 })
 
-/*
-      onStartShouldSetResponder={true}
-          // onResponderGrant={nav.navigate('Account')}     */
+
+
+  /* <ImageBackground  source={require('../../assets/newj/public/brands/probot.jpg')}>*/

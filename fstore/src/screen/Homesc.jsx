@@ -13,7 +13,7 @@ function Homesc(){
   const dispatch=useDispatch()
   
   const [aitems,setAitems]=useState([])
-  const cat=['Most Popular','rakhis','bags','bottles','stationaery','books']
+  const cat=['Most Popular','rakhis','bags','bottles','stationery','books','pool-summer-accessories']
   const [scat,setScat]=useState(null)
   const [citems,setCitems]=useState([])
   const nitems=useSelector(store=>store.cart.items.length)

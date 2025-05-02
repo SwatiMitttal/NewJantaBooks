@@ -30,7 +30,7 @@ return(
           
         <h3 key='h1' className='text-md text-green-950 justify-center text-2xl items-center font-weight-600'></h3>
         <div key='d2' className='flex justify-center items-center '  >
-        <div key='d3' className='grid  lg:grid-cols-3  md:grid-cols-2  sm:grid-cols-3 gap-0'  >
+        <div key='d3' className='grid  lg:grid-cols-3  md:grid-cols-4  sm:grid-cols-3 gap-0'  >
       {aitems && aitems.map((item,ind)=>(
               <div>
                <Pcart  data={item}  key={ind}/>

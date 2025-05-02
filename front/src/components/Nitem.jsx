@@ -12,7 +12,6 @@ function Nitem(props){
            fdata.append('price',props.data.price)
            fdata.append('rating',props.data.rating)
            fdata.append('cat',props.cat)
-           
            fdata.append('disc',props.data.discount)
            fdata.append('cbot',props.data.count)
            fdata.append('url',props.url)
