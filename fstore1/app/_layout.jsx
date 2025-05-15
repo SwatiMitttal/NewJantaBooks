@@ -4,7 +4,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { Text, View,StyleSheet,Image} from "react-native";
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Entypo from 'react-native-vector-icons/Entypo'
-
+import Ruser from '../src/components/Ruser'
 import Homesc from "../src/screen/Homesc"
 import Log from '../src/components/Log'
 import { Provider, useSelector } from "react-redux"
@@ -21,10 +21,7 @@ export default function RootLayout() {
       <View><Text>Home</Text></View>
     )
   }
-  
-  
   return <>
-  
   <Provider store={appStore} >
    <tab.Navigator  screenOptions={{
     headerShown:false,
@@ -39,6 +36,10 @@ export default function RootLayout() {
 
         <tab.Screen name="Total" component= {Totamt} options={
           { tabBarIcon:()=>{return <FontAwesome5 name={"gift"}    size={25} color={"darkgoldenrod"}></FontAwesome5>}}
+         }></tab.Screen>
+
+         <tab.Screen name="Ruser" component= {Ruser} options={
+          { tabBarIcon:()=>{return <FontAwesome5 name={"trash"}    size={15} color={"darkgoldenrod"}>account</FontAwesome5>}}
          }></tab.Screen>
  </tab.Navigator>
  

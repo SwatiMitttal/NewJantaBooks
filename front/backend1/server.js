@@ -172,6 +172,19 @@ app.post('/ritems',cors(),async(req,res)=>{
     }
 })
 
+app.post('/ruser',cors(),async(req,res)=>{
+    const {user}=req.body
+    console.log(user)
+    try{
+        const  res1=await  Item.deleteOne({email:user}) 
+          console.log(res1)
+          res.status(200).json('deleted')
+       
+        }catch(e){
+        console.log(e.message)
+    }
+})
+
 
 app.post('/aitems',upload.single('img'),async(req,res)=>{
     const {slug,price,note,rating,cat,disc,url,cbot}=req.body
