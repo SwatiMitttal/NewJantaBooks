@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { TextInput,Text,View,Button,StyleSheet } from "react-native";
 import axios from "axios"
-import { ToastAndroid } from "react-native";
+import  {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
 import { setU } from "../../store/Users";
 import Signup from './Signup '
 import Totamt from './Totamt'
 import Spanel from './Spanel'
 import Header from './Header'
+import Register from './Register'
 function Log(){
 const [email,setEmail]=useState('');
 const [user,setUser]=useState(false)
@@ -62,7 +63,7 @@ useEffect(()=>{
     
     </View>
   <Spanel/>
-   {!user && c?<Signup/>:<></>}
+   {!user && c?<Register mail={email}/>:<></>}
    {user && c?<Totamt/>:<></>}
 </View> 
     </>

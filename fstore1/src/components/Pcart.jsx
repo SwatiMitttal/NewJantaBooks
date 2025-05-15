@@ -38,13 +38,13 @@ function Pcart({item}){
 return(
   
          <View style={styles.container} onPress={e=>handleS(e)}>
-           <Text style={{fontWeight:600,color:"darkgoldenrod"}}>{slug}</Text>
+           <Text style={{fontWeight:600,color:"black"}}>{slug}</Text>
            <Text style={styles.note}>
              <Image style={styles.img} source={{uri:item.imgurl}}  >
           </Image>
          
-             <FontAwesome5 name={"rupee-sign"} size={15} color={"darkcyan"}></FontAwesome5>    
-             <Text style={styles.stxt}>{item.price}</Text> {item.price- (item.disc?item.disc:.2*item.price)}</Text> 
+             <FontAwesome5 name={"rupee-sign"} size={15} color={"darkgoldenrod"}></FontAwesome5>    
+             <Text style={styles.stxt}>{item.price}</Text> <FontAwesome5 name={"rupee-sign"} size={15} color={"black"}></FontAwesome5>  {item.price- (item.disc?item.disc:.2*item.price)}</Text> 
              <View style={f?styles.cont1:styles.cont2}
                 > <Text style={styles.txt1}
               onPress={e=>handleA(e) } 

@@ -8,6 +8,7 @@ import Ruser from '../src/components/Ruser'
 import Homesc from "../src/screen/Homesc"
 import Log from '../src/components/Log'
 import { Provider, useSelector } from "react-redux"
+import 'react-native-get-random-values'
 import appStore from '../store/appStore'
 import Totamt from '../src/components/Totamt'
 import { useState,useContext, createContext } from "react";
