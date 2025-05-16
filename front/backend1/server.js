@@ -173,10 +173,10 @@ app.post('/ritems',cors(),async(req,res)=>{
 })
 
 app.post('/ruser',cors(),async(req,res)=>{
-    const {user}=req.body
-    console.log(user)
+    const {email}=req.body
+    console.log('remove account',email)
     try{
-        const  res1=await  Item.deleteOne({email:user}) 
+        const  res1=await  Item.deleteOne({email:email}) 
           console.log(res1)
           res.status(200).json('deleted')
        
