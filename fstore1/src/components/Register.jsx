@@ -2,7 +2,7 @@
 import { useState,useRef } from "react"
 import { useDispatch } from "react-redux"
 import {View,TextInput,Text,StyleSheet,Platform} from 'react-native'
-//import {StandaloneSearchBox,useJsApiLoader} from 're'
+import {StandaloneSearchBox,useJsApiLoader} from '@react-google-maps/api'
 import axios from 'axios'
 //import {KeyboardAwareScrollView}  from 'react-native-keyboard-aware-scroll-view'
 import { setU } from "../../store/Users"
@@ -15,7 +15,8 @@ function Register(props){
     const [add,onChangeText]=useState('')
   
     const iref=useRef()
-    const handlePc=(data)=>{
+
+const handlePc=(data)=>{
       const t=data.split(',')
       const len=t.length
      
@@ -39,7 +40,20 @@ function Register(props){
       const ffields=['name','email','password','mobile',];
        const dispatch=useDispatch()
 
-   async function handleS(e){
+       const handleP=()=>{
+             let add=iref.current.getPlaces()
+        const det=add[0].address_components
+        const len=det.length
+        console.log(det[1])
+              setPin(det[len-1].short_name)
+                  setCountry(det[len-2].long_name)
+                  setStat(det[len-3].long_name)
+                  setCity(det[len-4].short_name)
+                  setAdd1(det[0].long_name+det[1].long_name+det[2].long_name)
+
+       }
+
+async function handleS(e){
        // e.preventDefault()
         console.log('hello')
         const user1= {
@@ -52,9 +66,9 @@ function Register(props){
            if (res.status===200){
                alert('user added')
            }}
- /*const { isLoaded } = useJsApiLoader({
+ const { isLoaded } = useJsApiLoader({
               googleMapsApiKey:'AIzaSyCQxWEFRtkp67knHFCEHquvqaaC4LoVRp8',
-            libraries:['places']})*/
+            libraries:['places']})
 
   return(<>
 
@@ -76,9 +90,18 @@ function Register(props){
                 style={{width:300,height:600}}
                 />:
                <View>
-                </View>
+                 { isLoaded &&  <StandaloneSearchBox
+                 onLoad={(ref)=>iref.current=ref}
+                 onPlacesChanged={handleP}>
+                
+                    <TextInput  placeholder='address'
+                             onChangeText={onChangeText}  
+                             value={add} 
+                             style={styles.tinput1} 
+                              />
+                 </StandaloneSearchBox>}</View>
 }
-{  c?
+{  city?
   <View style={styles.cont1}>
 
        <View  style={{flexDirection:"column"}}>
@@ -147,33 +170,18 @@ const styles=StyleSheet.create({
   tinput1:{
     boxSizing: `border-box`,
      border: `1px solid black`,
-     width: `240px`,
+     width: `340px`,
      height: `40px`,
-     position:'absolute',
+     //position:'absolute',
      borderRadius: `3px`,
      boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
      fontSize: `14px`,
      outline: `none`,
      textOverflow: `ellipses`,
      left: "50%",
-     marginLeft: '10',
-     color:"darkcyan"
+     marginLeft: 10,
+     color:"darkgoldenrod"
    },
 })
 
 
-/*   { isLoaded &&  <StandaloneSearchBox
-                 onLoad={(ref)=>iref.current=ref}
-                 onPlacesChanged={handlePc}>
-                
-                    <TextInput  placeholder='address'
-                             onChangeText={onChangeText}  
-                             value={add} 
-                             style={styles.tinput1} 
-                              />
-                 </StandaloneSearchBox>}
-
-                  const { isLoaded } = useJsApiLoader({
-               id: 'google-map-script',
-                googleMapsApiKey:'AIzaSyCQxWEFRtkp67knHFCEHquvqaaC4LoVRp8',
-            libraries:['']})  */

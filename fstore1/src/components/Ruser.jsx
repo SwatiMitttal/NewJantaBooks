@@ -5,19 +5,18 @@ import axios from 'axios'
 import { useState } from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 function Ruser(){
-   const [user,setUser]=useState(useSelector(store=>store.users.user.email))
+   const [user,setUser]=useState(useSelector(store=>store.users.user))
     const handleP=async()=>{
 
-        const res=await axios.post('https://newjvite3.onrender.com/ruser',{user:user})
+        const res=await axios.post('https://newjvite3.onrender.com/ruser',user.email)
         if (res.status===200){
             alert('account deleted')
         }
     }
-    
-
-    return(<>
+ return(<>
     
     <View>
+        <Text>{user.email}</Text>
   <Text><FontAwesome5 name={"trash"} size={15} color={"darkgoldenrod"}     />Account</Text>
   <Button1 onPress={handleP} text='Remove account'  ></Button1>
 
