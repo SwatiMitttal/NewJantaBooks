@@ -50,7 +50,7 @@ const styles=StyleSheet.create({
          width:30,
         justifyContent:"center",
         position:'absolute',
-        marginLeft:310
+        marginLeft:330
         
     }
 })

@@ -62,7 +62,7 @@ useEffect(()=>{
      >Place order</Text>
     
     </View>
-  <Spanel/>
+  {!user && c?<></>:<Spanel/>   }
    {!user && c?<Register mail={email}/>:<></>}
    {user && c?<Totamt/>:<></>}
 </View> 

@@ -5,7 +5,7 @@ import { TextInput,Text,View,StyleSheet } from "react-native";
 import axios from "axios"
 import Button1 from "./Button1";
 import { setU } from "../../store/Users";
-import Signup from './Signup '
+
 import Totamt from './Totamt'
 import Spanel from './Spanel'
 import Header from './Header'
@@ -50,9 +50,11 @@ useEffect(()=>{
        <Header nitems={nitems}/>
     <Text style={styles.txt1}>Enter email</Text>
     <View style={styles.cont1}>
-     <TextInput  id='email'placeholder='email'
+     <TextInput placeholder='email'
        style={styles.tinput}
-       onChange={(e)=>{setEmail(e.target.value)}}  >
+       onChangeText={setEmail}
+       value={email}
+       >
     </TextInput>
     
      </View>

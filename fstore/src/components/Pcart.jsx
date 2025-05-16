@@ -39,15 +39,19 @@ return(
   
          <View style={styles.container} onPress={e=>handleS(e)}>
            <Text style={{fontWeight:600,color:"darkcyan"}}>{slug}</Text>
+
+           <Image style={styles.img} source={{uri:item.imgurl}} >
+          </Image>
            <Text style={styles.note}>
              <FontAwesome5 name={"rupee-sign"} size={15} color={"darkcyan"}></FontAwesome5>    
-             <Text style={styles.stxt}>{item.price}</Text> {item.price- (item.disc?item.disc:.2*item.price)}</Text> 
+             <Text style={styles.stxt}>{item.price}</Text>
+                <FontAwesome5 name={"rupee-sign"} size={15} color={"darkcyan"}></FontAwesome5>  
+              {item.price- (item.disc?item.disc:.2*item.price)}</Text> 
              <View style={f?styles.cont1:styles.cont2}
                 > <Text style={styles.txt1}
               onPress={e=>handleA(e) } 
              >Add to Cart</Text>  </View>
-            <Image style={styles.img} source={{uri:item.imgurl}} >
-          </Image>
+            
          </View>
   
            )}

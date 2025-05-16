@@ -42,7 +42,7 @@ return (
           <Text style={styles.text} >
         < Citem data={item} /> </Text>   </View>  
 ))}
-<View style={{backgroundColor:"darkcyan",width:180,marginBottom:50, borderRadius:10}}>
+<View style={{backgroundColor:"darkgoldenrod",width:180,marginBottom:50, borderRadius:10}}>
   <Text   style={{color:"white" ,padding:10}}>Your Order Confirmed</Text></View>
 <But url={payl} child={"PAY NOW"} >PAY NOW</But>
        

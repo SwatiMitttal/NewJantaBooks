@@ -16,12 +16,12 @@ function Ruser(){
     
 
     return(<>
-    {user?
+    
     <View>
   <Text><FontAwesome5 name={"trash"} size={15} color={"darkgoldenrod"}     />Account</Text>
   <Button1 onPress={handleP} text='Remove account'  ></Button1>
 
-    </View>  :<></>  }
+    </View>  :<></>  
     </>)
 }
 

@@ -6,7 +6,7 @@ import { useEffect, useState} from "react"
 import Category from '../components/Category'
 import Pcart from '../components/Pcart'
 import { useDispatch, useSelector } from "react-redux"
-
+import Errorb from '../components/Errorb'
 
 import axios from 'axios'
 function Homesc(){
@@ -35,7 +35,7 @@ useEffect(()=>{
  return(<>
 
    <View style={{backgroundColor:"burlywood"}}>
-  
+  <Errorb>
      <View style={{flexDirection:"row"}}>
            {aitems &&  <FlatList 
            ListHeaderComponent={<View style={{flex:1,flexDirection:"column"}}>
@@ -60,7 +60,7 @@ useEffect(()=>{
                  showsHorizontalScrollIndicator={false}
             />}
              </View>
-            
+     </Errorb>       
         </View>
      
     </>)}

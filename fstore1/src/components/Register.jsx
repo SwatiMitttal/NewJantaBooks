@@ -26,11 +26,7 @@ function Register(props){
                 setAdd1(t[0]+t[1]+t[2])
                 console.log(len,t,city,country,stat)
       }
-    
-      
- 
-
-   const [name,setName]=useState('')
+    const [name,setName]=useState('')
      const [email,setEmail]=useState('')
      const [passw,setPassw]=useState('')
      const [mobile,setMobile]=useState('')
@@ -92,7 +88,7 @@ function Register(props){
                />
              <TextInput  placeholder={props.mail}
               onChangeText={setEmail}  
-              value={props.mail} 
+              value={email} 
               style={styles.tinput} 
                />
                <TextInput  placeholder='passw'
