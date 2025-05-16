@@ -1,8 +1,8 @@
 
 import { useState,useRef } from "react"
 import { useDispatch } from "react-redux"
-import {View,TextInput,Text,StyleSheet} from 'react-native'
-
+import {View,TextInput,Text,StyleSheet,Platform} from 'react-native'
+//import {StandaloneSearchBox,useJsApiLoader} from 're'
 import axios from 'axios'
 //import {KeyboardAwareScrollView}  from 'react-native-keyboard-aware-scroll-view'
 import { setU } from "../../store/Users"
@@ -47,15 +47,20 @@ function Register(props){
           passw:passw,mobile:mobile,
           add1:add1,pin:pin,country:country,city:city,stat:stat,newu:true}
           dispatch(setU(user1))
-          //alert(user1.country)
+          
           const res=await axios.post('https://newjvite3.onrender.com/signup',user1)
            if (res.status===200){
                alert('user added')
            }}
+ /*const { isLoaded } = useJsApiLoader({
+              googleMapsApiKey:'AIzaSyCQxWEFRtkp67knHFCEHquvqaaC4LoVRp8',
+            libraries:['places']})*/
+
   return(<>
 
   <View style={{flex:1}}>
   <Text style={styles.txt} >SIGNUP</Text>
+   { Platform.OS==='android'?
   <GooglePlacesAutocomplete  
                   placeholder="address"
                   onPress={(data,detail=null)=>{
@@ -69,8 +74,10 @@ function Register(props){
                   language:'en'
                 }} 
                 style={{width:300,height:600}}
-                />
- 
+                />:
+               <View>
+                </View>
+}
 {  c?
   <View style={styles.cont1}>
 

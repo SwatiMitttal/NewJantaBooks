@@ -6,7 +6,7 @@ import axios from "axios"
 import Header from "./Header"
 import But from './But'
 import Button1 from "./Button1"
-function Totamt({}){
+function Totamt(props){
 const payl='https://razorpay.me/@newjantabooks'
 const citems=useSelector(store=>store.cart.items)
 const tamt=useSelector(store=>store.cart.totamt)
@@ -23,7 +23,7 @@ const res=await axios.post('https://newjvite3.onrender.com/orders',{email:dets.e
 
 return (
 <View style={{flex:1}}>
-  <Header nitems={citems.length} />
+ { props.flag===true?   <></> : <Header nitems={citems.length} />   }
   <Text> Additional 5% less on prepaid orders </Text>
   <View style={styles.container}>
        <Text style={styles.text}>Details</Text>
@@ -43,7 +43,7 @@ return (
         < Citem data={item} /> </Text>   </View>  
 ))}
 <View style={{backgroundColor:"darkgoldenrod",width:180,marginBottom:50, borderRadius:10}}>
-  <Text   style={{color:"white" ,padding:10}}>Your Order Confirmed</Text></View>
+  <Text   style={{color:"white" ,padding:5}}>Your Order Confirmed</Text></View>
 <But url={payl} child={"PAY NOW"} >PAY NOW</But>
        
   
