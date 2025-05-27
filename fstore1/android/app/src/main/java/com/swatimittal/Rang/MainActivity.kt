@@ -1,4 +1,4 @@
-package com.swatimittal.Rang
+package com.swatimittal.rang
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

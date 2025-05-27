@@ -13,8 +13,13 @@ function Header({nitems}){
        </View>
 
       <View style={{flex:1,flexDirection:"row",marginLeft:200 ,borderRadius:10}}>
-      <Image  style={styles.img1} source={require('../../assets/rang/poshaks.jpg')}  ></Image>
-      <Image  style={styles.img1} source={require('../../assets/roli.png')}  ></Image>
+     
+    
+     <Image  style={styles.img1} source={require('../../assets/roli.png')}  ></Image>
+     <Entypo name={"download"}  
+          size={25} color={"brown" } marginLeft={60}></Entypo> 
+       
+      
       </View>
     <View 
         style={styles.ccart}><Text style={{fontWeight:800,fontSize:14,color:"red"}}>{nitems}</Text><Entypo name={"shopping-cart"}  
@@ -30,8 +35,9 @@ const styles=StyleSheet.create({
     title:{
         fontWeight:600,
         fontSize:16,
-        color:"darkgoldenred",
-        marginLeft:20
+        
+        marginLeft:20,
+
       },
       img:{
         height:110,
@@ -40,9 +46,10 @@ const styles=StyleSheet.create({
         marginLeft:2
       },
       img1:{
-         height:80,
-         width:80,
-         borderRadius:10
+         height:50,
+         width:50,
+         borderRadius:10,
+         marginLeft:30
       },
       ccart:{
         backgroundColor:"white",

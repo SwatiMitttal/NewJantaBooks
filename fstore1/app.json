@@ -16,7 +16,7 @@
         "foregroundImage": "./assets/roli.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.swatimittal.Rang"
+      "package": "com.swatimittal.rang"
     },
     "web": {
       "bundler": "metro",
