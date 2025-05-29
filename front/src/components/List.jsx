@@ -9,7 +9,7 @@ function List(props){
     const [email,setEmail]=useState(props.email)
     const flist=async ()=>{
         toast('processsing....pls wait')
-const res= await axios.post('https://newjvite2.onrender.com/corders',{email:email})
+const res= await axios.post('https://newjvite3.onrender.com/corders',{email:email})
             if(res.status===200){
               setOrders(res.data)
              console.log(orders[0])

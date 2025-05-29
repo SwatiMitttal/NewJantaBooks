@@ -8,7 +8,7 @@ function Nform(){
     const light="text-sm bg-amber-300 border-2 border-amber-600 p-1 font-medium hover:scale-105"
     const dark="text-sm bg-amber-500 border-2 border-amber-600 p-1 font-medium hover:scale-105"
     const litems=['name','price','rating','category','discount','note','count','image']
-    const citems=['bags','toys','rakhis','stationery','bottles','brands','books','poshaks','pool-summer-wear','pool-summer-accessories']
+    const citems=['bags','toys','rakhis','coords','ewear','stationery','bottles','brands','books','poshaks','pool-summer-wear','pool-summer-accessories']
 
      const [data,setData]=useState({
              note:'',

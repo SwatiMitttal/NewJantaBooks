@@ -83,7 +83,8 @@ const styles=StyleSheet.create({
    padding:2,
 },
   stxt:{
-     textDecorationLine:"line-through"
+     textDecorationLine:"line-through",
+     fontWeight:600
    },
   img:{
      height:180,

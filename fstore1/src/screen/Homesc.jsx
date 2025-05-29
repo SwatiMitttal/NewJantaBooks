@@ -18,7 +18,7 @@ function Homesc(){
   const [citems,setCitems]=useState([])
   const nitems=useSelector(store=>store.cart.items.length)
    const fprods=async()=>{
-     const res=await axios.get('https://newjvite3.onrender.com/sitems')
+     const res=await axios.get('https://newjvite3.onrender.com/items')
              if(res.status===200){
                const items=res.data
               setAitems(res.data)
@@ -26,8 +26,18 @@ function Homesc(){
                    for(let i=0;i<items.length;i++){
                          if(items[i].cat===scat){
                               citems.push(items[i])
-                         } }
-                    setAitems(citems)}}}
+                         } }}
+                   
+                 else{
+                  for(let i=0;i<items.length;i++){
+                  if(items[i].cat==="coords"){
+                       citems.push(items[i])
+                  }}}
+                  setAitems(citems)}
+                }
+  const handleP=()=>{
+        
+  }
 useEffect(()=>{
     fprods()
   },[scat])
@@ -55,9 +65,10 @@ useEffect(()=>{
                   </View>}
             numColumns={2}
                 data={aitems}
+                vertical={true}
                 renderItem={({item})=><Pcart  item={item}  />  }
                 keyExtractor={(item)=>item}
-                 showsHorizontalScrollIndicator={false}
+                 showsVerticalScrollIndicator={false}
             />}
              </View>
      </Errorb>       
