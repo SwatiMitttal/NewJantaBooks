@@ -9,14 +9,15 @@ import Homesc from "../src/screen/Homesc"
 import Log from '../src/components/Log'
 import { Provider, useSelector } from "react-redux"
 import 'react-native-get-random-values'
+import Detail from '../src/components/Detail'
 import appStore from '../store/appStore'
 import Totamt from '../src/components/Totamt'
 import { useState,useContext, createContext } from "react";
-
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
 export default function RootLayout() {
    
   const tab=createBottomTabNavigator()
-
+   
   function Home(){
     return(
       <View><Text>Home</Text></View>
@@ -37,6 +38,10 @@ export default function RootLayout() {
 
         <tab.Screen name="Total" component= {Totamt} options={
           { tabBarIcon:()=>{return <FontAwesome5 name={"gift"}    size={25} color={"darkgoldenrod"}></FontAwesome5>}}
+         }></tab.Screen>
+
+          <tab.Screen name="detail" component= {Detail } options={
+          { tabBarIcon:()=>{return <></>}}
          }></tab.Screen>
 
          <tab.Screen name="Ruser" component= {Ruser} options={

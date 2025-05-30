@@ -16,11 +16,8 @@ function Header({nitems}){
      
     
      <Image  style={styles.img1} source={require('../../assets/roli.png')}  ></Image>
-     <Entypo name={"download"}  
-          size={25} color={"brown" } marginLeft={60}></Entypo> 
-       
-      
-      </View>
+     
+     </View>
     <View 
         style={styles.ccart}><Text style={{fontWeight:800,fontSize:14,color:"red"}}>{nitems}</Text><Entypo name={"shopping-cart"}  
           size={25} color={"darkgoldenrod"}></Entypo>  </View>

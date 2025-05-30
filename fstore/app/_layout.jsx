@@ -10,7 +10,7 @@ import Log from '../src/components/Log'
 import { Provider, useSelector } from "react-redux"
 import appStore from '../store/appStore'
 import Totamt from '../src/components/Totamt'
-import { useState,useContext, createContext } from "react";
+import Detail from '../src/components/Detail'
 
 export default function RootLayout() {
    
@@ -35,6 +35,11 @@ return <>
         <tab.Screen name="Account" component= {Log} options={
           { tabBarIcon:()=>{return <Entypo name={"user"} size={25} color={"darkcyan"}></Entypo>}}
          }></tab.Screen>
+
+          <tab.Screen name="Detail" component= {Detail} options={
+          { tabBarIcon:()=>{return <></>}}
+         }></tab.Screen>
+
 
         <tab.Screen name="Total" component= {Totamt} options={
           { tabBarIcon:()=>{return <FontAwesome5 name={"gift"}    size={25} color={"darkcyan"}></FontAwesome5>}}

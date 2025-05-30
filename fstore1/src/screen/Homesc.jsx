@@ -1,5 +1,5 @@
 
-import { View,StyleSheet,Text,Button,TextInput ,ImageBackground,FlatList,Image,URL} from "react-native"     
+import { View,StyleSheet,Text,Button,TextInput ,ImageBackground,ScrollView,FlatList,Image,URL} from "react-native"     
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Header  from '../components/Header'
 import { useEffect, useState} from "react"
@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux"
 import Errorb from '../components/Errorb'
 
 import axios from 'axios'
-function Homesc(){
+function Homesc({navigation}){
   const dispatch=useDispatch()
   
   const [aitems,setAitems]=useState([])
@@ -26,15 +26,21 @@ function Homesc(){
                    for(let i=0;i<items.length;i++){
                          if(items[i].cat===scat){
                               citems.push(items[i])
-                         } }}
-                   
-                 else{
-                  for(let i=0;i<items.length;i++){
-                  if(items[i].cat==="coords"){
+                         } 
+                   if(items[i].cat==="coords"){
                        citems.push(items[i])
-                  }}}
-                  setAitems(citems)}
+                  }}
+                  setAitems(citems)
                 }
+                if(!scat){
+                 for(let i=0;i<items.length;i++){
+                         if(items[i].cat==='rakhis'){
+                              citems.push(items[i])
+                         } }
+                       setAitems(citems)
+                }
+              }}
+                
   const handleP=()=>{
         
   }
@@ -43,11 +49,11 @@ useEffect(()=>{
   },[scat])
 
  return(<>
-
+  <ScrollView>
    <View style={{backgroundColor:"burlywood"}}>
   <Errorb>
-     <View style={{flexDirection:"row"}}>
-           {aitems &&  <FlatList 
+     <View style={{flex:1,flexDirection:"row"}}>
+      {aitems &&  <FlatList 
            ListHeaderComponent={<View style={{flex:1,flexDirection:"column"}}>
            
                <Header nitems={nitems}/> 
@@ -65,15 +71,15 @@ useEffect(()=>{
                   </View>}
             numColumns={2}
                 data={aitems}
-                vertical={true}
-                renderItem={({item})=><Pcart  item={item}  />  }
+                renderItem={({item})=><Pcart  navigation={navigation} item={item}  />  }
                 keyExtractor={(item)=>item}
                  showsVerticalScrollIndicator={false}
             />}
+          
              </View>
      </Errorb>       
         </View>
-     
+         </ScrollView>
     </>)}
 export default Homesc
 const styles=StyleSheet.create({

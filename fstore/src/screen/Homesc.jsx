@@ -1,5 +1,5 @@
 
-import { View,StyleSheet,Text,Button,TextInput ,ImageBackground,FlatList,Image,URL} from "react-native"     
+import { View,StyleSheet,Text,Button,TextInput ,ImageBackground,FlatList,Image,URL,ScrollView} from "react-native"     
 
 import Header  from '../components/Header'
 import { useEffect, useState} from "react"
@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 
 import axios from 'axios'
-function Homesc(){
+function Homesc({navigation}){
   const dispatch=useDispatch()
   
   const [aitems,setAitems]=useState([])
@@ -33,7 +33,7 @@ useEffect(()=>{
   },[scat])
 
  return(<>
-
+  <ScrollView>
    <View style={{backgroundColor:"white"}}>
   
      <View style={{flexDirection:"row"}}>
@@ -55,14 +55,15 @@ useEffect(()=>{
                   </View>}
             numColumns={2}
                 data={aitems}
-                renderItem={({item})=><Pcart  item={item}  />  }
+                
+                renderItem={({item})=><Pcart  navigation={navigation} item={item}  />  }
                 keyExtractor={(item)=>item}
-                 showsHorizontalScrollIndicator={false}
+                 showsVerticalScrollIndicator={false}
             />}
              </View>
             
         </View>
-     
+     </ScrollView>
     </>)}
 export default Homesc
 const styles=StyleSheet.create({

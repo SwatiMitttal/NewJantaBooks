@@ -2,12 +2,12 @@
 
 
 import {useDispatch,useSelector,}  from 'react-redux'
-import {Text,StyleSheet,View,Image,ToastAndroid} from'react-native'
+import {Text,StyleSheet,View,Image,TouchableOpacity} from'react-native'
 import { addItem } from '../../store/Cart'
 import {  useState, useEffect } from 'react'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { useNavigation } from 'expo-router'
-function Pcart({item}){
+function Pcart({item,navigation}){
   const {_id,note,cat,count,imgurl,rating,price,slug,disc}=item
     const nitems=useSelector(store=>store.cart.items.length)
     const dispatch=useDispatch()
@@ -15,7 +15,7 @@ function Pcart({item}){
     const [cbot,setCbot]=useState(0)
     const [f,setF]=useState(false)
     const handleS=()=>{
-     
+        navigation.navigate('Detail',{item:item})
      }
     async function handleA(){
       setF(true)
@@ -37,11 +37,11 @@ function Pcart({item}){
         
 return(
   
-         <View style={styles.container} onPress={e=>handleS(e)}>
+         <View style={styles.container}>
            <Text style={{fontWeight:600,color:"darkcyan"}}>{slug}</Text>
-
+          <TouchableOpacity onPress={handleS}>
            <Image style={styles.img} source={{uri:item.imgurl}} >
-          </Image>
+          </Image> </TouchableOpacity>
            <Text style={styles.note}>
              <FontAwesome5 name={"rupee-sign"} size={15} color={"darkcyan"}></FontAwesome5>    
              <Text style={styles.stxt}>{item.price}</Text>
