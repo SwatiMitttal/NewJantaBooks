@@ -1,4 +1,5 @@
 import { Stack } from "expo-router";
+//import registerNNPushToken from 'native-notify'
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Text, View,StyleSheet,Image} from "react-native";
@@ -7,17 +8,17 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import Ruser from '../src/components/Ruser'
 import Homesc from "../src/screen/Homesc"
 import Log from '../src/components/Log'
-import { Provider, useSelector } from "react-redux"
+import { Provider} from "react-redux"
 import 'react-native-get-random-values'
 import Detail from '../src/components/Detail'
 import appStore from '../store/appStore'
 import Totamt from '../src/components/Totamt'
-import { useState,useContext, createContext } from "react";
+
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 export default function RootLayout() {
    
   const tab=createBottomTabNavigator()
-   
+  //registerNNPushToken(30426, '7SLiUwHUY8HBu5TBQj35QG')
   function Home(){
     return(
       <View><Text>Home</Text></View>

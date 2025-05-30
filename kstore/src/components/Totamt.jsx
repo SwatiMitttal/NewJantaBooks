@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import Citem from "./Citem"
-import {View,StyleSheet,Text} from 'react-native'
+import {View,StyleSheet,Text,Share} from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import axios from "axios"
 import Header from "./Header"
