@@ -7,15 +7,16 @@ import Entypo from '@expo/vector-icons/Entypo'
 import 'react-native-get-random-values'
 import Homesc from "../src/screen/Homesc"
 import Log from '../src/components/Log'
-import { Provider, useSelector } from "react-redux"
+import { Provider } from "react-redux"
 import appStore from '../store/appStore'
 import Totamt from '../src/components/Totamt'
 import Detail from '../src/components/Detail'
-
+import Cart from '../src/components/Cart'
+import { useSelector } from "react-redux";
 export default function RootLayout() {
    
   const tab=createBottomTabNavigator()
-
+  //const nitems=useSelector(store=>store.cart.items.length)
   function Home(){
     return(
       <View><Text>Home</Text></View>
@@ -39,6 +40,15 @@ return <>
           <tab.Screen name="Detail" component= {Detail} options={
           { tabBarIcon:()=>{return <></>}}
          }></tab.Screen>
+
+          <tab.Screen name="Cart" component= {Cart} options={
+          { tabBarIcon:()=>{return <>
+             <Text style={{fontWeight:700,fontSize:16,color:"red"}}></Text><Entypo name={"shopping-cart"}  
+             size={25} color={"darkcyan"}></Entypo>
+          
+          </>}}
+         }></tab.Screen>
+
 
 
         <tab.Screen name="Total" component= {Totamt} options={

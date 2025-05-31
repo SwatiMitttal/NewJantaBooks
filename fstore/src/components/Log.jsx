@@ -9,8 +9,8 @@ import { setU } from "../../store/Users";
 import Totamt from './Totamt'
 import Spanel from './Spanel'
 import Header from './Header'
-import Register from './Register'
-function Log(){
+import Register1 from './Register'
+function Log(props){
 const [email,setEmail]=useState('');
 const [user,setUser]=useState(false)
 const [c,setC]=useState(false)
@@ -47,7 +47,7 @@ useEffect(()=>{
    return(
     <>
  <View  style={{flex:1,backgroundColor:"grainsboro"}}>
-       <Header nitems={nitems}/>
+     {props.c?  <Header nitems={nitems}/>:<></>  }
     <Text style={styles.txt1}>Enter email</Text>
     <View style={styles.cont1}>
      <TextInput placeholder='email'
@@ -63,7 +63,7 @@ useEffect(()=>{
      onPress={e=>handleS(e)}
      ></Button1>   }
    {!user && c ?<></>:<Spanel/>      }
-   {!user && c?<Register mail={email}/>:<></>}
+   {!user && c?<Register1 mail={email}/>:<></>}
    
 </View> 
     </>

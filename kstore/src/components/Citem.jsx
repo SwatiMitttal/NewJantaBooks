@@ -6,7 +6,7 @@ import { changeQ} from "../../store/Cart"
 import {Text,StyleSheet,View,Image,Button} from 'react-native'
 import { FontAwesome5 } from "@expo/vector-icons"
 function Citem(props){
-   const {id,slug,imgurl,price,count,quantity,tamt}=props.data
+   const {id,slug,imgurl,price,size,count,quantity,tamt}=props.data
    const [q,setQ]=useState(props.data.quantity)
    
    const dispatch=useDispatch()
@@ -27,6 +27,7 @@ function Citem(props){
            <View style={{flexDirection:"row"}}>
            <Text style={styles.but1}   onPress={handleRem}>-</Text>
             <Text style={styles.txt1} >{q}</Text>
+              <Text style={styles.txt1} >{size}</Text>
             <Text style={styles.but1}  onPress={handleAdd} >+</Text>
             <View  style={{height:20}}></View>
             </View>

@@ -29,12 +29,12 @@ export const cslice=createSlice(
       })},
       
      reducers: {addItem(state,action){
-        const {id,quantity,price,cbot,imgurl,img,slug,rating,disc}=action.payload
+        const {id,quantity,price,cbot,imgurl,img,slug,rating,disc,size}=action.payload
          const item=state.items.find(item=>item.id===id)
          const ind=state.items.findIndex(item=>item.id===id)
-         let item1={id:id,quantity:quantity,price:price,imgurl:imgurl,img:img,rating:rating,slug:slug,cbot:cbot,disc:disc}
+         let item1={id:id,quantity:quantity,price:price,imgurl:imgurl,size:size,img:img,rating:rating,slug:slug,cbot:cbot,disc:disc}
          let tt=price*quantity
-        !item  ?  state.items.push({id:id,quantity:quantity,price:price,imgurl:imgurl,cbot:cbot,rating:rating,slug:slug,img:img,tamt:tt,disc:disc}) :item.cbot>0?console.log(''):item.quantity++
+        !item  ?  state.items.push({id:id,quantity:quantity,price:price,imgurl:imgurl,size:size,cbot:cbot,rating:rating,slug:slug,img:img,tamt:tt,disc:disc}) :item.cbot>0?console.log(''):item.quantity++
          state.totamt+=tt
       },
 
@@ -55,5 +55,5 @@ export const cslice=createSlice(
 
 export const {addItem,remItem,changeQ}=cslice.actions
 export default cslice
-//export  cslice.extraReducers
+
     

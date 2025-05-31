@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 import {View,TextInput,Text,StyleSheet,Platform} from 'react-native'
 import {StandaloneSearchBox,useJsApiLoader} from '@react-google-maps/api'
 import axios from 'axios'
-//import {KeyboardAwareScrollView}  from 'react-native-keyboard-aware-scroll-view'
+
 import { setU } from "../../store/Users"
 import Button1 from './Button1'
 import {GooglePlacesAutocomplete}  from 'react-native-google-places-autocomplete'
@@ -20,7 +20,7 @@ const handlePc=(data)=>{
       const t=data.split(',')
       const len=t.length
      
-           // setPin(det[len-1].short_name)
+            setPin(t[len])
                 setCountry(t[len-1])
                 setStat(t[len-2])
                 setCity(t[len-3])

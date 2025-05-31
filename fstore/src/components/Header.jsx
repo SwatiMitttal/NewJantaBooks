@@ -1,8 +1,12 @@
-import { View,Text  ,Image,StyleSheet  }    from   "react-native"
+import { View,Text  ,Image,StyleSheet,TouchableOpacity  }    from   "react-native"
 import Entypo from 'react-native-vector-icons/Entypo'
 import { useNavigation } from "expo-router"
-function Header({nitems}){
+function Header({nitems,navigation}){
     const nav=useNavigation()
+    const handleP=()=>{
+      alert('hello')
+      navigation.navigate('Home')
+    }
     return(<>
   
       <View style={{flex:1,flexDirection:"row",justifyContent:"space-between",margin:5 ,maxHeight:80}}>
@@ -11,15 +15,25 @@ function Header({nitems}){
         <Image  style={styles.img1} source={require('../../assets/newj/public/newjanta.jpeg')}  ></Image>
        <Text style={styles.title}>New Janta Books & Stationery </Text>
        </View>
+
+       <View style={{flex:1,flexDirection:"column",position:"abso;ute",marginLeft:130}}>
+        <View style={styles.ccart}>
+          <Text style={{fontWeight:700,fontSize:16,color:"red"}}>{nitems}</Text><Entypo name={"shopping-cart"}  
+             size={25} color={"darkcyan"}></Entypo>
+              
+          </View> 
+              <Text style={{fontSize:10}}>Click below cart icon</Text>
+       </View>   
+
  <View style={{flex:1,flexDirection:"row",marginLeft:200 ,borderRadius:10}}>
       <Image  style={styles.img1} source={require('../../assets/newj/toys/santa.jpeg')}  ></Image>
       <Image  style={styles.img1} source={require('../../assets/newj/public/brands/cross_logo.png')}  ></Image>
       </View>
-    <View 
-        style={styles.ccart}><Text style={{fontWeight:700,fontSize:16,color:"red"}}>{nitems}</Text><Entypo name={"shopping-cart"}  
-          size={25} color={"darkcyan"}></Entypo>  </View>
-        
-      </View>
+   
+    
+     
+       </View>
+      
      
     </>)
 }
@@ -49,8 +63,8 @@ const styles=StyleSheet.create({
         borderRadius:60,
          width:30,
         justifyContent:"center",
-        position:'absolute',
-        marginLeft:330
+        //position:'absolute',
+        marginLeft:10
         
     }
 })

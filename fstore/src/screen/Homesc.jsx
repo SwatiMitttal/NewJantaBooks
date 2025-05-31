@@ -32,6 +32,10 @@ useEffect(()=>{
     fprods()
   },[scat])
 
+ useEffect(()=>{
+   //alert('Nice Choice-Explore the Exiquiste range..')
+ },[scat])
+
  return(<>
   <ScrollView>
    <View style={{backgroundColor:"white"}}>
@@ -40,7 +44,7 @@ useEffect(()=>{
            {aitems &&  <FlatList 
            ListHeaderComponent={<View style={{flex:1,flexDirection:"column"}}>
            
-               <Header nitems={nitems}/> 
+               <Header nitems={nitems}   /> 
                <View style={{height:50}}>  </View>
                <FlatList 
                 onPress={e=>{setScat(item);handleP(e)}}

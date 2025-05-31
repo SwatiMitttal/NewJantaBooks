@@ -22,6 +22,7 @@ const uSchema=mongoose.Schema({
     passw:String,
     mobile:{
     required:true,
+    
     type:String},
     name:String,
     add1:String,
@@ -44,7 +45,8 @@ const iSchema=mongoose.Schema({
      note:String,
      rating:String,
       img:String,
-      disc:String
+      disc:String,
+      
      
      
 })
@@ -58,7 +60,8 @@ const sSchema=mongoose.Schema({
      note:String,
      rating:String,
       img:String,
-      disc:String
+      disc:String,
+      
      
      
 })
@@ -68,7 +71,8 @@ const oSchema=mongoose.Schema({
     email:String,
     citems:Array,
     tamt:String,
-    date:Date
+    date:Date,
+    
 
 })
 

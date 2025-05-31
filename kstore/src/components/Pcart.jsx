@@ -4,14 +4,17 @@
 import {useDispatch,useSelector,}  from 'react-redux'
 import {Text,StyleSheet,View,Image,TouchableOpacity} from'react-native'
 import { addItem } from '../../store/Cart'
-import {  useState, useEffect } from 'react'
+import {  useState} from 'react'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-import {useNavigation } from 'expo-router'
+
+import Schart from './Schart'
 function Pcart({item,navigation}){
   const {_id,note,cat,count,imgurl,rating,price,slug,disc}=item
     const nitems=useSelector(store=>store.cart.items.length)
     const dispatch=useDispatch()
-     const nav=useNavigation()
+     const sizes=['xs','s','md','xl','xxl']
+    const [s,setS]=useState('')
+ 
     const [cbot,setCbot]=useState(0)
     const [f,setF]=useState(false)
     const handleS=()=>{
@@ -29,7 +32,9 @@ function Pcart({item,navigation}){
             cbot:cbot,
             rating:rating,
             slug:slug,
-            disc:disc
+            disc:disc,
+            cat:cat,
+            size:s
         })) }
        
         
@@ -48,7 +53,14 @@ return(
              <View style={f?styles.cont1:styles.cont2}
                 > <Text style={styles.txt1}
               onPress={e=>handleA(e) } 
+             
              >Add to Cart</Text>  </View>
+              {cat==='coords'  || cat==='ewear' ?  <View style={{flexDirection:"row"}}>
+            { sizes.map((item,i)=>  (<Text style={{fontWeight:600,marginLeft:5}}
+            onPress={e=>setS(item)}
+          >{item}</Text> ))}
+        </View> :<></>}
+             
             </View>
   
            )}
@@ -83,7 +95,8 @@ const styles=StyleSheet.create({
 },
   stxt:{
      textDecorationLine:"line-through",
-     fontWeight:600
+     fontWeight:600,
+     marginLeft:5
    },
   img:{
      height:180,

@@ -22,11 +22,11 @@ function Citem(props){
     return(
     <View  style={styles.cont1}>
         <Image style={{height:30,width:30}} source={{uri:imgurl}}></Image>
-        <Text  >{slug}</Text>
-        <Text><FontAwesome5 name='rupee-sign' size={10}></FontAwesome5>{tamt}</Text>
+        <Text style={styles.txt} >{slug}</Text>
+        <Text style={styles.txt}><FontAwesome5 name='rupee-sign' size={10}></FontAwesome5>{tamt}</Text>
            <View style={{flexDirection:"row"}}>
            <Button1 text='-'  onPress={handleRem}></Button1>
-            <Text style={styles.txt1} >{q}</Text>
+            <Text style={styles.txt} >{q}</Text>
             <Button1 text='+'  onPress={handleAdd} ></Button1>
             <View  style={{height:20}}></View>
             </View>
@@ -45,10 +45,11 @@ const styles=StyleSheet.create({
       height:30,
       marginLeft:20
      },
-     txt1:{
-        marginLeft:2,
+     txt:{
+        marginLeft:20,
         marginRight:10,
-        fontWeight:800,
+        fontWeight:600,
+        padding:5
      },
      but1:{
       marginLeft:2,
