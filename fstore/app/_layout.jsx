@@ -12,11 +12,12 @@ import appStore from '../store/appStore'
 import Totamt from '../src/components/Totamt'
 import Detail from '../src/components/Detail'
 import Cart from '../src/components/Cart'
+import registerNNPushToken from 'native-notify'
 import { useSelector } from "react-redux";
 export default function RootLayout() {
    
   const tab=createBottomTabNavigator()
-  //const nitems=useSelector(store=>store.cart.items.length)
+  registerNNPushToken(30481, 'F9Uxvb0blXsfkqzP7sR3Pb')
   function Home(){
     return(
       <View><Text>Home</Text></View>
@@ -33,28 +34,28 @@ return <>
         <tab.Screen name="Home" component={Homesc} options={
           { tabBarIcon:()=>{return <AntDesign name={"home"} size={25} color={"darkcyan"}></AntDesign>}}
          }/>
-        <tab.Screen name="Account" component= {Log} options={
-          { tabBarIcon:()=>{return <Entypo name={"user"} size={25} color={"darkcyan"}></Entypo>}}
+
+          <tab.Screen name="Cart" component= {Cart} options={
+          { tabBarIcon:()=>{return <>
+             <Text style={{fontWeight:700,fontSize:16,color:"red"}}></Text><Entypo name={"shopping-cart"}  
+             size={25} color={"darkcyan"}></Entypo></>}}
          }></tab.Screen>
+
+        
+         
+       <tab.Screen name="Account" component= {Log} options={
+          { tabBarIcon:()=>{return <Entypo name={"user"} size={15} color={"darkcyan"}>Login</Entypo>}}
+         }></tab.Screen>
+
+          <tab.Screen name="Total" component= {Totamt} options={
+          { tabBarIcon:()=>{return <FontAwesome5 name={"gift"}    size={15} color={"darkcyan"}>checkout</FontAwesome5>}}
+         }></tab.Screen> 
 
           <tab.Screen name="Detail" component= {Detail} options={
           { tabBarIcon:()=>{return <></>}}
          }></tab.Screen>
 
-          <tab.Screen name="Cart" component= {Cart} options={
-          { tabBarIcon:()=>{return <>
-             <Text style={{fontWeight:700,fontSize:16,color:"red"}}></Text><Entypo name={"shopping-cart"}  
-             size={25} color={"darkcyan"}></Entypo>
-          
-          </>}}
-         }></tab.Screen>
-
-
-
-        <tab.Screen name="Total" component= {Totamt} options={
-          { tabBarIcon:()=>{return <FontAwesome5 name={"gift"}    size={25} color={"darkcyan"}></FontAwesome5>}}
-         }></tab.Screen>
- </tab.Navigator>
+    </tab.Navigator>
  
     </Provider>
   </>;

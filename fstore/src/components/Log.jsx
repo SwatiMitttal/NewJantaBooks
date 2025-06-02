@@ -9,7 +9,7 @@ import { setU } from "../../store/Users";
 import Totamt from './Totamt'
 import Spanel from './Spanel'
 import Header from './Header'
-import Register1 from './Register'
+import Register1 from './Register1'
 function Log(props){
 const [email,setEmail]=useState('');
 const [user,setUser]=useState(false)

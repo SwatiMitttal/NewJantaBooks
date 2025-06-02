@@ -1,16 +1,21 @@
 import { useSelector } from "react-redux"
 import Citem from "./Citem"
-import {View,StyleSheet,Text} from 'react-native'
+import {View,StyleSheet,Text,ScrollView} from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import axios from "axios"
 import Header from "./Header"
 import But from './But'
 import Button1 from "./Button1"
+import Wapp from './Wapp'
+import Pshot from './Pshot'
+import Notify from './Notify'
+import { useEffect, useState } from "react"
 function Totamt(props){
 const payl='https://razorpay.me/@newjantabooks'
 const citems=useSelector(store=>store.cart.items)
 const tamt=useSelector(store=>store.cart.totamt)
 const dets=useSelector(store=>store.users.user)
+const [flag,setFlag]=useState(false)
 const handleC=async()=>{
   try{
 const res=await axios.post('https://newjvite3.onrender.com/orders',{email:dets.email,items:citems,tamt:tamt})
@@ -20,12 +25,21 @@ const res=await axios.post('https://newjvite3.onrender.com/orders',{email:dets.e
    catch(err){
   console.log(err)}}
 
+  useEffect(()=>{
+      setFlag(true)
+      handleC()
+  },[])
 
 return (
-<View style={{flex:1}}>
+<ScrollView style={{flex:1}}    showsVerticalScrollIndicator={false}>
   <Header    nitems={citems.length} />    
   <Text style={{fontWeight:500}}> Additional 5% less on prepaid orders </Text>
-  <View style={styles.container}>
+   <Wapp  dets={dets} mobile='9711383805' />
+
+   <Pshot   />
+   <Notify name={dets.name} />
+  <ScrollView style={styles.container}>
+       
        <Text style={styles.text}>Details</Text>
         <Text style={styles.text}>{dets.name}</Text>
         <Text style={styles.text}>{dets.mobile}</Text>
@@ -42,11 +56,11 @@ return (
         
         < Citem data={item} />   </View>  
 ))}
-<View style={{backgroundColor:"darkcyan",width:180,marginBottom:50, borderRadius:10}}>
-  <Text   style={{color:"white" ,padding:10}}>Your Order Confirmed</Text></View>
+<View style={{backgroundColor:"darkcyan",width:180,marginBottom:50,marginTop:15, borderRadius:10}}>
+  <Text   style={{color:"white" ,padding:5}}>Your Order Confirmed</Text></View>
 <But url={payl} child={"PAY NOW"} >PAY NOW</But>
-      </View>
-    </View>   
+      </ScrollView>
+    </ScrollView>   
   )}
 
  export default Totamt

@@ -1,6 +1,6 @@
 
 import { View,StyleSheet,Text,Button,TextInput ,ImageBackground,ScrollView,FlatList,Image,URL} from "react-native"     
-import AntDesign from 'react-native-vector-icons/AntDesign'
+
 import Header  from '../components/Header'
 import { useEffect, useState} from "react"
 import Category from '../components/Category'

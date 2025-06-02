@@ -5,18 +5,15 @@ function Header({nitems}){
     const nav=useNavigation()
     return(<>
   
-      <View style={{flex:1,flexDirection:"row",justifyContent:"space-between",margin:10 ,maxHeight:80}}>
+      <View style={{flex:1,flexDirection:"row",justifyContent:"space-between",margin:10 ,maxHeight:100}}>
       <ImageBackground  source={require('../../assets/rang/sidedes.jpg')}>
         <View style={{flexDirection:"row"}}>
      
        <Text style={styles.title}>Rang & Kesar </Text>
        </View>
-
-      <View style={{flex:1,flexDirection:"row",marginLeft:200 ,borderRadius:10}}>
-     
-    
-     <Image  style={styles.img1} source={require('../../assets/roli.png')}  ></Image>
-     
+    <View style={{flex:1,flexDirection:"column",marginLeft:200 ,borderRadius:10}}>
+    <Image  style={styles.img1} source={require('../../assets/roli.png')}  ></Image>
+    <Text style={{fontWeight:600}}>Click bottom tab cart icon to view</Text>
      </View>
     <View 
         style={styles.ccart}><Text style={{fontWeight:800,fontSize:14,color:"red"}}>{nitems}</Text><Entypo name={"shopping-cart"}  
@@ -32,12 +29,9 @@ const styles=StyleSheet.create({
     title:{
         fontWeight:600,
         fontSize:16,
-        
-        marginLeft:20,
-
-      },
+        marginLeft:20},
       img:{
-        height:110,
+        height:50,
         width:110,
         borderRadius:10,
         marginLeft:2
@@ -46,7 +40,7 @@ const styles=StyleSheet.create({
          height:50,
          width:50,
          borderRadius:10,
-         marginLeft:30
+         marginLeft:50
       },
       ccart:{
         backgroundColor:"white",
@@ -54,6 +48,9 @@ const styles=StyleSheet.create({
         borderRadius:60,
          width:30,
         justifyContent:"center",
+        position:"absolute",
+        marginLeft:200,
+        marginTop:20
         
     }
 })

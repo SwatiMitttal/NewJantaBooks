@@ -11,14 +11,15 @@ import Log from '../src/components/Log'
 import { Provider} from "react-redux"
 import 'react-native-get-random-values'
 import Detail from '../src/components/Detail'
+import Cart from '../src/components/Cart'
 import appStore from '../store/appStore'
 import Totamt from '../src/components/Totamt'
+import registerNNPushToken from 'native-notify'
 
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
 export default function RootLayout() {
    
   const tab=createBottomTabNavigator()
-  //registerNNPushToken(30426, '7SLiUwHUY8HBu5TBQj35QG')
+  registerNNPushToken(30426, '7SLiUwHUY8HBu5TBQj35QG')
   function Home(){
     return(
       <View><Text>Home</Text></View>
@@ -33,12 +34,19 @@ export default function RootLayout() {
         <tab.Screen name="Home" component={Homesc} options={
           { tabBarIcon:()=>{return <AntDesign name={"home"} size={25} color={"darkgoldenrod"}></AntDesign>}}
          }/>
+
+          <tab.Screen name="Cart" component= {Cart} options={
+          { tabBarIcon:()=>{return <>
+             <View style={{fontWeight:700,fontSize:16,color:"red"}}></View><Entypo name={"shopping-cart"}  
+             size={25} color={"darkgoldenrod"}></Entypo></>}}
+         }></tab.Screen>
+
         <tab.Screen name="Account" component= {Log} options={
-          { tabBarIcon:()=>{return <Entypo name={"user"} size={25} color={"darkgoldenrod"}></Entypo>}}
+          { tabBarIcon:()=>{return <Entypo name={"user"} size={15} color={"darkgoldenrod"}>login</Entypo>}}
          }></tab.Screen>
 
         <tab.Screen name="Total" component= {Totamt} options={
-          { tabBarIcon:()=>{return <FontAwesome5 name={"gift"}    size={25} color={"darkgoldenrod"}></FontAwesome5>}}
+          { tabBarIcon:()=>{return <FontAwesome5 name={"gift"}    size={15} color={"darkgoldenrod"}>checkout</FontAwesome5>}}
          }></tab.Screen>
 
           <tab.Screen name="detail" component= {Detail } options={

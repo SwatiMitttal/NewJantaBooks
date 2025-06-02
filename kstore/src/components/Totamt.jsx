@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux"
 import Citem from "./Citem"
-import {View,StyleSheet,Text,Share} from 'react-native'
+import {View,StyleSheet,Text,ScrollView} from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import axios from "axios"
 import Header from "./Header"
 import But from './But'
+import Notify from './Notify'
 import Button1 from "./Button1"
+import { useEffect } from "react"
 function Totamt(props){
 const payl='https://razorpay.me/@newjantabooks'
 const citems=useSelector(store=>store.cart.items)
@@ -19,13 +21,16 @@ const res=await axios.post('https://newjvite3.onrender.com/orders',{email:dets.e
      }}
    catch(err){
   console.log(err)}}
-
+useEffect(()=>{
+  tamt? handleC()  :console.log('')
+},[])
 
 return (
 <View style={{flex:1}}>
  { props.flag===true?   <></> : <Header nitems={citems.length} />   }
   <Text> Additional 5% less on prepaid orders </Text>
-  <View style={styles.container}>
+  <Notify  name={dets.name} />
+  <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
        <Text style={styles.text}>Details</Text>
         <Text style={styles.text}>{dets.name}</Text>
         <Text style={styles.text}>{dets.mobile}</Text>
@@ -47,7 +52,7 @@ return (
 <But url={payl} child={"PAY NOW"} >PAY NOW</But>
        
   
-      </View>
+      </ScrollView>
     </View>   
   )}
 

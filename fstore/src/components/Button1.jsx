@@ -17,8 +17,10 @@ const styles=StyleSheet.create({
         borderRadius:10,
         justifyContent:"center",
         alignItems:"center",
-        padding:5,
-        width:60
+        padding:2,
+        marginTop:3,
+        marginLeft:5,
+        width:70
       },
       text:{
         fontWeight:600,

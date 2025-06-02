@@ -16,12 +16,11 @@ function Header({nitems,navigation}){
        <Text style={styles.title}>New Janta Books & Stationery </Text>
        </View>
 
-       <View style={{flex:1,flexDirection:"column",position:"abso;ute",marginLeft:130}}>
+       <View style={{flex:1,flexDirection:"column",position:"absolute",marginLeft:80,marginTop:30}}>
         <View style={styles.ccart}>
           <Text style={{fontWeight:700,fontSize:16,color:"red"}}>{nitems}</Text><Entypo name={"shopping-cart"}  
              size={25} color={"darkcyan"}></Entypo>
-              
-          </View> 
+         </View> 
               <Text style={{fontSize:10}}>Click below cart icon</Text>
        </View>   
 

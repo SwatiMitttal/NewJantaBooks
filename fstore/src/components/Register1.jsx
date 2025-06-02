@@ -63,7 +63,7 @@ async function handleS(e){
           
           const res=await axios.post('https://newjvite3.onrender.com/signup',user1)
            if (res.status===200){
-               alert('user added')
+               alert('Click to see your beautiful package')
            }}
  const { isLoaded } = useJsApiLoader({
             googleMapsApiKey:'AIzaSyA12SK_ZZYk7m0RMbJ9yctwcyKi_KhOs-k',

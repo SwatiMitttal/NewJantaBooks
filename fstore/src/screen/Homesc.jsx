@@ -26,18 +26,29 @@ function Homesc({navigation}){
                    for(let i=0;i<items.length;i++){
                          if(items[i].cat===scat){
                               citems.push(items[i])
+                         } 
+                   if(items[i].cat==="bags"){
+                       citems.push(items[i])
+                  }}
+                  setAitems(citems)
+                }
+                if(!scat){
+                 for(let i=0;i<items.length;i++){
+                         if(items[i].cat==='rakhis'){
+                              citems.push(items[i])
                          } }
-                    setAitems(citems)}}}
+                       setAitems(citems)
+                }
+                
+                  }}
 useEffect(()=>{
     fprods()
   },[scat])
 
- useEffect(()=>{
-   //alert('Nice Choice-Explore the Exiquiste range..')
- },[scat])
+   
 
  return(<>
-  <ScrollView>
+  <ScrollView showsHorizontalScrollIndicator={false}>
    <View style={{backgroundColor:"white"}}>
   
      <View style={{flexDirection:"row"}}>
@@ -99,5 +110,3 @@ cont1:{justifyContent: "start",
        padding:5,
    },})
 
-/*
->*/

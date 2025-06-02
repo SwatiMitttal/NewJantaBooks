@@ -19,6 +19,7 @@ export default But
 const styles=StyleSheet.create({
     but1:{
         backgroundColor:"darkcyan" ,
-        borderRadius:10
+        borderRadius:10,
+        padding:5
     }
 })

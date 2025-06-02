@@ -2,43 +2,48 @@ import { useSelector } from "react-redux"
 import Citem from './Citem'
 import {View,ScrollView,StyleSheet,Text,TouchableOpacity} from 'react-native'
 import { FontAwesome5 } from "@expo/vector-icons"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Log from './Log' 
 import Header from "./Header"
 import Button1 from "./Button1"
+import {Link,useRouter} from 'expo-router'
+import { Entypo } from "@expo/vector-icons"
 function Cart({navigation}){
-
+const router=useRouter()
 const items=useSelector(store=>store.cart.items)
 const nitems=useSelector(store=>store.cart.items.length)
 const tamt=useSelector(store=>store.cart.totamt)
-const [c,setC]=useState(0)
+const [f,setF]=useState(false)
 
 
-const  handleP=()=>{
-   setC(c+1)
+const  handleA=()=>{
+   setF(true)
+   
+   
 }
 return(
         <>
    
-<ScrollView style={styles.cont} showsVerticalScrollIndicator={false} >
+<View style={styles.cont} showsVerticalScrollIndicator={false} >
     <Header nitems={nitems}/>
  <View style={{flex:1,flexDirection:"column"}}>
-  <View style={{flex:1}}>
+  <View style={{flex:1 ,marginTop:130}}>
     <Text style={styles.txt}>Your Cart</Text>
        {items.map(item=>
     <View  style={styles.citem} >
        <Citem data={item}  />
     </View>    )}
     <Text  style={styles.txt}> Total Amount  <FontAwesome5  name="rupee-sign" size={15}  ></FontAwesome5> {tamt}</Text>
- <View  style={{position:"absolute",marginLeft:200,marginTop:300}}>
- <Button1  text='Press Login Icon Below' onPress={handleP} ></Button1></View>
  
+ <View  style={{flex:1,flexDirection:"row",marginLeft:200 ,marginTop:40}}>
+   <Button1  text=' Press Login Icon Below' onPress={handleA} ></Button1> 
+   </View>
     </View>
    <View style={{flex:1}}>
-    {c?<Log />:<></>}
+    {f  && <Log/>}
     </View>
   </View>
- </ScrollView>
+ </View>
         
         </>
     )
@@ -52,17 +57,33 @@ const styles=StyleSheet.create({
    flex:1,
    flexDirection:"column"
 },
+ cont1:{
+      backgroundColor:"darkgoldenrod",
+       height:30,
+       width:100,
+       borderRadius:10,
+       textAlign:"center",
+       padding:2,
+   },
+  
+ cont2:{
+  backgroundColor:"goldenrod",
+   height:30,
+   width:100,
+   borderRadius:10,
+   textAlign:"center",
+   padding:2,
+},
 citem:{
     marginTop:20,
     padding:10,
-
 },
 txt:{
    fontWeight:600,
    marginLeft:20, 
 },
 v:{
-    backgroundColor:"darkcyan",
+    backgroundColor:"darkgoldenrod",
     padding:5,
     width:100,
     marginLeft:20,
